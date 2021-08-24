@@ -1,8 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './components/app/App';
+import { ChordialProvider } from '../src/components/state/ChordialProvider';
 
 render(
-  <App />,
+  <ChordialProvider>
+    <App />
+  </ChordialProvider>,
   document.getElementById('root')
 );
