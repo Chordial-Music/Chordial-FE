@@ -1,29 +1,33 @@
 import React from 'react';
 import Chords from '../../data/data.js';
-import { useNodes } from '../state/ChordialProvider.jsx';
+import { useNodes, useChordArray } from '../state/ChordialProvider.jsx';
 
 const DisplayChordNodes = () => {
-  const { nodes, setNodes } = useNodes();
-  console.log(nodes);
-  return <h1>Hello</h1>;
-  // const chordNode = Chords[nodes].chords;
-  
-  // const nodeList = chordNode.map((element, index) => {
-  //   console.log('nodeList', nodeList);
-  //   return (
-  //     <li
-  //       style={{ listStyle: 'none' }}
-  //       key={index}>
-  //       {element}
-  //     </li>
-  //   );
-  // });
+  const { setChordArray } = useChordArray();
+  const { nodes } = useNodes();
 
-  // return (
-  //   <ul>
-  //     {nodeList}
-  //   </ul>
-  // );
+  console.log('nodes', nodes);
+  const chordNode = Chords[nodes].chords;
+
+  const nodeList = chordNode.map((element, index) => {
+    return (
+      <li
+        style={{ listStyle: 'none' }}
+        key={index}>
+        {element}
+      </li>
+    );
+  });
+
+  const handleClick = ({ target }) => {
+    setChordArray(prevState => [...prevState, target.textContent]);
+  };
+
+  return (
+    <ul>
+      <div onClick={handleClick}>{nodeList}</div>
+    </ul>
+  );
 };
 
 
