@@ -16,7 +16,6 @@ const chordList = () => {
   const [chordArray, setChordArray] = useState([]);
   const [newChordArray, setNewChordArray] = useState([]);
 
-  const pick = [];
  
 
   const handleClick = () => {
@@ -46,8 +45,9 @@ const chordList = () => {
           C
         </button>
         <div> {chordArray.length !== 0 && chordArray.name } </div>
-        <div> {chordArray.length !== 0 && chordArray.chords.map((item, i) => <li key={i}><button onClick={() => setNewChordArray(Chords[item])}>{item}</button></li>) } </div>
-      
+        <div> {chordArray.length !== 0 && chordArray.chords.map((item, i) => 
+        <li key={i}><button onClick={() => setNewChordArray(Chords[item])}>{item}</button></li>) } 
+        </div>
         <div> {newChordArray.length !== 0 && newChordArray.name } </div>
       </ChordListStyled>
     </>
