@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 
 const Chords = {
-  'C': { name: 'C', chords: ['Db', 'D', 'Dm', 'Eb', 'Ebm', 'E', 'Em', 'F', 'Fm', 'Gb', 'G', 'Gm', 'Ab', 'A', 'Am', 'Abm', 'Bb', 'Bm', 'B'], colors: [], audio: [] },
+  'C': { name: 'C', chords: ['Db', 'D', 'Dm', 'Eb', 'E', 'Em', 'F', 'Fm', 'Gb', 'G', 'Gm', 'Ab', 'A', 'Am', 'Abm', 'Bb', 'Bm', 'B'], colors: [], audio: [] },
   'Db': { name: 'Db', chords: ['C', 'Bb', 'Ab'], colors: [], 'audio': [] },
   'Dm': { name: 'Dm', chords: ['C', 'G', 'Gm', 'Em', 'Am', 'Ab', 'Fm', 'F', 'Eb', 'Db'], colors: [], audio: [] },
   'D': { name: 'D', chords: ['C', 'Db', 'G', 'F', 'Fm', 'Am', 'Ab', 'Bb'], colors: [], audio: [] },
