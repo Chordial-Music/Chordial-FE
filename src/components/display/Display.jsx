@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
-//import ChordList from './ChordList';
-import { useChords } from '../state/ChordialProvider';
+import React from 'react';
+import ChordList from './ChordList';
+import { useChordArray } from '../state/ChordialProvider';
+
 // This is the canvas component that  all of the saved chords
 // We must feed it each ChordList (main planet)
 // Should initially display 'C' as a planet
 
-
-//[choice1, choice2,]
-
 const Display = () => {
-  const chords = useChords();
-  const handleClick = () => {
+  const chordArray = useChordArray();
+  console.log(chordArray);
 
-  }
+  const chords = chordArray.map((element, index) => {
+    return (
+      <li key={index}>
+        <ChordList {...element} />
+      </li>
+    );
+  });
 
   return (
     <div>
-      <button onClick={handleClick}>{chords}</button>
+      {chords}
     </div>
   )
 };

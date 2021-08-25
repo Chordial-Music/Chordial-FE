@@ -1,40 +1,32 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-import Chords from '../../data/data.js';
-
-// This is the main planet
-// It displays chord.name
-// And onClick it shows you chord.name's destination chord nodes (chord.chords)
-// And it feeds the satellite planets chords from it's chord array
-// Click on this planet to see all of the destination chord nodes associated with it
-const list = Chords['C'].chords;
+import Chords from '../../data.js';
 
 
-const chordList = () => {
+//take a chord name, extrapolate its nodes, and list
+const ChordList = () => {
   const [display, setDisplay] = useState(false);
-  const [chordArray, setChordArray] = useState([]);
 
-  const pick = [];
-
+  console.log(chordArray.chords);
+  // const temp = Object.values(currentChord[0]);
+  // console.log('current', Chords[temp].chords);
 
   const handleClick = () => {
     setDisplay(true);
   };
 
-  const chords = list.map(item => {
+  const nodes = Chords[currentChord].chords.map(item => {
     return (
       <li key={item}>
-        <button onClick={() => setChordArray(Chords[item].name) && pick.push(chordArray)}>{item}</button>
+        <button onClick={() => setChordArray(Chords[item].name)}>{item}</button>
       </li>
     );
-
   });
-  // console.log(chordArray);
 
   return (
     <>
       <div>
-        {display === true && <ul>{chords}</ul>}
+        {display === true && <ul>{nodes}</ul>}
         <button onClick={handleClick}>C</button>
         <div> {chordArray.length !== 0 && chordArray} </div>
       </div>
@@ -42,4 +34,4 @@ const chordList = () => {
   );
 };
 
-export default chordList;
+export default ChordList;
