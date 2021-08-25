@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import { useChordArray } from '../state/ChordialProvider.jsx';
 import Chords from '../../data/data.js';
 
 const ChordList = ({ chordName }) => {
@@ -8,27 +9,14 @@ const ChordList = ({ chordName }) => {
   // const temp = Object.values(currentChord[0]);
   // console.log('current', Chords[temp].chords);
 
-  // const handleClick = () => {
-  //   setDisplay(true);
-  // };
+  const handleClick = () => {
+    console.log('hi');
+  };
 
-  // const nodes = map(item => {
-  //   return (
-  //     <li key={item}>
-  //       {/* <button onClick={() => setChordArray(Chords[item].name)}>{item}</button> */}
-  //     </li>
-  //   );
-  // });
 
   return (
     <>
-      {chordName}
-      {/* <div>
-        {/* {display === true && <ul>{nodes}</ul>}
-        <button onClick={handleClick}>C</button> */}
-      {/* <div> {chordArray.length !== 0 && chordArray} </div> */}
-
-      {/* </div> * /} */}
+      <div onClick={handleClick}>{chordName}</div>
     </>
   );
 };

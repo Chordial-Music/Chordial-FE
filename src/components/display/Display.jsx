@@ -1,21 +1,24 @@
 import React from 'react';
 import ChordList from './ChordList';
 import { useChordArray } from '../state/ChordialProvider';
-import Chords from '../../data/data';
 
 const Display = () => {
   const chordArray = useChordArray();
 
   const chords = chordArray.map((element, index) => {
     return (
-      <li key={index}>
-        <ChordList chordName={element} />
-      </li>
+      <ul>
+        <li
+          style={{ listStyle: 'none' }}
+          key={index}>
+          <ChordList chordName={element} />
+        </li>
+      </ul>
     );
   });
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
       {chords}
     </div>
   )
