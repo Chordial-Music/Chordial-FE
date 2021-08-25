@@ -18,10 +18,6 @@ const DisplayChord = ({ chordName }) => {
     setDisplayNodes(prev => !prev);
   };
 
-  // const handleHover = ({ target }) => {
-  //   setDisplay(prev => !prev);
-  // };
-
   return (
     <>
       <div

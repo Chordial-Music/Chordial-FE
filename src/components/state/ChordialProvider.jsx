@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 
 const ChordialContext = createContext();

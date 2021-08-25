@@ -6,7 +6,6 @@ const DisplayChordNodes = () => {
   const { setChordArray } = useChordArray();
   const { nodes } = useNodes();
 
-  console.log('nodes', nodes);
   const chordNode = Chords[nodes].chords;
 
   const nodeList = chordNode.map((element, index) => {
