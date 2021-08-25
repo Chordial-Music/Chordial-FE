@@ -1,21 +1,26 @@
+/* eslint-disable max-len */
 import React, { createContext, useContext, useEffect, useState } from 'react';
+
 
 const ChordialContext = createContext();
 
 export const ChordialProvider = ({ children }) => {
-  const [chord, setChord] = useState('C');
-
-  // useEffect(() => {
-
-  // }, []);
+  const [nodes, setNodes] = useState('');
+  const [chordArray, setChordArray] = useState(['C', 'Bb', 'F', 'Eb']);
 
   return (
-    <ChordialContext.Provider value={{ chord, setChord }}>
+    <ChordialContext.Provider value={{ nodes, setNodes, chordArray, setChordArray }}>
       {children}
     </ChordialContext.Provider>
   );
 };
 
-export const useChords = () => {
-  const { chords } = useContext(ChordialContext);
+export const useNodes = () => {
+  const { nodes, setNodes } = useContext(ChordialContext);
+  return { nodes, setNodes };
+};
+
+export const useChordArray = () => {
+  const { chordArray, setChordArray } = useContext(ChordialContext);
+  return { chordArray, setChordArray };
 };
