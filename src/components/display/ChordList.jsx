@@ -5,8 +5,6 @@ import React from 'react';
 // And onClick it shows you chord.name's destination chord nodes (chord.chords)
 // And it feeds the satellite planets chords from it's chord array
 // Click on this planet to see all of the destination chord nodes associated with it
-const list = ['Db', 'D', 'Dm', 'Eb', 'Ebm', 'E', 'Em', 'F', 'Fm', 'Gb', 'G', 'Gm', 'Ab', 'A', 'Am', 'Abm', 'Bb', 'Bm', 'B'];
-
 
 const chordList = () => {
 

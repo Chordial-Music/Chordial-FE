@@ -1,16 +1,17 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import Chords from '../../data/data';
 
 const ChordialContext = createContext();
 
 export const ChordialProvider = ({ children }) => {
-  const [chord, setChord] = useState('C');
+  const [chords, setChords] = useState(Chords['C'].name);
 
   // useEffect(() => {
 
   // }, []);
 
   return (
-    <ChordialContext.Provider value={{ chord, setChord }}>
+    <ChordialContext.Provider value={{ chords, setChords }}>
       {children}
     </ChordialContext.Provider>
   );
@@ -18,4 +19,5 @@ export const ChordialProvider = ({ children }) => {
 
 export const useChords = () => {
   const { chords } = useContext(ChordialContext);
+  return chords;
 };

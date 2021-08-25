@@ -1,6 +1,6 @@
 import React from 'react';
-import ChordList from '../display/ChordList';
+import Display from '../display/Display';
 
 export default function App() {
-  return <ChordList />;
+  return <Display />;
 }
