@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import Chords from '../../data';
+import Chords from '../../data/data';
 
 const ChordialContext = createContext();
 
