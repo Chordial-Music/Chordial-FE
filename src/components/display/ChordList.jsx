@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import Chords from '../../data/data.js';
 
@@ -13,23 +14,26 @@ const chordList = () => {
   const [display, setDisplay] = useState(false);
   const [chordArray, setChordArray] = useState([]);
 
+  const pick = [];
+ 
+
   const handleClick = () => {
     setDisplay(true);
     
-  }
+  };
 
   const chords = list.map(item => {
     return (
-      <li>
-        <button onClick={() => setChordArray(Chords[item].name)}>{item}</button>
+      <li key={item}>
+        <button onClick={() => setChordArray(Chords[item].name) && pick.push(chordArray)}>{item}</button>
         
       </li>
       
-    ) 
+    ); 
     
-  })
+  });
   // console.log(chordArray);
-
+  
   return (
     <>
       <div>
@@ -38,7 +42,7 @@ const chordList = () => {
         <div> {chordArray.length !== 0 && chordArray} </div>
       </div>
     </>
-  )
+  );
 };
 
 export default chordList;
