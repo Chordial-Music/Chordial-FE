@@ -1,5 +1,6 @@
 import React from 'react';
+import ChordList from '../display/ChordList';
 
 export default function App() {
-  return <h1>Chordial App</h1>;
+  return <ChordList />;
 }
