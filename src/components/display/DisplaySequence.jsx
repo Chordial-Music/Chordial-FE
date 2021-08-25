@@ -1,5 +1,5 @@
 import React from 'react';
-import ChordList from './ChordList';
+import DisplayChord from './DisplayChord';
 import { useChordArray } from '../state/ChordialProvider';
 
 const Display = () => {
@@ -11,7 +11,7 @@ const Display = () => {
         <li
           style={{ listStyle: 'none' }}
           key={index}>
-          <ChordList chordName={element} />
+          <DisplayChord chordName={element} />
         </li>
       </ul>
     );

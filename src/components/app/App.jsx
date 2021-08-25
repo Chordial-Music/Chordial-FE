@@ -1,6 +1,6 @@
 import React from 'react';
-import Display from '../display/Display';
+import DisplaySequence from '../display/DisplaySequence';
 
 export default function App() {
-  return <Display />;
+  return <DisplaySequence />;
 }

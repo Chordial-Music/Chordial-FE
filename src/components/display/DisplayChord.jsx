@@ -2,17 +2,19 @@
 import React, { useState } from 'react';
 import { useChordArray } from '../state/ChordialProvider.jsx';
 import Chords from '../../data/data.js';
+import DisplayChordNodes from '../display/DisplayChordNodes';
 
-const ChordList = ({ chordName }) => {
+const DisplayChord = ({ chordName }) => {
   console.log('chord name', chordName);
   const [display, setDisplay] = useState(false);
-  // const temp = Object.values(currentChord[0]);
-  // console.log('current', Chords[temp].chords);
 
-  const handleClick = () => {
-    console.log('hi');
+  const chordArray = useChordArray();
+  console.log('chord array', chordArray);
+
+  const handleClick = ({ target }) => {
+    chordArray.push(target.textContent);
+    console.log(chordArray);
   };
-
 
   return (
     <>
@@ -21,4 +23,4 @@ const ChordList = ({ chordName }) => {
   );
 };
 
-export default ChordList;
+export default DisplayChord;
