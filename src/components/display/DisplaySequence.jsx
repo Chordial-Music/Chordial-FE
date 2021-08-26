@@ -1,14 +1,16 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState } from 'react';
 import DisplayChord from './DisplayChord';
-import { useChordArray, useDisplayNodes } from '../state/ChordialProvider';
+import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import DisplayChordNodes from './DisplayChordNodes';
 import styled from 'styled-components';
 
 
 const DisplaySequence = () => {
-  const { chordArray } = useChordArray();
+  const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
+  const { nodes, setNodes } = useNodes();
+  const [clicked, setClicked] = useState(false);
 
   const chords = chordArray.map((element, index) => {
     return (
@@ -30,9 +32,21 @@ const DisplaySequence = () => {
 
   return (
     <>
-      <div>
-        {displayNodes === true && <DisplayChordNodes />}
-      </div>
+      <ButtonStyled>
+        <button
+          
+          onClick={() => {
+            setChordArray(['C']);
+            setNodes('C');
+            setDisplayNodes(true);
+            setClicked(true);
+          } }
+          className={clicked ? 'invisible' : 'default'}
+        >C</button>
+        <div>
+          {displayNodes === true && <DisplayChordNodes />}
+        </div>
+      </ButtonStyled>
       
       <DisplayChordsStyled
         className="displayChords">
@@ -74,5 +88,28 @@ const DisplayChordsStyled = styled.div`
       transform: scale(1.2);
       color: #00dda6;
     }
+  }
+`;
+
+const ButtonStyled = styled.div`
+  .default {
+    height: 250px;
+    width: 250px;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    background-color: #79d7f68d;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  .invisible {
+    display: none;
   }
 `;

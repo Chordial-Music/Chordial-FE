@@ -6,7 +6,7 @@ const ChordialContext = createContext();
 
 export const ChordialProvider = ({ children }) => {
   const [nodes, setNodes] = useState('');
-  const [chordArray, setChordArray] = useState(['C']);
+  const [chordArray, setChordArray] = useState([]);
   const [displayNodes, setDisplayNodes] = useState(false);
 
   return (
