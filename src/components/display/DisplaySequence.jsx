@@ -6,6 +6,7 @@ import DisplayChordNodes from './DisplayChordNodes';
 import styled from 'styled-components';
 
 
+
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
@@ -103,6 +104,11 @@ const ButtonStyled = styled.div`
     color: white;
     cursor: pointer;
     transition: all ease-in-out 0.2s;
+    animation-name: floating; 
+    animation-duration: 3s; 
+    animation-iteration-count: infinite; 
+    animation-timing-function: ease-in-out;
+    box-shadow: 0px 0px 3px 0px black;
 
     &:hover {
       transform: scale(1.3);
@@ -112,4 +118,10 @@ const ButtonStyled = styled.div`
   .invisible {
     display: none;
   }
+
+  @keyframes floating { 
+    0% { transform: translate(0,  0px); } 
+    50%  { transform: translate(0, 15px); } 
+    100%   { transform: translate(0, -0px); }     
+} 
 `;
