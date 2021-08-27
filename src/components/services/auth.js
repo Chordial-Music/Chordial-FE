@@ -1,0 +1,11 @@
+import { get, post } from './request';
+
+export const postSignup = (username, password) => {
+  return post('/api/v1/auth/signup', { username, password });
+};
+
+export const postLogin = (username, password) => {
+  return post('/api/va/auth/login', { username, password });
+};
+
+export const fetchVerify = () => get('/api/v1/auth/verify');
