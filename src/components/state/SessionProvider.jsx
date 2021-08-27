@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { fetchVerify, postLogin, postSignup } from '../services/auth'
+import { fetchVerify, postLogin, postSignup } from '../services/auth';
 
 const SessionContext = createContext();
 
@@ -21,8 +21,25 @@ export const SessionProvider = ({ children }) => {
   };
 
   return (
-    <SessionContext.Provider value={{ session, signup, login }}>
+    <SessionContext.Provider value={{ session, login }}>
       {children}
     </SessionContext.Provider>
   );
+};
+
+// Define PrivateRoute
+
+
+export const useSession = () => {
+  const { session } = useContext(SessionContext);
+  return session;
+};
+
+// useAuthLoading
+
+//useSignUp
+
+export const useLogin = () => {
+  const { login } = useContext(SessionContext);
+  return login;
 };
