@@ -54,7 +54,11 @@ const DisplaySequence = () => {
         <h3
           style={{ color: 'white' }}
         >Chosen Chords:</h3>
-        {chords}
+        <div className="container">
+
+          {chords}
+        </div>
+        <button className="save-btn">Save</button>
       </DisplayChordsStyled>
     </>
   );
@@ -64,17 +68,27 @@ export default DisplaySequence;
 
 const DisplayChordsStyled = styled.div`
   position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
   top: 0;
-  right: 0;
-  margin: 1rem;
-  padding: 1rem;
+  padding: 0rem;
   background-color: #92e6ff68;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
   border-radius: 10px;
-  height: 600px;
-
+  width: 800px;
+  height: 80px;
   
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .save-btn {
+    height: 80px;
+    width: 80px;
+  }
 
   .Chord {
     text-align: center;
