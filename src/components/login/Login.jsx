@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-//import login 
+import { useLogin } from '../state/SessionProvider';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const login = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //login(username, password);
+    console.log(login(username, password));
+    login(username, password);
   };
 
   const handleChange = ({ target }) => {
@@ -35,7 +37,7 @@ export default function Login() {
           id='password'
           type='password'
           name='password'
-          placehowlder='password'
+          placeholder='password'
           value={password}
           onChange={handleChange}
         />

@@ -5,7 +5,7 @@ export const postSignup = (username, password) => {
 };
 
 export const postLogin = (username, password) => {
-  return post('/api/va/auth/login', { username, password });
+  return post('/api/v1/auth/login', { username, password });
 };
 
 export const fetchVerify = () => get('/api/v1/auth/verify');

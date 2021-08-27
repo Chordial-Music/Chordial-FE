@@ -21,8 +21,13 @@ export const SessionProvider = ({ children }) => {
   };
 
   return (
-    <SessionContext.Provider value={{ session, signup, login }}>
+    <SessionContext.Provider value={{ session, login }}>
       {children}
     </SessionContext.Provider>
   );
+};
+
+export const useLogin = () => {
+  const { login } = useContext(SessionContext);
+  return login;
 };
