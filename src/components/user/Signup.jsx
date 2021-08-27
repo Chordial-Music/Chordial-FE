@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { useLogin } from '../state/SessionProvider';
+import { useSignup } from '../state/SessionProvider';
 
-export default function Login() {
+export default function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const login = useLogin();
-
+  const signup = useSignup();
 
   const handleSubmit = async (e) => {
+    console.log('signup', 'you have signed up');
     e.preventDefault();
-    console.log(login(username, password));
-    login(username, password);
+    signup({ username, password });
   };
 
   const handleChange = ({ target }) => {
@@ -21,7 +20,6 @@ export default function Login() {
 
   return (
     <>
-      hello
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
@@ -43,7 +41,7 @@ export default function Login() {
           onChange={handleChange}
         />
 
-        <button>Login</button>
+        <button>Signup</button>
       </form>
     </>
   );

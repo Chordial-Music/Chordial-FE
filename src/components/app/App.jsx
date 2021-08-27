@@ -2,7 +2,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
 import DisplaySequence from '../display/DisplaySequence';
-import Login from '../login/Login';
+import Login from '../user/Login';
+import Signup from '../user/Signup';
 import SavedSequences from '../savedSequences/SavedSequences';
 import styled from 'styled-components';
 
@@ -17,10 +18,11 @@ export default function App() {
           }}
         >
           Chordial</h1>
-        <Route exact path='/login' component={Login} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup}/>
         <AppStyled>
-          <Route exact path='/saved' component={SavedSequences} />
-          <Route exact path='/' component={DisplaySequence} />
+          <Route exact path="/saved" component={SavedSequences} />
+          <Route exact path="/" component={DisplaySequence} />
         </AppStyled>
       </Router>
     </>
