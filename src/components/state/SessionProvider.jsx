@@ -27,18 +27,6 @@ export const SessionProvider = ({ children }) => {
   );
 };
 
-// Define PrivateRoute
-
-
-export const useSession = () => {
-  const { session } = useContext(SessionContext);
-  return session;
-};
-
-// useAuthLoading
-
-//useSignUp
-
 export const useLogin = () => {
   const { login } = useContext(SessionContext);
   return login;

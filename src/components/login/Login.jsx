@@ -4,11 +4,13 @@ import { useLogin } from '../state/SessionProvider';
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
   const login = useLogin();
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(login(username, password));
     login(username, password);
   };
 
