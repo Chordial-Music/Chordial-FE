@@ -1,11 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './components/app/App';
 import { ChordialProvider } from '../src/components/state/ChordialProvider';
 
 render(
-  <ChordialProvider>
-    <App />
-  </ChordialProvider>,
+  <Router>
+    <ChordialProvider>
+      <App />
+    </ChordialProvider>
+  </Router>,
   document.getElementById('root')
 );

@@ -5,8 +5,6 @@ import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvi
 import DisplayChordNodes from './DisplayChordNodes';
 import styled from 'styled-components';
 
-
-
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
@@ -21,10 +19,9 @@ const DisplaySequence = () => {
             className="Chord"
             key={index}
           >
-            
-            <DisplayChord 
+            <DisplayChord
               chordName={element}
-              style={{ fontSize: 100 }}  />
+              style={{ fontSize: 100 }} />
           </li>
         </ul>
       </>
@@ -35,20 +32,19 @@ const DisplaySequence = () => {
     <>
       <ButtonStyled>
         <button
-          
           onClick={() => {
             setChordArray(['C']);
             setNodes('C');
             setDisplayNodes(true);
             setClicked(true);
-          } }
+          }}
           className={clicked ? 'invisible' : 'default'}
         >C</button>
         <div>
           {displayNodes === true && <DisplayChordNodes />}
         </div>
       </ButtonStyled>
-      
+
       <DisplayChordsStyled
         className="displayChords">
         <h3
