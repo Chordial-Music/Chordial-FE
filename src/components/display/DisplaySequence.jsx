@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import DisplayChord from './DisplayChord';
 import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import DisplayChordNodes from './DisplayChordNodes';
+import { createSequence } from '../../utils/hooks';
 import styled from 'styled-components';
 
 const DisplaySequence = () => {
@@ -10,6 +11,15 @@ const DisplaySequence = () => {
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { nodes, setNodes } = useNodes();
   const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    createSequence(chordArray);
+  };
+
+  const handleReset = () => {
+    setChordArray([]);
+  };
+
 
   const chords = chordArray.map((element, index) => {
     return (
@@ -54,7 +64,10 @@ const DisplaySequence = () => {
 
           {chords}
         </div>
-        <button className="save-btn">Save</button>
+        <div className="btn-container">
+          <button onClick={handleClick} className="save-btn">Save</button>
+          <button onClick={handleReset} className="reset-btn">Reset</button>
+        </div>
       </DisplayChordsStyled>
     </>
   );
@@ -95,6 +108,24 @@ const DisplayChordsStyled = styled.div`
     &:hover {
       background-color: #ffffffa7;
       color: black;
+      border-radius: 10px;
+    }
+  }
+
+  .reset-btn {
+    height: 80px;
+    width: 80px;
+    /* border-radius: 10px; */
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid black;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      background-color: red;
+      color: white;
       border-radius: 10px;
     }
   }
