@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, Route, useHistory} from 'react-router-dom';
 import { fetchVerify, postLogin, postSignup } from '../services/auth';
 
 const SessionContext = createContext();
@@ -24,7 +24,7 @@ export const SessionProvider = ({ children }) => {
   };
 
   const signup = async ({ username, password }) => {
-    console.log('function', username, password);
+    // console.log('function', username, password);
     setSession(await postSignup(username, password));
     history.push('/');
   };

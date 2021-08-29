@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSignup } from '../state/SessionProvider';
 
 export default function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const history = useHistory();
 
   const signup = useSignup();
 
@@ -11,6 +14,8 @@ export default function Signup() {
     console.log('signup', 'you have signed up');
     e.preventDefault();
     signup({ username, password });
+
+    history.push('/');
   };
 
   const handleChange = ({ target }) => {

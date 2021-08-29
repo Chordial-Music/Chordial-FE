@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useLogin } from '../state/SessionProvider';
+import {  useHistory } from 'react-router-dom';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const history = useHistory();
 
   const login = useLogin();
 
@@ -12,6 +15,8 @@ export default function Login() {
     console.log('login', 'you have logged in');
     e.preventDefault();
     login({ username, password });
+
+    history.push('/');
     
   };
 
