@@ -3,15 +3,23 @@ import React, { useState } from 'react';
 import DisplayChord from './DisplayChord';
 import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import DisplayChordNodes from './DisplayChordNodes';
+import { createSequence } from '../../utils/hooks';
 import styled from 'styled-components';
-
-
 
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { nodes, setNodes } = useNodes();
   const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    createSequence(chordArray);
+  };
+
+  const handleReset = () => {
+    setChordArray([]);
+  };
+
 
   const chords = chordArray.map((element, index) => {
     return (
@@ -21,10 +29,9 @@ const DisplaySequence = () => {
             className="Chord"
             key={index}
           >
-            
-            <DisplayChord 
+            <DisplayChord
               chordName={element}
-              style={{ fontSize: 100 }}  />
+              style={{ fontSize: 100 }} />
           </li>
         </ul>
       </>
@@ -35,30 +42,32 @@ const DisplaySequence = () => {
     <>
       <ButtonStyled>
         <button
-          
           onClick={() => {
             setChordArray(['C']);
             setNodes('C');
             setDisplayNodes(true);
             setClicked(true);
-          } }
+          }}
           className={clicked ? 'invisible' : 'default'}
         >C</button>
         <div>
           {displayNodes === true && <DisplayChordNodes />}
         </div>
       </ButtonStyled>
-      
+
       <DisplayChordsStyled
         className="displayChords">
         <h3
-          style={{ color: 'white' }}
+          style={{ color: 'white', padding: '12px' }}
         >Chosen Chords:</h3>
         <div className="container">
 
           {chords}
         </div>
-        <button className="save-btn">Save</button>
+        <div className="btn-container">
+          <button onClick={handleClick} className="save-btn">Save</button>
+          <button onClick={handleReset} className="reset-btn">Reset</button>
+        </div>
       </DisplayChordsStyled>
     </>
   );
@@ -88,6 +97,37 @@ const DisplayChordsStyled = styled.div`
   .save-btn {
     height: 80px;
     width: 80px;
+    /* border-radius: 10px; */
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid black;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      background-color: #ffffffa7;
+      color: black;
+      border-radius: 10px;
+    }
+  }
+
+  .reset-btn {
+    height: 80px;
+    width: 80px;
+    /* border-radius: 10px; */
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid black;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      background-color: red;
+      color: white;
+      border-radius: 10px;
+    }
   }
 
   .Chord {
@@ -99,6 +139,7 @@ const DisplayChordsStyled = styled.div`
     color: antiquewhite;
     text-shadow: 0px 2px 0px black;
     transition: all ease-in-out 0.2s;
+    margin: 0.6rem;
     &:hover {
       transform: scale(1.2);
       color: #00dda6;

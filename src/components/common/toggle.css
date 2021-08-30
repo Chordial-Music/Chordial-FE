@@ -1,0 +1,22 @@
+.toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  right: -100%;
+  transition: all ease-in-out 0.3s;
+  height: 100vh;
+  width: 28%;
+  z-index: 200;
+}
+
+.toggle a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 1rem;
+}

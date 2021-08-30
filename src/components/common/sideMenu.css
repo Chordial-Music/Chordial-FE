@@ -1,0 +1,75 @@
+  .sideMenu {
+    position: absolute;
+    right: 0;
+    background-color: #ffffff8f;
+    filter: blur(2);
+    color: black;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    transition: all ease-in-out 0.3s;
+    z-index: 200;
+    box-shadow: 0px 0px 20px 0px black;
+  }
+
+  .sideMenu a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    font-size: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    position: relative;
+    transition: all 2s;
+  }
+
+  .sideMenu a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '';
+    color: transparent;
+    background-color: rgb(56, 125, 230);
+    height: 1px;
+    text-align: left;
+    opacity: 0;
+  }
+
+  .sideMenu a:hover {
+    color: white;
+    z-index: 1;
+  }
+
+  .sideMenu a:hover:after {
+    width: 100%;
+    z-index: -1;
+    animation: fill 1s forwards;
+    -webkit-animation: fill 1s forwards;
+    -moz-animation: fill 1s forwards;
+    opacity: 1;
+  }
+
+  @-webkit-keyframes fill {
+    0% {
+      width: 0%;
+      height: 1px;
+    }
+    50% {
+      width: 100%;
+      height: 1px;
+    }
+    100% {
+      width: 100%;
+      height: 100%;
+      background: rgb(56, 125, 230);
+    }
+  }
+/* 
+Fill animation style referenced from: https://codepen.io/maheshambure21/pen/QwXaRw */

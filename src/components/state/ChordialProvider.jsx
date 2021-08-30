@@ -8,9 +8,10 @@ export const ChordialProvider = ({ children }) => {
   const [nodes, setNodes] = useState('');
   const [chordArray, setChordArray] = useState([]);
   const [displayNodes, setDisplayNodes] = useState(false);
+  const [sideMenu, setSideMenu] = useState(false);
 
   return (
-    <ChordialContext.Provider value={{ nodes, setNodes, chordArray, setChordArray, displayNodes, setDisplayNodes }}>
+    <ChordialContext.Provider value={{ nodes, setNodes, chordArray, setChordArray, displayNodes, setDisplayNodes, sideMenu, setSideMenu }}>
       {children}
     </ChordialContext.Provider>
   );
@@ -30,4 +31,10 @@ export const useDisplayNodes = () => {
   const { displayNodes, setDisplayNodes } = useContext(ChordialContext);
 
   return { displayNodes, setDisplayNodes };
+};
+
+export const useSideMenu = () => {
+  const { sideMenu, setSideMenu } = useContext(ChordialContext);
+
+  return { sideMenu, setSideMenu };
 };
