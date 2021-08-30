@@ -12,7 +12,7 @@ const Chords = {
   'F': { name: 'F', chords: ['C', 'G', 'Am', 'Bb', 'Fm', 'Ab', 'Db', 'Dm', 'D', 'Em', 'E', 'Eb'], colors: [], audio: [] },
   'Fm': { name: 'Fm', chords: ['C', 'Db', 'Eb', 'E', 'G', 'Ab', 'Am', 'Bb'], colors: [], audio: [] },
   'Gb': { name: 'Gb', chords: ['C', 'F', 'Bb', 'B'], colors: [], audio: [] },
-  'G': { name: 'G', chords: ['C', 'Fm', 'F', 'Am', 'Ab', 'Eb', 'Db', 'Dm', 'Bb'], colors: [], audio: [] },
+  'G': { name: 'G', chords: ['C', 'Fm', 'F', 'Am', 'Ab', 'Em', 'Eb', 'Db', 'Dm', 'Bb'], colors: [], audio: [] },
   'Gm': { name: 'Gm', chords: ['C', 'Dm', 'Am'], colors: [], audio: [] },
   'Ab': { name: 'Ab', chords: ['C', 'Bb', 'G', 'Db', 'Am', 'F', 'Fm', 'Eb', 'Dm', 'D', 'E'], colors: [], audio: [] },
   'Abm': { name: 'Abm', chords: ['C', 'Db', 'F', 'Fm', 'G', 'Bb'], colors: [], audio: [] },
