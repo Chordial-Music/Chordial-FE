@@ -4,6 +4,7 @@ import DisplayChord from './DisplayChord';
 import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import DisplayChordNodes from './DisplayChordNodes';
 import { createSequence } from '../../utils/hooks';
+import { useSession } from '../state/SessionProvider';
 import styled from 'styled-components';
 
 const DisplaySequence = () => {
@@ -11,13 +12,16 @@ const DisplaySequence = () => {
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { nodes, setNodes } = useNodes();
   const [clicked, setClicked] = useState(false);
+  const session = useSession();
 
   const handleClick = () => {
-    createSequence(chordArray);
+    console.log(session.id);
+    createSequence(session.id, chordArray);
   };
 
   const handleReset = () => {
-    setChordArray([]);
+    setNodes('C');
+    setChordArray(['C']);
   };
 
 
