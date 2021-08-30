@@ -10,8 +10,7 @@ export const createSequence = async (id, sequence) => {
 };
 
 export const retrieveSequence = async (username) => {
-  console.log(username);
-  const res = await fetch(`https://chordial.herokuapp.com/api/v1/user/${username}`);
+  const res = await fetch(`https://chordial.herokuapp.com/api/v1/sequences/user/${username}`);
   const sequence = await res.json();
   return sequence;
 };
