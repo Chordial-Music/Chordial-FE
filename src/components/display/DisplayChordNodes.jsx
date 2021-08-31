@@ -2,6 +2,7 @@
 import React from 'react';
 import * as Tone from 'tone';
 import Chords from '../../data/data.js';
+import { useEffect } from 'react'
 import { useNodes, useChordArray, useDisplayNodes } from '../state/ChordialProvider.jsx';
 import styled from 'styled-components';
 
@@ -20,9 +21,20 @@ const DisplayChordNodes = () => {
     );
   });
 
+
+  let chordQuality;
+
+  useEffect(() => {
+    chordQuality = Chords[nodes].tone;
+    chordQuality.map(item => {
+      synth.triggerAttack(`${item}`, now);
+      synth.triggerRelease([`${Chords[nodes].tone}`], now);
+    });
+  }, [chordArray]);
+
   const synth = new Tone.PolySynth().toDestination();
   synth.set({ detune: -1200 });
-  
+  const now = Tone.now();  
 
   const handleClick = ({ target }) => {
     if(chordArray.length < 16) {
@@ -31,7 +43,6 @@ const DisplayChordNodes = () => {
     }
     
     setNodes(target.textContent);
-    synth.triggerAttackRelease(`${target.textContent}4`, '8n');
     
   };
 
