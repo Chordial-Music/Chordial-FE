@@ -7,13 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <title>chordial-frontend</title>
 </head>
 
 <body>
   <div id="root"></div>
+  <div id="overlay-root"></div>
+  <div id="backdrop-root"></div>
 
   <style>
     * {
@@ -41,16 +43,18 @@
     }
 
     @keyframes gradient {
-    0% {
+      0% {
         background-position: 0% 50%;
-    }
-    50% {
+      }
+
+      50% {
         background-position: 100% 50%;
-    }
-    100% {
+      }
+
+      100% {
         background-position: 0% 50%;
+      }
     }
-  }
   </style>
 </body>
 
