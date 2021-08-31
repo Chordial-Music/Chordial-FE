@@ -29,10 +29,10 @@ const DisplaySequence = () => {
   };
 
   const handleSave = () => {
-    if (session && chordArray.length > 0) {
+    if(session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if (!session) {
+    } else if(!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -189,7 +189,7 @@ const ButtonStyled = styled.div`
     animation-duration: 3s; 
     animation-iteration-count: infinite; 
     animation-timing-function: ease-in-out;
-    box-shadow: 0px 7px 5px 1px black;
+    box-shadow: 0px 0px 50px 20px white;
     text-shadow: 0px 2px 4px black;
 
     &:hover {
