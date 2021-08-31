@@ -67,12 +67,14 @@ export default function SavedSequences() {
 }
 
 const SavedListStyled = styled.ul`
+padding: 2rem;
   background-color: #c764ee55;
-  height: 75vh;
   width: 90%;
+  height: 75vh;
   margin: auto;
   border-radius: 40px;
   box-shadow: 0px 0px 15px 0px black;
+  overflow: auto;
 
 `;
 
