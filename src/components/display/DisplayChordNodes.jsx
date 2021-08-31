@@ -7,7 +7,6 @@ import styled from 'styled-components';
 const DisplayChordNodes = () => {
   const { setChordArray } = useChordArray();
   const { nodes, setNodes } = useNodes();
-  const { displayNodes, setDisplayNodes } = useDisplayNodes();
 
   const chordNode = Chords[nodes].chords;
 
@@ -32,7 +31,6 @@ const DisplayChordNodes = () => {
     </NodeListStyled>
   );
 };
-
 
 export default DisplayChordNodes;
 

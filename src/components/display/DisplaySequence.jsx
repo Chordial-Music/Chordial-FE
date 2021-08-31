@@ -1,27 +1,27 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-import DisplayChord from './DisplayChord';
-import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
-import DisplayChordNodes from './DisplayChordNodes';
 import { createSequence } from '../../utils/hooks';
+import DisplayChord from './DisplayChord';
+import DisplayChordNodes from './DisplayChordNodes';
+import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
 import styled from 'styled-components';
 
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
-  const { nodes, setNodes } = useNodes();
+  const { setNodes } = useNodes();
   const [clicked, setClicked] = useState(false);
   const { session } = useSession();
 
-  const handleClick = () => {
-    console.log(session.id);
-    createSequence(session.id, chordArray);
+  const handleReset = () => {
+    setChordArray(['C']);
+    setNodes('C');
   };
 
-  const handleReset = () => {
-    setNodes('C');
-    setChordArray(['C']);
+  const handleClick = () => {
+    createSequence(session.id, chordArray);
+    if (session) handleReset();
   };
 
   const chords = chordArray.map((element, index) => {
@@ -181,5 +181,4 @@ const ButtonStyled = styled.div`
     0% { transform: translate(0,  0px); } 
     50%  { transform: translate(0, 15px); } 
     100%   { transform: translate(0, -0px); }     
-} 
-`;
+}`;

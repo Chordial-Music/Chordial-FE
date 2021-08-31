@@ -7,20 +7,17 @@ export default function Signup() {
   const [password, setPassword] = useState('');
 
   const history = useHistory();
-
   const signup = useSignup();
 
   const handleSubmit = async (e) => {
-    console.log('signup', 'you have signed up');
     e.preventDefault();
     signup({ username, password });
-
     history.push('/');
   };
 
   const handleChange = ({ target }) => {
-    if(target.name === 'username') setUsername(target.value);
-    if(target.name === 'password') setPassword(target.value);
+    if (target.name === 'username') setUsername(target.value);
+    if (target.name === 'password') setPassword(target.value);
   };
 
   return (

@@ -17,12 +17,10 @@ export const SessionProvider = ({ children }) => {
 
   const login = async ({ username, password }) => {
     setSession(await postLogin(username, password));
-    //history push here
     history.push('/');
   };
 
   const signup = async ({ username, password }) => {
-    // console.log('function', username, password);
     setSession(await postSignup(username, password));
     history.push('/');
   };
@@ -51,6 +49,6 @@ export const useSession = () => {
 
 export const PrivateRoute = (props) => {
   const { session } = useSession();
-  if (!session) return <Redirect to='/' />;
+  if (!session) return <Redirect to={'/'} />;
   return <Route {...props} />
 };

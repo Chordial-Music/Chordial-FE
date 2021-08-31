@@ -9,7 +9,7 @@ import { useSideMenu } from '../state/ChordialProvider';
 function SideMenu() {
   const history = useHistory();
   const { session, setSession } = useSession();
-  const { sideMenu, setSideMenu } = useSideMenu();
+  const { sideMenu } = useSideMenu();
 
   const handleClick = () => {
     logout()
