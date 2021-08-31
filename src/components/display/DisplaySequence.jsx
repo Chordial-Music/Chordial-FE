@@ -8,6 +8,7 @@ import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvi
 import { useSession } from '../state/SessionProvider';
 import styled from 'styled-components';
 
+
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
@@ -44,19 +45,20 @@ const DisplaySequence = () => {
     }
   };
 
-  const chords = chordArray.map((element, index) => {
+  const handleClick = () => {
+    setChordArray(['C']);
+    setNodes('C');
+    setDisplayNodes(true);
+    setClicked(true);
+  };
+
+  const chords = chordArray.map((element) => {
     return (
       <>
-        <ul>
-          <li
-            className="Chord"
-            key={index}
-          >
-            <DisplayChord
-              chordName={element}
-              style={{ fontSize: 100 }} />
-          </li>
-        </ul>
+        <div className="Chord">
+          <DisplayChord chordName={element} style={{ fontSize: 100 }} />
+        </div>
+
       </>
     );
   });
@@ -66,16 +68,12 @@ const DisplaySequence = () => {
       {alert && <AlertModal title={alert.title} message={alert.message} onConfirm={alertHandler} />}
       <ButtonStyled>
         <button
-          onClick={() => {
-            setChordArray(['C']);
-            setNodes('C');
-            setDisplayNodes(true);
-            setClicked(true);
-          }}
+          onClick={handleClick}
           className={clicked ? 'invisible' : 'default'}
         >C</button>
         <div>
           {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
+          {chordArray.length >= 16 && <div>hi there</div>}
         </div>
       </ButtonStyled>
 
