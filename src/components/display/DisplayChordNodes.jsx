@@ -5,7 +5,6 @@ import { useNodes, useChordArray } from '../state/ChordialProvider.jsx';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
 
-
 const DisplayChordNodes = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { nodes, setNodes } = useNodes();

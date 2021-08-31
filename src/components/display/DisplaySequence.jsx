@@ -6,6 +6,7 @@ import DisplayChord from './DisplayChord';
 import DisplayChordNodes from './DisplayChordNodes';
 import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
+import uuid from 'react-uuid';
 import styled from 'styled-components';
 
 
@@ -52,14 +53,11 @@ const DisplaySequence = () => {
     setClicked(true);
   };
 
-  const chords = chordArray.map((element) => {
+  const chords = chordArray.map((element, index) => {
     return (
-      <>
-        <div className="Chord">
-          <DisplayChord chordName={element} style={{ fontSize: 100 }} />
-        </div>
-
-      </>
+      <div key={uuid()} className="Chord">
+        <DisplayChord chordName={element} style={{ fontSize: 100 }} />
+      </div>
     );
   });
 
