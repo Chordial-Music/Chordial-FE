@@ -1,31 +1,21 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
-import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider.jsx';
-import DisplayChordNodes from '../display/DisplayChordNodes';
+import React from 'react';
+import { useDisplayNodes, useNodes } from '../state/ChordialProvider.jsx';
 
 const DisplayChord = ({ chordName }) => {
-
-  
-  const { displayNodes, setDisplayNodes } = useDisplayNodes();
-  const { nodes, setNodes } = useNodes();
-  const { chordArray, setChordArray } = useChordArray();
+  const { setDisplayNodes } = useDisplayNodes();
+  const { setNodes } = useNodes();
 
   const handleClick = ({ target }) => {
-    //setChordArray(prevState => [...prevState, target.textContent]);
-    console.log('chordArray state', chordArray);
     setNodes(target.textContent);
     setDisplayNodes(prev => !prev);
   };
 
   return (
     <>
-      <div
-        onClick={handleClick}
-        
-      >
+      <div onClick={handleClick}>
         {chordName}
       </div>
-      
     </>
   );
 };

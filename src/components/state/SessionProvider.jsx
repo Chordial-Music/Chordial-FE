@@ -17,18 +17,16 @@ export const SessionProvider = ({ children }) => {
 
   const login = async ({ username, password }) => {
     setSession(await postLogin(username, password));
-    //history push here
     history.push('/');
   };
 
   const signup = async ({ username, password }) => {
-    // console.log('function', username, password);
     setSession(await postSignup(username, password));
     history.push('/');
   };
 
   return (
-    <SessionContext.Provider value={{ session, login, signup }}>
+    <SessionContext.Provider value={{ session, setSession, login, signup }}>
       {children}
     </SessionContext.Provider>
   );
@@ -45,6 +43,12 @@ export const useSignup = () => {
 };
 
 export const useSession = () => {
-  const { session } = useContext(SessionContext);
-  return session;
+  const { session, setSession } = useContext(SessionContext);
+  return { session, setSession };
+};
+
+export const PrivateRoute = (props) => {
+  const { session } = useSession();
+  if (!session) return <Redirect to={'/'} />;
+  return <Route {...props} />
 };

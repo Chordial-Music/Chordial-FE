@@ -1,29 +1,32 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-import DisplayChord from './DisplayChord';
-import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
-import DisplayChordNodes from './DisplayChordNodes';
 import { createSequence } from '../../utils/hooks';
+import DisplayChord from './DisplayChord';
+import DisplayChordNodes from './DisplayChordNodes';
+import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
 import styled from 'styled-components';
 
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
-  const { nodes, setNodes } = useNodes();
+  const { setNodes } = useNodes();
   const [clicked, setClicked] = useState(false);
-  const session = useSession();
-
-  const handleClick = () => {
-    console.log(session.id);
-    createSequence(session.id, chordArray);
-  };
+  const { session } = useSession();
 
   const handleReset = () => {
-    setNodes('C');
     setChordArray(['C']);
+    setNodes('C');
   };
 
+  const handleClick = () => {
+    if(session) {
+      createSequence(session.id, chordArray);
+      handleReset();
+    } else {
+      console.log('you gotta log in');
+    }
+  };
 
   const chords = chordArray.map((element, index) => {
     return (
@@ -55,17 +58,17 @@ const DisplaySequence = () => {
           className={clicked ? 'invisible' : 'default'}
         >C</button>
         <div>
-          {displayNodes === true && <DisplayChordNodes />}
+          {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
         </div>
       </ButtonStyled>
 
       <DisplayChordsStyled
         className="displayChords">
-        <h3
-          style={{ color: 'white', padding: '12px' }}
-        >Chosen Chords:</h3>
         <div className="container">
-
+          <h3
+            style={{ color: 'white', padding: '12px' }}
+          >Chosen Chords:</h3>
+          
           {chords}
         </div>
         <div className="btn-container">
@@ -90,16 +93,22 @@ const DisplayChordsStyled = styled.div`
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   width: 800px;
-  height: 80px;
+  height: 100px;
   
   .container{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
 
+  .btn-container {
+    height: 100px;
+    display: flex;
+  }
+
   .save-btn {
-    height: 80px;
+    height: 100%;
     width: 80px;
     /* border-radius: 10px; */
     background-color: transparent;
@@ -112,14 +121,12 @@ const DisplayChordsStyled = styled.div`
     &:hover {
       background-color: #ffffffa7;
       color: black;
-      border-radius: 10px;
     }
   }
 
   .reset-btn {
-    height: 80px;
+    height: 100%;
     width: 80px;
-    /* border-radius: 10px; */
     background-color: transparent;
     border: none;
     border-left: 1px solid black;
@@ -130,14 +137,14 @@ const DisplayChordsStyled = styled.div`
     &:hover {
       background-color: red;
       color: white;
-      border-radius: 10px;
+      border-radius: 0 10px 10px 0;
     }
   }
 
   .Chord {
     text-align: center;
     padding-top: 0.8rem;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 800;
     cursor: pointer;
     color: antiquewhite;
@@ -182,5 +189,4 @@ const ButtonStyled = styled.div`
     0% { transform: translate(0,  0px); } 
     50%  { transform: translate(0, 15px); } 
     100%   { transform: translate(0, -0px); }     
-} 
-`;
+}`;

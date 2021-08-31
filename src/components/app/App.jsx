@@ -1,26 +1,25 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import DisplaySequence from '../display/DisplaySequence';
-import Login from '../user/Login';
-import Signup from '../user/Signup';
-import SavedSequences from '../savedSequences/SavedSequences';
-import styled from 'styled-components';
 import Header from '../common/Header';
+import Login from '../user/Login';
+import { PrivateRoute } from '../state/SessionProvider';
+import SavedSequences from '../savedSequences/SavedSequences';
 import SideMenu from '../common/SideMenu';
+import Signup from '../user/Signup';
+import styled from 'styled-components';
 
 export default function App() {
   return (
     <>
       <Router>
-        <SideMenu/>
+        <SideMenu />
         <Header />
-        
         <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup}/>
-        
+        <Route exact path="/signup" component={Signup} />
         <AppStyled>
-          <Route exact path="/saved" component={SavedSequences} />
+          <PrivateRoute exact path="/saved" component={SavedSequences} />
           <Route exact path="/" component={DisplaySequence} />
         </AppStyled>
       </Router>
