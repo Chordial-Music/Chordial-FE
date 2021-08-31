@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import * as Tone from 'tone';
 import AlertModal from '../common/AlertModal';
 import { createSequence } from '../../utils/hooks';
 import DisplayChord from './DisplayChord';
@@ -20,15 +21,21 @@ const DisplaySequence = () => {
   const alertHandler = () => {
     //setAlert to falsey value to dismiss alert
     setAlert(null);
-  }
+  };
 
   const handleReset = () => {
     setChordArray(['C']);
     setNodes('C');
   };
 
+  //Tone Properties
+
+  const synth = new Tone.PolySynth().toDestination();
+  synth.set({ detune: -1200 });
+  const now = Tone.now();
+
   const handleSave = () => {
-    if (session) {
+    if(session) {
       createSequence(session.id, chordArray);
       handleReset();
     } else {
@@ -67,6 +74,7 @@ const DisplaySequence = () => {
             setNodes('C');
             setDisplayNodes(true);
             setClicked(true);
+            synth.triggerAttackRelease(['C4'], now);
           }}
           className={clicked ? 'invisible' : 'default'}
         >C</button>

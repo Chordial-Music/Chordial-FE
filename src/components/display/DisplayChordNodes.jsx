@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import * as Tone from 'tone';
 import Chords from '../../data/data.js';
 import { useNodes, useChordArray, useDisplayNodes } from '../state/ChordialProvider.jsx';
 import styled from 'styled-components';
@@ -19,6 +20,10 @@ const DisplayChordNodes = () => {
     );
   });
 
+  const synth = new Tone.PolySynth().toDestination();
+  synth.set({ detune: -1200 });
+  
+
   const handleClick = ({ target }) => {
     if(chordArray.length < 16) {
 
@@ -26,6 +31,8 @@ const DisplayChordNodes = () => {
     }
     
     setNodes(target.textContent);
+    synth.triggerAttackRelease(`${target.textContent}4`, '8n');
+    
   };
 
   return (
