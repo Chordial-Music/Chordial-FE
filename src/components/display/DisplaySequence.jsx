@@ -28,14 +28,18 @@ const DisplaySequence = () => {
   };
 
   const handleSave = () => {
-    if (session) {
+    if (session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else {
-      //alert modal props to send to alert modal component
+    } else if (!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
+      });
+    } else {
+      setAlert({
+        title: 'Empty Chord Sequence',
+        message: 'Sorry, can\'t save an empty sequence.'
       });
     }
   };
