@@ -22,15 +22,15 @@ export default function SavedSequences() {
   const sequenceElements = sequences.map((ele, index) => {
     return (
       <li key={index}>
-        {ele.sequence}
+        <p style={{ display: 'flex' }}>{ele.sequence.map(i => <p style={{ padding: '5px' }}>{i}</p>)}</p>
         <button onClick={() => handleDelete(ele.id)}>-</button>
-      </li>
+      </li >
     );
   });
 
   return (
     <div>
-      <div>{sequenceElements}</div>
+      <div><ul>{sequenceElements}</ul></div>
       {toggle ? <button onClick={handleClick}>Get Saved Sequences</button> : <></>}
     </div>
   )
