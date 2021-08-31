@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useSession } from '../state/SessionProvider';
 import { retrieveSequence } from '../../utils/hooks';
@@ -31,5 +32,5 @@ export default function SavedSequences() {
       <div>{sequenceElements}</div>
       {toggle ? <button onClick={handleClick}>Get Saved Sequences</button> : <></>}
     </div>
-  )
+  );
 }

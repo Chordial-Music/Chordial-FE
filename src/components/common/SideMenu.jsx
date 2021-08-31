@@ -5,17 +5,25 @@ import styles from './sideMenu.css';
 import toggle from './toggle.css';
 import { useSession } from '../state/SessionProvider';
 import { useSideMenu } from '../state/ChordialProvider';
+import { useNodes } from '../state/ChordialProvider';
+import { useChordArray } from '../state/ChordialProvider';
 
 function SideMenu() {
   const history = useHistory();
   const { session, setSession } = useSession();
   const { sideMenu, setSideMenu } = useSideMenu();
+  const { nodes, setNodes } = useNodes();
+  const { chordArray, setChordArray } = useChordArray();
+
 
   const handleClick = () => {
     logout()
       .then(() => {
         setSession(null);
+        setNodes('C');
+        setChordArray(['C']);
         history.push('/');
+        window.location.reload();
       });
   };
 
