@@ -15,6 +15,11 @@ function SideMenu() {
   const { sideMenu } = useSideMenu();
   
 
+  const handleHome = () => {
+    history.push('/');
+    window.location.reload();
+  };
+
   const handleClick = () => {
     logout()
       .then(() => {
@@ -28,7 +33,15 @@ function SideMenu() {
 
   return (
     <div className={sideMenu ? styles.sideMenu : toggle.toggle}>
-      <Link to={'/'}>Home</Link>
+      <button style={{
+        padding: '1rem',
+        margin: '3rem',
+        background: 'transparent',
+        border: 'none',
+        outline: 'none',
+        cursor: 'pointer',
+        fontSize: '1.5rem',
+      }} onClick={handleHome}>Home</button>
       {session ? <></> : <Link to={'/login'}>Log In</Link>}
       {session ? <></> : <Link to={'/signup'}>Sign Up</Link>}
       {session ? <Link to={'/saved'}>Saved Sequences</Link> : <></>}
