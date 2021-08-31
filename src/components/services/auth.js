@@ -9,3 +9,7 @@ export const postLogin = (username, password) => {
 };
 
 export const fetchVerify = () => get('/api/v1/auth/verify');
+
+export const logout = () => {
+  return get('/api/v1/auth/logout');
+};

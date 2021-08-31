@@ -3,7 +3,7 @@ import { useSession } from '../state/SessionProvider';
 import { retrieveSequence } from '../../utils/hooks';
 
 export default function SavedSequences() {
-  const session = useSession();
+  const { session } = useSession();
   const [sequences, setSequences] = useState([]);
   const [toggle, setToggle] = useState(true);
 

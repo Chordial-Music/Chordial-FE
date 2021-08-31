@@ -8,19 +8,20 @@ import SavedSequences from '../savedSequences/SavedSequences';
 import styled from 'styled-components';
 import Header from '../common/Header';
 import SideMenu from '../common/SideMenu';
+import { PrivateRoute } from '../state/SessionProvider';
 
 export default function App() {
   return (
     <>
       <Router>
-        <SideMenu/>
+        <SideMenu />
         <Header />
-        
+
         <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup}/>
-        
+        <Route exact path="/signup" component={Signup} />
+
         <AppStyled>
-          <Route exact path="/saved" component={SavedSequences} />
+          <PrivateRoute exact path="/saved" component={SavedSequences} />
           <Route exact path="/" component={DisplaySequence} />
         </AppStyled>
       </Router>

@@ -1,33 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSideMenu } from '../state/ChordialProvider';
+import { Link, useHistory } from 'react-router-dom';
+import { logout } from '../services/auth';
 import styles from './sideMenu.css';
 import toggle from './toggle.css';
 import { useSession } from '../state/SessionProvider';
-import { retrieveSequence } from '../../utils/hooks';
+import { useSideMenu } from '../state/ChordialProvider';
 
 function SideMenu() {
-  const session = useSession();
+  const history = useHistory();
+  const { session, setSession } = useSession();
   const { sideMenu, setSideMenu } = useSideMenu();
 
-  const handleClick = async () => {
-    const sequence = await retrieveSequence(session.username);
-    console.log(sequence);
-    //history.push
+  const handleClick = () => {
+    logout()
+      .then(() => {
+        setSession(null);
+        history.push('/');
+      });
   };
 
   return (
     <div className={sideMenu ? styles.sideMenu : toggle.toggle}>
-
-      <Link to={'/login'}>Log In</Link>
-      <Link to={'/signup'}>Sign Up</Link>
+      <Link to={'/'}>Home</Link>
+      {session ? <></> : <Link to={'/login'}>Log In</Link>}
+      {session ? <></> : <Link to={'/signup'}>Sign Up</Link>}
       {session ? <Link to={'/saved'}>Saved Sequences</Link> : <></>}
-
-      {/* <Link to={'/saved'}>Saved Sequences</Link> */}
+      <button onClick={handleClick}>Logout</button>
     </div>
   );
 }
 
 export default SideMenu;
-
-

@@ -12,7 +12,7 @@ const DisplaySequence = () => {
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { nodes, setNodes } = useNodes();
   const [clicked, setClicked] = useState(false);
-  const session = useSession();
+  const { session } = useSession();
 
   const handleClick = () => {
     console.log(session.id);
@@ -23,7 +23,6 @@ const DisplaySequence = () => {
     setNodes('C');
     setChordArray(['C']);
   };
-
 
   const chords = chordArray.map((element, index) => {
     return (
