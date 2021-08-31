@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
 import Chords from '../../data/data.js';
-import { useNodes, useChordArray, useDisplayNodes } from '../state/ChordialProvider.jsx';
+import { useNodes, useChordArray } from '../state/ChordialProvider.jsx';
+import uuid from 'react-uuid';
 import styled from 'styled-components';
 
 const DisplayChordNodes = () => {
@@ -10,27 +11,26 @@ const DisplayChordNodes = () => {
 
   const chordNode = Chords[nodes].chords;
 
-  const nodeList = chordNode.map((element, index) => {
+  const handleClick = ({ target }) => {
+    if (chordArray.length < 16) {
+      setChordArray(prevState => [...prevState, target.textContent]);
+    }
+    setNodes(target.textContent);
+  };
+
+  const nodeList = chordNode.map((element) => {
     return (
       <NodeItemStyled
-        key={index}>
+        key={uuid()}
+        onClick={handleClick}
+      >
         {element}
       </NodeItemStyled>
     );
   });
 
-  const handleClick = ({ target }) => {
-    if(chordArray.length < 16) {
-
-      setChordArray(prevState => [...prevState, target.textContent]);
-    }
-    
-    setNodes(target.textContent);
-  };
-
   return (
-    <NodeListStyled
-      onClick={handleClick}>
+    <NodeListStyled>
       {nodeList}
     </NodeListStyled>
   );
@@ -47,7 +47,6 @@ const NodeItemStyled = styled.li`
   height: 100px;
   margin: 1px;
   text-align: center;
-  /* border: 1px solid black; */
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -71,7 +70,6 @@ const NodeItemStyled = styled.li`
     right: 0;
     bottom: 0;
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-    /* filter: blur(1px); */
     border-radius: 10px;
     
   }
@@ -80,7 +78,7 @@ const NodeItemStyled = styled.li`
 const NodeListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  width: 30%;
+  width: 70%;
   display: flex;
   justify-content: center;
   margin: auto;
