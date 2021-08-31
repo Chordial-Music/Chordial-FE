@@ -5,7 +5,7 @@ import { useNodes, useChordArray, useDisplayNodes } from '../state/ChordialProvi
 import styled from 'styled-components';
 
 const DisplayChordNodes = () => {
-  const { setChordArray } = useChordArray();
+  const { chordArray, setChordArray } = useChordArray();
   const { nodes, setNodes } = useNodes();
 
   const chordNode = Chords[nodes].chords;
@@ -20,7 +20,11 @@ const DisplayChordNodes = () => {
   });
 
   const handleClick = ({ target }) => {
-    setChordArray(prevState => [...prevState, target.textContent]);
+    if(chordArray.length < 16) {
+
+      setChordArray(prevState => [...prevState, target.textContent]);
+    }
+    
     setNodes(target.textContent);
   };
 
@@ -52,7 +56,7 @@ const NodeItemStyled = styled.li`
   position: relative;
   background: inherit;
   z-index: 1000;
-  transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.1s;
   box-shadow: 0px 0px 3px 0px black;
 
   &:hover {

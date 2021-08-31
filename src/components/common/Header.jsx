@@ -40,13 +40,13 @@ const HeaderStyled = styled.div`
   align-items: center;
 
   .menu {
-    padding: 10px;
+    padding: 10px 50px;
     cursor: pointer;
     z-index: 1000;
     .menu-bar {
     width: 50px;
-    background-color: black;
-    height: 10px;
+    background-color: #000000ce;
+    height: 7px;
     margin: 7px;
     border-radius: 10px;
     }
