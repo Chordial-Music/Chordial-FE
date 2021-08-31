@@ -11,10 +11,9 @@ import { useChordArray } from '../state/ChordialProvider';
 function SideMenu() {
   const history = useHistory();
   const { session, setSession } = useSession();
-  const { sideMenu, setSideMenu } = useSideMenu();
-  const { nodes, setNodes } = useNodes();
-  const { chordArray, setChordArray } = useChordArray();
-
+  const { sideMenu } = useSideMenu();
+  const { setNodes } = useNodes();
+  const { setChordArray } = useChordArray();
 
   const handleClick = () => {
     logout()

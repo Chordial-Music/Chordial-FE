@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React, { createContext, useContext, useState } from 'react';
 
-
 const ChordialContext = createContext();
 
 export const ChordialProvider = ({ children }) => {
