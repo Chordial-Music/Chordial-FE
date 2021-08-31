@@ -16,4 +16,4 @@ jobs:
     - run: npm test
       env:
         CI: true
-        APP_SECRET: https://chordial.herokuapp.com
+        API_URL: https://chordial.herokuapp.com
