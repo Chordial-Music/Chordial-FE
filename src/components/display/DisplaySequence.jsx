@@ -9,7 +9,6 @@ import { useSession } from '../state/SessionProvider';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
 
-
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
