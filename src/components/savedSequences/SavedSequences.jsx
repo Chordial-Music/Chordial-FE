@@ -1,4 +1,6 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
+import { del } from '../services/request';
 import { useSession } from '../state/SessionProvider';
 import { retrieveSequence } from '../../utils/hooks';
 
@@ -13,18 +15,24 @@ export default function SavedSequences() {
     setToggle(prev => !prev);
   };
 
+  const handleDelete = async (id) => {
+    del(`/api/v1/sequences/${id}`)
+      .then(() => window.location.reload());
+  };
+
   const sequenceElements = sequences.map((ele, index) => {
     return (
       <li key={index}>
-        {ele.sequence}
-      </li>
+        <p style={{ display: 'flex' }}>{ele.sequence.map(i => <p style={{ padding: '5px' }}>{i}</p>)}</p>
+        <button onClick={() => handleDelete(ele.id)}>-</button>
+      </li >
     );
   });
 
   return (
     <div>
-      <div>{sequenceElements}</div>
+      <div><ul>{sequenceElements}</ul></div>
       {toggle ? <button onClick={handleClick}>Get Saved Sequences</button> : <></>}
     </div>
-  )
+  );
 }

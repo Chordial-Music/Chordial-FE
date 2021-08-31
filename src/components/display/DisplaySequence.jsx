@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import AlertModal from '../common/AlertModal';
 import { createSequence } from '../../utils/hooks';
 import DisplayChord from './DisplayChord';
 import DisplayChordNodes from './DisplayChordNodes';
@@ -10,21 +11,32 @@ import styled from 'styled-components';
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
-  const { setNodes } = useNodes();
-  const [clicked, setClicked] = useState(false);
   const { session } = useSession();
+  const { setNodes } = useNodes();
+
+  const [alert, setAlert] = useState();
+  const [clicked, setClicked] = useState(false);
+
+  const alertHandler = () => {
+    //setAlert to falsey value to dismiss alert
+    setAlert(null);
+  }
 
   const handleReset = () => {
     setChordArray(['C']);
     setNodes('C');
   };
 
-  const handleClick = () => {
-    if(session) {
+  const handleSave = () => {
+    if (session) {
       createSequence(session.id, chordArray);
       handleReset();
     } else {
-      console.log('you gotta log in');
+      //alert modal props to send to alert modal component
+      setAlert({
+        title: 'Must have user account',
+        message: 'Please login or signup to save your sequence.'
+      });
     }
   };
 
@@ -47,6 +59,7 @@ const DisplaySequence = () => {
 
   return (
     <>
+      {alert && <AlertModal title={alert.title} message={alert.message} onConfirm={alertHandler} />}
       <ButtonStyled>
         <button
           onClick={() => {
@@ -68,11 +81,11 @@ const DisplaySequence = () => {
           <h3
             style={{ color: 'white', padding: '12px' }}
           >Chosen Chords:</h3>
-          
+
           {chords}
         </div>
         <div className="btn-container">
-          <button onClick={handleClick} className="save-btn">Save</button>
+          <button onClick={handleSave} className="save-btn">Save</button>
           <button onClick={handleReset} className="reset-btn">Reset</button>
         </div>
       </DisplayChordsStyled>
