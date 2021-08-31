@@ -21,7 +21,7 @@ const DisplaySequence = () => {
   const alertHandler = () => {
     //setAlert to falsey value to dismiss alert
     setAlert(null);
-  }
+  };
 
   const handleReset = () => {
     setChordArray(['C']);
@@ -120,9 +120,11 @@ const DisplayChordsStyled = styled.div`
   .btn-container {
     height: 100px;
     display: flex;
+
   }
 
   .save-btn {
+    font-size: 1.1rem;
     height: 100%;
     width: 80px;
     /* border-radius: 10px; */
@@ -140,6 +142,7 @@ const DisplayChordsStyled = styled.div`
   }
 
   .reset-btn {
+    font-size: 1.1rem;
     height: 100%;
     width: 80px;
     background-color: transparent;
@@ -181,18 +184,20 @@ const ButtonStyled = styled.div`
     border-radius: 50%;
     outline: none;
     background-color: #79d7f68d;
-    font-size: 2rem;
+    font-size: 3rem;
     color: white;
     cursor: pointer;
-    transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.15s;
     animation-name: floating; 
     animation-duration: 3s; 
     animation-iteration-count: infinite; 
     animation-timing-function: ease-in-out;
-    box-shadow: 0px 0px 3px 0px black;
+    box-shadow: 0px 7px 5px 1px black;
+    text-shadow: 0px 2px 4px black;
 
     &:hover {
       transform: scale(1.3);
+      background-color: #23d5ab;
     }
   }
 
@@ -202,6 +207,6 @@ const ButtonStyled = styled.div`
 
   @keyframes floating { 
     0% { transform: translate(0,  0px); } 
-    50%  { transform: translate(0, 15px); } 
+    50%  { transform: translate(0, 30px); } 
     100%   { transform: translate(0, -0px); }     
 }`;
