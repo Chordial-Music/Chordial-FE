@@ -1,5 +1,5 @@
 const request = async (path, method, body) => {
-  const res = await fetch(`http://chordial.herokuapp.com${path}`, {
+  const res = await fetch(`http://chordial.herokuapp.com/${path}`, {
     method,
     headers: body
       ? {
