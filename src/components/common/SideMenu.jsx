@@ -32,7 +32,18 @@ function SideMenu() {
       {session ? <></> : <Link to={'/login'}>Log In</Link>}
       {session ? <></> : <Link to={'/signup'}>Sign Up</Link>}
       {session ? <Link to={'/saved'}>Saved Sequences</Link> : <></>}
-      <button onClick={handleClick}>Logout</button>
+      <button className="logOut-btn" 
+        style={{
+          padding: '1rem',
+          margin: '3rem',
+          background: 'transparent',
+          border: 'none',
+          outline: 'none',
+          cursor: 'pointer',
+          fontSize: '1.5rem',
+        }} 
+        onClick={handleClick}
+      >Logout</button>
     </div>
   );
 }

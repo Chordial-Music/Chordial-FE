@@ -20,3 +20,7 @@
   width: 100%;
   padding: 1rem;
 }
+
+.logOut-btn {
+  color: red;
+}
