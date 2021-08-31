@@ -1,20 +1,21 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import AlertModal from '../common/AlertModal';
 import { createSequence } from '../../utils/hooks';
 import DisplayChord from './DisplayChord';
 import DisplayChordNodes from './DisplayChordNodes';
-import AlertModal from '../common/AlertModal';
 import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
 import styled from 'styled-components';
 
 const DisplaySequence = () => {
-  const [alert, setAlert] = useState();
   const { chordArray, setChordArray } = useChordArray();
-  const [clicked, setClicked] = useState(false);
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { session } = useSession();
   const { setNodes } = useNodes();
+
+  const [alert, setAlert] = useState();
+  const [clicked, setClicked] = useState(false);
 
   const alertHandler = () => {
     //setAlert to falsey value to dismiss alert
