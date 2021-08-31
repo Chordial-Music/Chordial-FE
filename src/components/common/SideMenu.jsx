@@ -4,10 +4,12 @@ import { logout } from '../services/auth';
 import styles from './sideMenu.css';
 import toggle from './toggle.css';
 import { useSession } from '../state/SessionProvider';
-import { useSideMenu } from '../state/ChordialProvider';
+import { useChordArray, useNodes, useSideMenu } from '../state/ChordialProvider';
 
 function SideMenu() {
   const history = useHistory();
+  const { setChordArray } = useChordArray();
+  const { setNodes } = useNodes();
   const { session, setSession } = useSession();
   const { sideMenu } = useSideMenu();
 
@@ -15,7 +17,10 @@ function SideMenu() {
     logout()
       .then(() => {
         setSession(null);
+        setChordArray(['C']);
+        setNodes('C');
         history.push('/');
+        window.location.reload();
       });
   };
 
