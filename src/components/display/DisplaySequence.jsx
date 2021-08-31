@@ -20,8 +20,12 @@ const DisplaySequence = () => {
   };
 
   const handleClick = () => {
-    createSequence(session.id, chordArray);
-    if (session) handleReset();
+    if (session) {
+      createSequence(session.id, chordArray);
+      handleReset();
+    } else {
+      console.log('you gotta log in');
+    }
   };
 
   const chords = chordArray.map((element, index) => {
