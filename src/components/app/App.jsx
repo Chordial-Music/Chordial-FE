@@ -18,8 +18,8 @@ export default function App() {
         <Header />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
+        <PrivateRoute exact path="/saved" component={SavedSequences} />
         <AppStyled>
-          <PrivateRoute exact path="/saved" component={SavedSequences} />
           <Route exact path="/" component={DisplaySequence} />
         </AppStyled>
       </Router>

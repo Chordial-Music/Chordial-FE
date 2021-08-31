@@ -9,8 +9,9 @@ const DisplayChord = ({ chordName }) => {
  
 
   const handleClick = ({ target }) => {
-    setNodes(target.textContent);
-    setDisplayNodes(prev => !prev);
+    //can refactor this to do edits
+    // setNodes(target.textContent);
+    // setDisplayNodes(prev => !prev);
   };
 
   return (

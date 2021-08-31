@@ -7,6 +7,7 @@ import DisplayChord from './DisplayChord';
 import DisplayChordNodes from './DisplayChordNodes';
 import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
+import uuid from 'react-uuid';
 import styled from 'styled-components';
 
 const DisplaySequence = () => {
@@ -35,32 +36,34 @@ const DisplaySequence = () => {
   const now = Tone.now();
 
   const handleSave = () => {
-    if(session) {
+    if (session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else {
-      //alert modal props to send to alert modal component
+    } else if (!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
       });
+    } else {
+      setAlert({
+        title: 'Empty Chord Sequence',
+        message: 'Sorry, can\'t save an empty sequence.'
+      });
     }
+  };
+
+  const handleClick = () => {
+    setChordArray(['C']);
+    setNodes('C');
+    setDisplayNodes(true);
+    setClicked(true);
   };
 
   const chords = chordArray.map((element, index) => {
     return (
-      <>
-        <ul>
-          <li
-            className="Chord"
-            key={index}
-          >
-            <DisplayChord
-              chordName={element}
-              style={{ fontSize: 100 }} />
-          </li>
-        </ul>
-      </>
+      <div key={uuid()} className="Chord">
+        <DisplayChord chordName={element} style={{ fontSize: 100 }} />
+      </div>
     );
   });
 
@@ -76,10 +79,12 @@ const DisplaySequence = () => {
             setClicked(true);
             synth.triggerAttackRelease(['C4'], now);
           }}
+          onClick={handleClick}
           className={clicked ? 'invisible' : 'default'}
         >C</button>
         <div>
           {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
+          {chordArray.length >= 16 && <div>hi there</div>}
         </div>
       </ButtonStyled>
 
@@ -126,9 +131,11 @@ const DisplayChordsStyled = styled.div`
   .btn-container {
     height: 100px;
     display: flex;
+
   }
 
   .save-btn {
+    font-size: 1.1rem;
     height: 100%;
     width: 80px;
     /* border-radius: 10px; */
@@ -146,6 +153,7 @@ const DisplayChordsStyled = styled.div`
   }
 
   .reset-btn {
+    font-size: 1.1rem;
     height: 100%;
     width: 80px;
     background-color: transparent;
@@ -187,18 +195,20 @@ const ButtonStyled = styled.div`
     border-radius: 50%;
     outline: none;
     background-color: #79d7f68d;
-    font-size: 2rem;
+    font-size: 3rem;
     color: white;
     cursor: pointer;
-    transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.15s;
     animation-name: floating; 
     animation-duration: 3s; 
     animation-iteration-count: infinite; 
     animation-timing-function: ease-in-out;
-    box-shadow: 0px 0px 3px 0px black;
+    box-shadow: 0px 7px 5px 1px white;
+    text-shadow: 0px 2px 4px black;
 
     &:hover {
       transform: scale(1.3);
+      background-color: #23d5ab;
     }
   }
 
@@ -208,6 +218,6 @@ const ButtonStyled = styled.div`
 
   @keyframes floating { 
     0% { transform: translate(0,  0px); } 
-    50%  { transform: translate(0, 15px); } 
+    50%  { transform: translate(0, 30px); } 
     100%   { transform: translate(0, -0px); }     
 }`;
