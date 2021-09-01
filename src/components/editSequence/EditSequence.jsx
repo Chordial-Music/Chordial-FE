@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { patch } from '../services/request';
 
 export default function EditSequence(props) {
@@ -9,7 +10,8 @@ export default function EditSequence(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //hit your backend
+    patch(`/api/v1/sequences/${sequence.id}`, editSequence)
+      .then(history.push('/saved'));
   };
 
   const handleChange = ({ target }) => {
