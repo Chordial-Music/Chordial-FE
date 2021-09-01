@@ -22,6 +22,17 @@ const DisplayChordNodes = () => {
     
   };
 
+  const variant = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.1,
+        staggerChildren: 0.1
+      }
+    }
+  };
 
   const nodeList = chordNode.map((element) => {
     return (
@@ -39,6 +50,7 @@ const DisplayChordNodes = () => {
         whileTap={{
           scale: 0.8,
         }}
+        variants={variant}
       >
         <NodeItemStyled onClick={handleClick}>
           {element}
@@ -48,9 +60,18 @@ const DisplayChordNodes = () => {
     );
   });
 
+  
+
   return (
     <NodeListStyled>
-      {nodeList}
+      <motion.ul
+        className="nodeList"
+        variants={variant}
+        initial="hidden"
+        animate="visible"
+      >
+        {nodeList}
+      </motion.ul>
     </NodeListStyled>
   );
 };
@@ -60,7 +81,7 @@ export default DisplayChordNodes;
 const NodeItemStyled = styled.li`
   background-color: lightblue;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   padding: 1rem;
   width: 100px;
   height: 100px;
@@ -94,7 +115,10 @@ const NodeItemStyled = styled.li`
 
 `;
 
-const NodeListStyled = styled.ul`
+const NodeListStyled = styled.div`
+
+.nodeList {
+
   /* border: 1px solid red; */
   display: flex;
   flex-wrap: wrap;
@@ -106,6 +130,7 @@ const NodeListStyled = styled.ul`
   /* position: absolute;
   left: -1000px;
   bottom: 300px; */
+}
   
 `;
 
