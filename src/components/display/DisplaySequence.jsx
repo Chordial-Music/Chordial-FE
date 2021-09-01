@@ -8,6 +8,7 @@ import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvi
 import { useSession } from '../state/SessionProvider';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
@@ -31,10 +32,10 @@ const DisplaySequence = () => {
 
 
   const handleSave = () => {
-    if (session && chordArray.length > 0) {
+    if(session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if (!session) {
+    } else if(!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -57,7 +58,7 @@ const DisplaySequence = () => {
   const chords = chordArray.map((element, index) => {
     return (
       <div key={uuid()} className="Chord">
-        <DisplayChord chordName={element} style={{ fontSize: 100 }} />
+        <DisplayChord chordName={element} />
       </div>
     );
   });
@@ -66,11 +67,18 @@ const DisplaySequence = () => {
     <>
       {alert && <AlertModal title={alert.title} message={alert.message} onConfirm={alertHandler} />}
       <ButtonStyled>
-        <button
-          onClick={handleClick}
-          className={clicked ? 'invisible' : 'default'}
-        >C</button>
-        <div name='test'>
+        <motion.div
+          drag
+          dragConstraints={{ left: 1, right: 1, top: 1, bottom: 1 }}
+          dragElastic={0.2}
+          dragTransition={{ bounceStiffness: 150, bounceDamping: 10 }}
+        >
+          <button
+            onClick={handleClick}
+            className={clicked ? 'invisible' : 'default'}
+          >C</button>
+        </motion.div>
+        <div>
           {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
           {chordArray.length >= 16 &&
             <div className='max-limit'>
@@ -82,7 +90,10 @@ const DisplaySequence = () => {
       <DisplayChordsStyled
         className="displayChords">
         <div className="container">
-          <h3 style={{ color: 'white' }} >Chosen Chords:</h3>
+          <h3
+            style={{ color: 'white', padding: '12px', fontFamily: 'Concert One, cursive' }}
+          >Chosen Chords:</h3>
+
           {chords}
         </div>
         <div className="btn-container">
@@ -107,17 +118,19 @@ const DisplayChordsStyled = styled.div`
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   width: 800px;
-  height: 100px;
+  height: 120px;
+  
   
   .container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    
   }
 
   .btn-container {
-    height: 100px;
+    height: 120px;
     display: flex;
 
   }
@@ -159,15 +172,23 @@ const DisplayChordsStyled = styled.div`
   }
 
   .Chord {
-    text-align: center;
+    font-family: 'Fjalla One', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-top: 0.8rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 800;
     cursor: pointer;
     color: antiquewhite;
-    text-shadow: 0px 2px 0px black;
+    text-shadow: 0px 0px 3px black;
     transition: all ease-in-out 0.2s;
     margin: 0.6rem;
+    background-color: #ffffff7d;
+    border-radius: 50%;
+    padding: 0.6rem;
+    height: 50px;
+    width: 50px;
     &:hover {
       transform: scale(1.2);
       color: #00dda6;

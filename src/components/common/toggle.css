@@ -9,6 +9,8 @@
   height: 100vh;
   width: 28%;
   z-index: 200;
+  font-family: 'Righteous', cursive;
+
 }
 
 .toggle a {
@@ -22,6 +24,8 @@
 }
 
 .toggle button {
+  font-family: 'Righteous', cursive;
+
   display: flex;
 justify-content: center;
 align-items: center;
