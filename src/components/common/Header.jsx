@@ -18,14 +18,14 @@ function Header() {
 
   return (
     <HeaderStyled>
-      <Link to={'/'}>
-        <h1
-          style={{
-            color: 'white', fontSize: '70px', padding: '1rem', fontFamily: 'Pacifico',
-            textShadow: '3px 3px 5px black'
-          }}
-        >
-          Chordial</h1></Link>
+      
+      <h1
+        style={{
+          color: 'white', fontSize: '70px', padding: '1rem', fontFamily: 'Pacifico',
+          textShadow: '3px 3px 5px black'
+        }}
+      >
+          Chordial</h1>
       <label>
         <input type="checkbox" onClick={handleCheck}/>
         Mute Sound

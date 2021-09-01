@@ -1,5 +1,5 @@
 const request = async (path, method, body) => {
-  const res = await fetch(`https://chordial.herokuapp.com/${path}`, {
+  const res = await fetch(`${process.env.API_URL}${path}`, {
     method,
     headers: body
       ? {
