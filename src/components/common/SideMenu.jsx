@@ -32,6 +32,7 @@ function SideMenu() {
 
   return (
     <div className={sideMenu ? styles.sideMenu : toggle.toggle}>
+      {session ? <span>Hello, {session.username} 🙂</span> : <></>}
       <button onClick={handleHome}>Home</button>
       {session ? <></> : <Link to={'/login'}>Log In</Link>}
       {session ? <></> : <Link to={'/signup'}>Sign Up</Link>}
