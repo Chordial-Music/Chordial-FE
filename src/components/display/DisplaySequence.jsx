@@ -31,10 +31,10 @@ const DisplaySequence = () => {
 
 
   const handleSave = () => {
-    if(session && chordArray.length > 0) {
+    if (session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if(!session) {
+    } else if (!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -70,19 +70,19 @@ const DisplaySequence = () => {
           onClick={handleClick}
           className={clicked ? 'invisible' : 'default'}
         >C</button>
-        <div>
+        <div name='test'>
           {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
-          {chordArray.length >= 16 && <div>hi there</div>}
+          {chordArray.length >= 16 &&
+            <div className='max-limit'>
+              <h3>You've reached the max chord limit for a sequence.</h3>
+            </div>}
         </div>
       </ButtonStyled>
 
       <DisplayChordsStyled
         className="displayChords">
         <div className="container">
-          <h3
-            style={{ color: 'white', padding: '12px' }}
-          >Chosen Chords:</h3>
-
+          <h3 style={{ color: 'white' }} >Chosen Chords:</h3>
           {chords}
         </div>
         <div className="btn-container">
@@ -203,6 +203,18 @@ const ButtonStyled = styled.div`
 
   .invisible {
     display: none;
+  }
+
+  .max-limit {
+    color: white;
+    padding: 12px;
+    background-color: #92e6ff68;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    animation-name: floating; 
+    animation-duration: 3.5s; 
+    animation-iteration-count: infinite; 
+    animation-timing-function: ease-in-out;
   }
 
   @keyframes floating { 
