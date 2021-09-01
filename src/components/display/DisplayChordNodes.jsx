@@ -3,6 +3,7 @@ import React from 'react';
 import * as Tone from 'tone';
 import Chords from '../../data/data.js';
 import { useNodes, useChordArray } from '../state/ChordialProvider.jsx';
+import { useEffect } from 'react';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
 
@@ -13,7 +14,7 @@ const DisplayChordNodes = () => {
   const chordNode = Chords[nodes].chords;
 
   const handleClick = ({ target }) => {
-    if (chordArray.length < 16) {
+    if(chordArray.length < 16) {
       setChordArray(prevState => [...prevState, target.textContent]);
     }
     setNodes(target.textContent);
@@ -32,29 +33,19 @@ const DisplayChordNodes = () => {
 
 
   let chordQuality;
+  const synth = new Tone.PolySynth().toDestination();
+  synth.set({ detune: -1200 });
+   
 
-  useEffect(() => {
+  useEffect (() => {
     chordQuality = Chords[nodes].tone;
     chordQuality.map(item => {
-      synth.triggerAttack(`${item}`, now);
-      synth.triggerRelease([`${Chords[nodes].tone}`], now);
+      synth.triggerAttackRelease(`${item}`, '8n');
+      // synth.triggerAttackRelease([`${Chords[nodes].tone}`]);
     });
   }, [chordArray]);
 
-  const synth = new Tone.PolySynth().toDestination();
-  synth.set({ detune: -1200 });
-  const now = Tone.now();  
-
-  const handleClick = ({ target }) => {
-    if(chordArray.length < 16) {
-
-      setChordArray(prevState => [...prevState, target.textContent]);
-    }
-    
-    setNodes(target.textContent);
-    
-  };
-
+  
   return (
     <NodeListStyled>
       {nodeList}

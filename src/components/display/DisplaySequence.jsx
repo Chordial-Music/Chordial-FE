@@ -33,13 +33,13 @@ const DisplaySequence = () => {
 
   const synth = new Tone.PolySynth().toDestination();
   synth.set({ detune: -1200 });
-  const now = Tone.now();
+ 
 
   const handleSave = () => {
-    if (session && chordArray.length > 0) {
+    if(session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if (!session) {
+    } else if(!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -57,6 +57,7 @@ const DisplaySequence = () => {
     setNodes('C');
     setDisplayNodes(true);
     setClicked(true);
+    synth.triggerAttackRelease(['C4']);
   };
 
   const chords = chordArray.map((element, index) => {
@@ -72,13 +73,6 @@ const DisplaySequence = () => {
       {alert && <AlertModal title={alert.title} message={alert.message} onConfirm={alertHandler} />}
       <ButtonStyled>
         <button
-          onClick={() => {
-            setChordArray(['C']);
-            setNodes('C');
-            setDisplayNodes(true);
-            setClicked(true);
-            synth.triggerAttackRelease(['C4'], now);
-          }}
           onClick={handleClick}
           className={clicked ? 'invisible' : 'default'}
         >C</button>
