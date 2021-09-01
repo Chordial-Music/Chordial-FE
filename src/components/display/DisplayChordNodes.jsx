@@ -1,18 +1,20 @@
 /* eslint-disable max-len */
 import React from 'react';
+import * as Tone from 'tone';
 import Chords from '../../data/data.js';
-import { useNodes, useChordArray } from '../state/ChordialProvider.jsx';
+import { useNodes, useChordArray, useMute } from '../state/ChordialProvider.jsx';
+import { useEffect } from 'react';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
 
 const DisplayChordNodes = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { nodes, setNodes } = useNodes();
-
+  const { mute } = useMute();
   const chordNode = Chords[nodes].chords;
 
   const handleClick = ({ target }) => {
-    if (chordArray.length < 16) {
+    if(chordArray.length < 16) {
       setChordArray(prevState => [...prevState, target.textContent]);
     }
     setNodes(target.textContent);
@@ -29,6 +31,29 @@ const DisplayChordNodes = () => {
     );
   });
 
+
+  let chordQuality;
+  const reverb = new Tone.Reverb({
+    'wet': 0.5,
+    'decay': 2.5,
+    'preDelay': 0.01
+  }).toDestination();
+  const synth = new Tone.PolySynth().toDestination();
+  synth.set({ detune: -1200 });
+  
+  // const reverb = new Tone.reverb().toDestination();
+  synth.connect(reverb);
+  const now = Tone.now();
+
+  useEffect (() => {
+    if(!mute) {
+      chordQuality = Chords[nodes].tone;
+      chordQuality.map(item => {
+        synth.triggerAttackRelease(`${item}`, '8n', now - 0.5);
+      });}
+  }, [chordArray]);
+
+  
   return (
     <NodeListStyled>
       {nodeList}

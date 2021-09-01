@@ -11,6 +11,7 @@ const request = async (path, method, body) => {
   });
 
   if (!res.ok) throw await res.json();
+
   return res.json();
 };
 

@@ -1,10 +1,11 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import * as Tone from 'tone';
 import AlertModal from '../common/AlertModal';
 import { createSequence } from '../../utils/hooks';
 import DisplayChord from './DisplayChord';
 import DisplayChordNodes from './DisplayChordNodes';
-import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
+import { useChordArray, useDisplayNodes, useNodes, useMute } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
@@ -14,6 +15,7 @@ const DisplaySequence = () => {
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { session } = useSession();
   const { setNodes } = useNodes();
+  const { mute } = useMute();
 
   const [alert, setAlert] = useState();
   const [clicked, setClicked] = useState(false);
@@ -28,11 +30,17 @@ const DisplaySequence = () => {
     setNodes('C');
   };
 
+  //Tone Properties
+
+  const synth = new Tone.PolySynth().toDestination();
+  synth.set({ detune: -1200 });
+ 
+
   const handleSave = () => {
-    if (session && chordArray.length > 0) {
+    if(session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if (!session) {
+    } else if(!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -50,6 +58,8 @@ const DisplaySequence = () => {
     setNodes('C');
     setDisplayNodes(true);
     setClicked(true);
+    if(!mute)
+      synth.triggerAttackRelease(['C4'], '8n');
   };
 
   const chords = chordArray.map((element, index) => {
@@ -189,7 +199,7 @@ const ButtonStyled = styled.div`
     animation-duration: 3s; 
     animation-iteration-count: infinite; 
     animation-timing-function: ease-in-out;
-    box-shadow: 0px 7px 5px 1px black;
+    box-shadow: 0px 7px 5px 1px white;
     text-shadow: 0px 2px 4px black;
 
     &:hover {
