@@ -49,7 +49,7 @@ const DisplayChordNodes = () => {
     if(!mute) {
       chordQuality = Chords[nodes].tone;
       chordQuality.map(item => {
-        synth.triggerAttackRelease(`${item}`, '8n', now - 0.5);
+        synth.triggerAttackRelease(`${item}`, '8n', now - 1);
       });}
   }, [chordArray]);
 
