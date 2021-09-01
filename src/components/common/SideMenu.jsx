@@ -37,7 +37,7 @@ function SideMenu() {
       {session ? <></> : <Link to={'/signup'}>Sign Up</Link>}
       {session ? <Link to={'/saved'}>Saved Sequences</Link> : <></>}
       <Link to={'/about'}>About</Link>
-      <button onClick={handleClick}>Logout</button>
+      {session ? <button onClick={handleClick}>Logout</button> : <></>}
     </div>
   );
 }
