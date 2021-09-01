@@ -20,23 +20,26 @@ function About() {
         <div>
           <img src={'/casey.jpg'}/>
           <p>Casey is a full stack software engineer and music wizard. Follow him on https://twitter.com/casey_cameron and https://github.com/CaseyCameron</p>
-          <div>
-            {/* <img src={'/github.png'}/>
-            <img src={'/linkedin.png'}/> */}
-          </div>
+          {/* <div>
+            <img src={'/github.png'}/>
+            <img src={'/linkedin.png'}/>
+          </div> */}
         </div>
         <div>
           <img src={'/kalan.jpg'}/>
-          <p>Kalan Prudhomme description</p>
-          <div>
-            {/* <img src={'/github.png'}/>
-            <img src={'/linkedin.png'}/> */}
-          </div>
+          <p>Kalan is a full stack software developer and music warlock.</p>
+          {/* <div>
+            <img src={'/github.png'}/>
+            <img src={'/linkedin.png'}/>
+          </div> */}
         </div>
         <div>
           <img src={'/david.jpg'}/>
           <p>David Delgadillo description</p>
-         
+          {/* <div>
+            <img src={'/github.png'}/>
+            <img src={'/linkedin.png'}/>
+          </div> */}
         </div>
       </div>
     </div>
