@@ -4,7 +4,7 @@ import AlertModal from '../common/AlertModal';
 import { createSequence } from '../../utils/hooks';
 import DisplayChord from './DisplayChord';
 import DisplayChordNodes from './DisplayChordNodes';
-import { useChordArray, useDisplayNodes, useNodes, useMute } from '../state/ChordialProvider';
+import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
@@ -14,7 +14,7 @@ const DisplaySequence = () => {
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { session } = useSession();
   const { nodes, setNodes } = useNodes();
-  const { mute } = useMute();
+  
 
   const [alert, setAlert] = useState();
   const [clicked, setClicked] = useState(false);

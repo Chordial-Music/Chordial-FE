@@ -33,23 +33,31 @@ const DisplayChordNodes = () => {
 
 
   let chordQuality;
+  
   const reverb = new Tone.Reverb({
     'wet': 0.5,
     'decay': 2.5,
     'preDelay': 0.01
   }).toDestination();
-  const synth = new Tone.PolySynth().toDestination();
-  synth.set({ detune: -1200 });
+  // const pingPong = new Tone.PingPongDelay('8n', 0.1).toDestination();
+  // const synth = new Tone.PolySynth().toDestination();
+  // synth.set({ detune: -1200 });
+  const sampler = new Tone.Sampler({
+    urls: {
+      A1: 'A1.mp3',
+    },
+    baseUrl: 'https://tonejs.github.io/audio/casio/',
+  }).toDestination();
   
-  // const reverb = new Tone.reverb().toDestination();
-  synth.connect(reverb);
+  sampler.connect(reverb);
+  // synth.connect(pingPong);
   const now = Tone.now();
 
   useEffect (() => {
     if(!mute) {
       chordQuality = Chords[nodes].tone;
       chordQuality.map(item => {
-        synth.triggerAttackRelease(`${item}`, '8n', now - 1);
+        sampler.triggerAttackRelease(`${item}`, '12n', now + 0.01);
       });}
   }, [chordArray]);
 
