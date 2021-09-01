@@ -5,7 +5,7 @@ import AlertModal from '../common/AlertModal';
 import { createSequence } from '../../utils/hooks';
 import DisplayChord from './DisplayChord';
 import DisplayChordNodes from './DisplayChordNodes';
-import { useChordArray, useDisplayNodes, useNodes } from '../state/ChordialProvider';
+import { useChordArray, useDisplayNodes, useNodes, useMute } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
@@ -15,6 +15,7 @@ const DisplaySequence = () => {
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { session } = useSession();
   const { setNodes } = useNodes();
+  const { mute } = useMute();
 
   const [alert, setAlert] = useState();
   const [clicked, setClicked] = useState(false);
@@ -57,7 +58,8 @@ const DisplaySequence = () => {
     setNodes('C');
     setDisplayNodes(true);
     setClicked(true);
-    synth.triggerAttackRelease(['C4']);
+    if(!mute)
+      synth.triggerAttackRelease(['C4']);
   };
 
   const chords = chordArray.map((element, index) => {

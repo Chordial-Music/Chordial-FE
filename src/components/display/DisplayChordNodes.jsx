@@ -2,7 +2,7 @@
 import React from 'react';
 import * as Tone from 'tone';
 import Chords from '../../data/data.js';
-import { useNodes, useChordArray } from '../state/ChordialProvider.jsx';
+import { useNodes, useChordArray, useMute } from '../state/ChordialProvider.jsx';
 import { useEffect } from 'react';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ import styled from 'styled-components';
 const DisplayChordNodes = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { nodes, setNodes } = useNodes();
-
+  const { mute } = useMute();
   const chordNode = Chords[nodes].chords;
 
   const handleClick = ({ target }) => {
@@ -38,11 +38,11 @@ const DisplayChordNodes = () => {
    
 
   useEffect (() => {
-    chordQuality = Chords[nodes].tone;
-    chordQuality.map(item => {
-      synth.triggerAttackRelease(`${item}`, '8n');
-      // synth.triggerAttackRelease([`${Chords[nodes].tone}`]);
-    });
+    if(!mute) {
+      chordQuality = Chords[nodes].tone;
+      chordQuality.map(item => {
+        synth.triggerAttackRelease(`${item}`, '8n');
+      });}
   }, [chordArray]);
 
   
