@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
-import * as Tone from 'tone';
+import React, { useState, useEffect } from 'react';
 import AlertModal from '../common/AlertModal';
 import { createSequence } from '../../utils/hooks';
 import DisplayChord from './DisplayChord';
@@ -14,7 +13,7 @@ const DisplaySequence = () => {
   const { chordArray, setChordArray } = useChordArray();
   const { displayNodes, setDisplayNodes } = useDisplayNodes();
   const { session } = useSession();
-  const { setNodes } = useNodes();
+  const { nodes, setNodes } = useNodes();
   const { mute } = useMute();
 
   const [alert, setAlert] = useState();
@@ -30,11 +29,6 @@ const DisplaySequence = () => {
     setNodes('C');
   };
 
-  //Tone Properties
-
-  const synth = new Tone.PolySynth().toDestination();
-  synth.set({ detune: -1200 });
- 
 
   const handleSave = () => {
     if(session && chordArray.length > 0) {
@@ -58,8 +52,6 @@ const DisplaySequence = () => {
     setNodes('C');
     setDisplayNodes(true);
     setClicked(true);
-    if(!mute)
-      synth.triggerAttackRelease(['C4'], '8n');
   };
 
   const chords = chordArray.map((element, index) => {
