@@ -59,7 +59,7 @@ const DisplaySequence = () => {
     setDisplayNodes(true);
     setClicked(true);
     if(!mute)
-      synth.triggerAttackRelease(['C4']);
+      synth.triggerAttackRelease(['C4'], '8n');
   };
 
   const chords = chordArray.map((element, index) => {

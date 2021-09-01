@@ -13,7 +13,7 @@ function Header() {
   };
 
   const handleCheck = () => {
-    setMute(true);
+    setMute(prev => !prev);
   };
 
   return (
@@ -26,7 +26,10 @@ function Header() {
           }}
         >
           Chordial</h1></Link>
-      <label><input type="checkbox" onClick={handleCheck}/>Mute</label>
+      <label>
+        <input type="checkbox" onClick={handleCheck}/>
+        Mute Sound
+      </label>
 
       <div className="menu" onClick={showSideMenu}>
         <div className="menu-bar"></div>

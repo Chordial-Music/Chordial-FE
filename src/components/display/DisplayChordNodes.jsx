@@ -33,15 +33,23 @@ const DisplayChordNodes = () => {
 
 
   let chordQuality;
+  const reverb = new Tone.Reverb({
+    'wet': 0.5,
+    'decay': 2.5,
+    'preDelay': 0.01
+  }).toDestination();
   const synth = new Tone.PolySynth().toDestination();
   synth.set({ detune: -1200 });
-   
+  
+  // const reverb = new Tone.reverb().toDestination();
+  synth.connect(reverb);
+  const now = Tone.now();
 
   useEffect (() => {
     if(!mute) {
       chordQuality = Chords[nodes].tone;
       chordQuality.map(item => {
-        synth.triggerAttackRelease(`${item}`, '8n');
+        synth.triggerAttackRelease(`${item}`, '8n', now - 0.5);
       });}
   }, [chordArray]);
 
