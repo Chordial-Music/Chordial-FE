@@ -59,16 +59,16 @@ const DisplayChordNodes = () => {
     'preDelay': 0.01
   }).toDestination();
   // const pingPong = new Tone.PingPongDelay('8n', 0.1).toDestination();
-  // const synth = new Tone.PolySynth().toDestination();
-  // synth.set({ detune: -1200 });
-  const sampler = new Tone.Sampler({
-    urls: {
-      A1: 'A1.mp3',
-    },
-    baseUrl: 'https://tonejs.github.io/audio/casio/',
-  }).toDestination();
+  const synth = new Tone.PolySynth().toDestination();
+  synth.set({ detune: -1200 });
+  // const sampler = new Tone.Sampler({
+  //   urls: {
+  //     A1: 'A1.mp3',
+  //   },
+  //   baseUrl: 'https://tonejs.github.io/audio/casio/',
+  // }).toDestination();
   
-  sampler.connect(reverb);
+  synth.connect(reverb);
   // synth.connect(pingPong);
   const now = Tone.now();
 
@@ -76,7 +76,7 @@ const DisplayChordNodes = () => {
     if(!mute) {
       chordQuality = Chords[nodes].tone;
       chordQuality.map(item => {
-        sampler.triggerAttackRelease(`${item}`, '12n', now + 0.01);
+        synth.triggerAttackRelease(`${item}`, '12n', now + 0.01);
       });}
   }, [chordArray]);
 
