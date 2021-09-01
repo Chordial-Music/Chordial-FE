@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { del } from '../services/request';
 import { useSession } from '../state/SessionProvider';
 import { retrieveSequence } from '../../utils/hooks';
+import uuid from 'react-uuid';
 import styled from 'styled-components';
+
 
 export default function SavedSequences() {
   const { session } = useSession();
@@ -15,11 +17,11 @@ export default function SavedSequences() {
       .then(() => {
         setToggle(prev => !prev);
       });
-    
+
   }, [session]);
 
   // const handleClick = async () => {
-    
+
   // };
 
   const handleDelete = async (id) => {
@@ -29,25 +31,25 @@ export default function SavedSequences() {
 
   const sequenceElements = sequences.map((ele, index) => {
     return (
-      <>
+      <div key={uuid()}>
         <h3 style={{
           fontSize: '2rem',
           padding: '1rem'
         }}>
-          Saved Sequence {index + 1}
+          Sequence {index + 1}
         </h3>
         <SavedListItemStyled >
           <div className="sequence-container">
             {ele.sequence.map(i => <p
               className="sequence-item"
-              key={index}
+              key={uuid()}
             >
               {i}
             </p>)}
           </div>
           <button onClick={() => handleDelete(ele.id)}>Delete</button>
         </SavedListItemStyled >
-      </>
+      </div>
     );
   });
 
@@ -59,7 +61,7 @@ export default function SavedSequences() {
           {/* {toggle ? <button >Get Saved Sequences</button> : <></>} */}
         </SavedListStyled>
       </div>
-      
+
     </div>
   );
 }
