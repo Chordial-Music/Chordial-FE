@@ -69,16 +69,16 @@ const DisplaySequence = () => {
     }
   };
 
-  // const handlePlaySequence = () => {
-  //   let tempArr = [...chordArray];
-  //   tempArr.map(ele => {
-  //     const audio = new Audio(`/${ele}.mp3`);
-  //     setTimeout(() => {
-  //       audio.load();
-  //       audio.play()
-  //     }, 1000);
-  //   });
-  // };
+  const handlePlaySequence = () => {
+    // let tempArr = [...chordArray];
+    // tempArr.map(ele => {
+    //   const audio = new Audio(`/${ele}.mp3`);
+    //   setTimeout(() => {
+    //     audio.load();
+    //     audio.play()
+    //   }, 1000);
+    // });
+  };
 
   const chords = chordArray.map((element, index) => {
     return (
