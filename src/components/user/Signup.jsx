@@ -14,11 +14,12 @@ export default function Signup() {
     e.preventDefault();
     signup({ username, password });
     history.push('/');
+    // window.location.reload();
   };
 
   const handleChange = ({ target }) => {
-    if (target.name === 'username') setUsername(target.value);
-    if (target.name === 'password') setPassword(target.value);
+    if(target.name === 'username') setUsername(target.value);
+    if(target.name === 'password') setPassword(target.value);
   };
 
   return (
@@ -27,9 +28,10 @@ export default function Signup() {
         <label htmlFor="username">Username</label>
         <input
           id="username"
-          type="username"
           name="username"
           placeholder="username"
+          type="username"
+          required
           value={username}
           onChange={handleChange}
         />
@@ -37,9 +39,10 @@ export default function Signup() {
         <label htmlFor="password">Password</label>
         <input
           id="password"
-          type="password"
           name="password"
           placeholder="password"
+          type="password"
+          required
           value={password}
           onChange={handleChange}
         />
