@@ -30,6 +30,7 @@ export default function Login() {
     // }
       
     history.push('/');
+    // window.location.reload();
   };
 
   const handleChange = ({ target }) => {

@@ -2,9 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { useSideMenu, useMute } from '../state/ChordialProvider';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 
 function Header() {
   const { sideMenu, setSideMenu } = useSideMenu();
@@ -28,10 +28,19 @@ function Header() {
         }}
       >
           Chordial</h1>
-      <label>
-        <input className="mute" type="checkbox" onClick={handleCheck}/>
-        Mute Sound
-      </label>
+      {/* {!mute ? 
+        <div
+          onClick={handleCheck}
+          className="audio-btn-container"
+        >
+          Sound: <VolumeUpIcon className="audio-btn" />
+        </div> 
+        : <div 
+          onClick={handleCheck}
+          className="audio-btn-container"
+        >
+          Sound: <VolumeOffIcon className="audio-btn" /> 
+        </div>} */}
 
       <div className="menu" onClick={showSideMenu}>
         <div className="menu-bar"></div>
@@ -62,4 +71,6 @@ const HeaderStyled = styled.div`
     border-radius: 10px;
     }
   }
+
+  
 `;
