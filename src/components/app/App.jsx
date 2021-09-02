@@ -2,12 +2,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import DisplaySequence from '../display/DisplaySequence';
+import EditSequence from '../editSequence/EditSequence';
 import Header from '../common/Header';
 import Login from '../user/Login';
 import { PrivateRoute } from '../state/SessionProvider';
 import SavedSequences from '../savedSequences/SavedSequences';
 import SideMenu from '../common/SideMenu';
 import Signup from '../user/Signup';
+import About from '../about/About.jsx';
 import styled from 'styled-components';
 
 export default function App() {
@@ -19,6 +21,8 @@ export default function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <PrivateRoute exact path="/saved" component={SavedSequences} />
+        <Route exact path="/about" component={About} />
+        <Route exact path='/edit' component={EditSequence} />
         <AppStyled>
           <Route exact path="/" component={DisplaySequence} />
         </AppStyled>
@@ -34,4 +38,5 @@ const AppStyled = styled.div`
   justify-content: center;
   position: relative;
 }`;
+
 

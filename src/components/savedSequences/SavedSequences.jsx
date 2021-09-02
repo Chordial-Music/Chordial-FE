@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { del } from '../services/request';
+import { Link } from 'react-router-dom';
 import { useSession } from '../state/SessionProvider';
-import { retrieveSequence } from '../../utils/hooks';
 import uuid from 'react-uuid';
+import { retrieveSequence } from '../../utils/hooks';
 import styled from 'styled-components';
-
 
 export default function SavedSequences() {
   const { session } = useSession();
@@ -17,12 +17,7 @@ export default function SavedSequences() {
       .then(() => {
         setToggle(prev => !prev);
       });
-
   }, [session]);
-
-  // const handleClick = async () => {
-
-  // };
 
   const handleDelete = async (id) => {
     del(`/api/v1/sequences/${id}`)
@@ -31,7 +26,7 @@ export default function SavedSequences() {
 
   const sequenceElements = sequences.map((ele, index) => {
     return (
-      <div key={uuid()}>
+      <div key={ele.id}>
         <h3 style={{
           fontSize: '2rem',
           padding: '1rem'
@@ -48,6 +43,11 @@ export default function SavedSequences() {
             </p>)}
           </div>
           <button onClick={() => handleDelete(ele.id)}>Delete</button>
+          <Link to={{
+            pathname: '/edit',
+            search: `?${ele.id}`,
+            state: { ele }
+          }}>Edit</Link>
         </SavedListItemStyled >
       </div>
     );
@@ -58,7 +58,6 @@ export default function SavedSequences() {
       <div>
         <SavedListStyled>
           {sequenceElements}
-          {/* {toggle ? <button >Get Saved Sequences</button> : <></>} */}
         </SavedListStyled>
       </div>
 

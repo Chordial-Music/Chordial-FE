@@ -9,6 +9,8 @@
   height: 100vh;
   width: 28%;
   z-index: 200;
+  font-family: 'Righteous', cursive;
+
 }
 
 .toggle a {
@@ -21,6 +23,21 @@
   padding: 1rem;
 }
 
-.logOut-btn {
-  color: red;
+.toggle button {
+  font-family: 'Righteous', cursive;
+
+  display: flex;
+justify-content: center;
+align-items: center;
+margin: 3rem 0;
+font-size: 1.5rem;
+width: 100%;
+padding: 1rem;
+position: relative;
+transition: all 0.9s;
+background: transparent;
+border: none;
+outline: none;
+cursor: pointer;
+
 }

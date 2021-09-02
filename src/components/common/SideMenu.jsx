@@ -13,7 +13,6 @@ function SideMenu() {
   const { setNodes } = useNodes();
   const { session, setSession } = useSession();
   const { sideMenu } = useSideMenu();
-  
 
   const handleHome = () => {
     history.push('/');
@@ -33,30 +32,13 @@ function SideMenu() {
 
   return (
     <div className={sideMenu ? styles.sideMenu : toggle.toggle}>
-      <button style={{
-        padding: '1rem',
-        margin: '3rem',
-        background: 'transparent',
-        border: 'none',
-        outline: 'none',
-        cursor: 'pointer',
-        fontSize: '1.5rem',
-      }} onClick={handleHome}>Home</button>
+      {session ? <span>Hello, {session.username} 🙂</span> : <></>}
+      <button onClick={handleHome}>Home</button>
       {session ? <></> : <Link to={'/login'}>Log In</Link>}
       {session ? <></> : <Link to={'/signup'}>Sign Up</Link>}
       {session ? <Link to={'/saved'}>Saved Sequences</Link> : <></>}
-      <button className="logOut-btn" 
-        style={{
-          padding: '1rem',
-          margin: '3rem',
-          background: 'transparent',
-          border: 'none',
-          outline: 'none',
-          cursor: 'pointer',
-          fontSize: '1.5rem',
-        }} 
-        onClick={handleClick}
-      >Logout</button>
+      <Link to={'/about'}>About</Link>
+      {session ? <button onClick={handleClick}>Logout</button> : <></>}
     </div>
   );
 }

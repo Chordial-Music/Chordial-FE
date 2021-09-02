@@ -1,0 +1,32 @@
+.About {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.About h1 {
+
+}
+
+.About h2 {
+
+}
+
+.About p {
+  margin: 1rem;
+  size: 30px;
+}
+
+.About img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.About div {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
