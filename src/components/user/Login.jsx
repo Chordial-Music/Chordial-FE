@@ -33,16 +33,15 @@ export default function Login() {
     e.preventDefault();
     //login({ username, password });
     login({ username, password });
+    // if(login.request === 'error') {
+    //   setAlert({
+    //     title: 'Incorrect Credentials',
+    //     message: 'Please enter the correct username or password to login'
+    //   });
+    // }
 
-    if (!session) {
-      setAlert({
-        title: 'Incorrect Credentials',
-        message: 'Please enter the correct username or password to login'
-      });
-    }
-
-
-    // history.push('/');
+    history.push('/');
+    // window.location.reload();
   };
 
   const handleChange = ({ target }) => {
