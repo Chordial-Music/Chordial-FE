@@ -31,10 +31,10 @@ const DisplaySequence = () => {
   };
 
   const handleSave = () => {
-    if (session && chordArray.length > 0) {
+    if(session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if (!session) {
+    } else if(!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -48,7 +48,7 @@ const DisplaySequence = () => {
   };
 
   const handleClick = () => {
-    if (!mute) {
+    if(!mute) {
       const audio = new Audio('/C.mp3');
       audio.load();
       audio.play();
@@ -60,7 +60,7 @@ const DisplaySequence = () => {
   };
 
   const handlePlay = ({ target }) => {
-    if (!mute) {
+    if(!mute) {
       const audio = new Audio(`/${target.textContent}.mp3`);
       audio.load();
       audio.play();
@@ -68,15 +68,15 @@ const DisplaySequence = () => {
   };
 
   const handlePlaySequence = () => {
-    let tempArr = [...chordArray];
+    const tempArr = [...chordArray];
     tempArr.forEach((element, i) => {
       setTimeout(() => {
-        if (!mute) {
+        if(!mute) {
           const audio = new Audio(`/${element}.mp3`);
           audio.load();
           audio.play();
         }
-      }, i * 1000)
+      }, i * 750);
     });
   };
 
@@ -106,7 +106,7 @@ const DisplaySequence = () => {
         <div>
           {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
           {chordArray.length >= 16 &&
-            <div className='max-limit'>
+            <div className="max-limit">
               <h3>You've reached the max chord limit for a sequence.</h3>
             </div>}
         </div>
@@ -116,7 +116,7 @@ const DisplaySequence = () => {
         className="displayChords">
         <div className="container" onClick={handlePlay}>
           <h3
-            style={{ color: 'white', padding: '12px', fontFamily: 'Concert One, cursive' }}
+            style={{ color: 'white', padding: '12px', fontFamily: 'Concert One, cursive', cursor: 'pointer' }}
             onClick={handlePlaySequence}
           >Chosen Chords:</h3>
           {chords}
