@@ -18,30 +18,20 @@ export default function Login() {
     setAlert(null);
   };
 
-  useEffect(() => {
-
-    if (session) history.push('/');
-    if (!session) {
-      setAlert({
-        title: 'Incorrect Credentials',
-        message: 'Please enter the correct username or password to login'
-      });
-    }
-  }, [session]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     //login({ username, password });
-    login({ username, password });
-    // if(login.request === 'error') {
-    //   setAlert({
-    //     title: 'Incorrect Credentials',
-    //     message: 'Please enter the correct username or password to login'
-    //   });
-    // }
+    login({ username, password })
+      .then(() => history.push('/'));
 
-    history.push('/');
-    // window.location.reload();
+    setTimeout(() => {
+      if (!session) {
+        setAlert({
+          title: 'Incorrect Credentials',
+          message: 'Please enter the correct username or password to login'
+        });
+      }
+    }, 500);
   };
 
   const handleChange = ({ target }) => {
