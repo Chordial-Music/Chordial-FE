@@ -143,6 +143,7 @@ const NodeItemStyled = styled.li`
   background: inherit;
   z-index: 1000;
   transition: all ease-in-out 0.1s;
+  font-family: 'Fjalla One', sans-serif;
 
   &:hover {
     background-color: #3370ffb9;
