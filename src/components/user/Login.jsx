@@ -4,7 +4,6 @@ import AlertModal from '../common/AlertModal';
 import { useLogin, useSession } from '../state/SessionProvider';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { fetchVerify } from '../services/auth';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -22,7 +21,7 @@ export default function Login() {
   useEffect(() => {
 
     if (session) history.push('/');
-    if (!session && counter > 1) {
+    if (!session) {
       setAlert({
         title: 'Incorrect Credentials',
         message: 'Please enter the correct username or password to login'

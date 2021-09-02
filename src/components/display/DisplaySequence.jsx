@@ -69,6 +69,17 @@ const DisplaySequence = () => {
     }
   };
 
+  // const handlePlaySequence = () => {
+  //   let tempArr = [...chordArray];
+  //   tempArr.map(ele => {
+  //     const audio = new Audio(`/${ele}.mp3`);
+  //     setTimeout(() => {
+  //       audio.load();
+  //       audio.play()
+  //     }, 1000);
+  //   });
+  // };
+
   const chords = chordArray.map((element, index) => {
     return (
       <div key={uuid()} className="Chord">
@@ -106,8 +117,8 @@ const DisplaySequence = () => {
         <div className="container" onClick={handlePlay}>
           <h3
             style={{ color: 'white', padding: '12px', fontFamily: 'Concert One, cursive' }}
+            onClick={handlePlaySequence}
           >Chosen Chords:</h3>
-
           {chords}
         </div>
         <div className="btn-container">
