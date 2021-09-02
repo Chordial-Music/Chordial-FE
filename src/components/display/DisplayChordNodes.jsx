@@ -70,9 +70,8 @@ const DisplayChordNodes = () => {
     'decay': 2.5,
     'preDelay': 0.01
   }).toDestination();
-  // const pingPong = new Tone.PingPongDelay('8n', 0.1).toDestination();
-  // const synth = new Tone.PolySynth().toDestination();
-  // synth.set({ detune: -1200 });
+  
+  
   const sampler = new Tone.Sampler({
     urls: {
       A4: 'A4.mp3',
@@ -95,9 +94,9 @@ const DisplayChordNodes = () => {
     },
     baseUrl: '/',
   }).toDestination();
-  
+
   sampler.connect(reverb);
-  // sampler.connect(pingPong);
+  
   const now = Tone.now();
 
   useEffect (() => {
@@ -143,6 +142,8 @@ const NodeItemStyled = styled.li`
   background: inherit;
   z-index: 1000;
   transition: all ease-in-out 0.1s;
+  font-family: 'Fjalla One', sans-serif;
+  box-shadow: 0px 0px 4px 0px black;
 
   &:hover {
     background-color: #3370ffb9;
