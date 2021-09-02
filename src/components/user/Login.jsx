@@ -19,18 +19,17 @@ export default function Login() {
     setAlert(null);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    login({ username, password })
-      .then(() => {if(!session) {
-        setAlert({
-          title: 'Incorrect Credentials',
-          message: 'Please enter the correct username or password to login'
-        });
-      }
-      });
+    login({ username, password });
+    // if(login.request === 'error') {
+    //   setAlert({
+    //     title: 'Incorrect Credentials',
+    //     message: 'Please enter the correct username or password to login'
+    //   });
+    // }
+      
     history.push('/');
-    
   };
 
   const handleChange = ({ target }) => {
