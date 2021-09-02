@@ -36,22 +36,22 @@ function About() {
           <img src={'/casey.jpg'}/>
           <h2>Casey</h2>
           <p>Casey is a full stack software engineer and music wizard.</p>
-          <GitHubIcon className="icon" />
-          <LinkedInIcon className="icon" />
+          <a href="https://github.com/CaseyCameron" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
+          <a href="https://www.linkedin.com/in/casey-cameron/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
         </div>
         <div className="dev">
           <img src={'/kalan.jpg'}/>
           <h2>Kalan</h2>
           <p>Kalan is a full stack software developer and music warlock.</p>
-          <GitHubIcon className="icon" />
-          <LinkedInIcon className="icon" />
+          <a href=" https://github.com/prudhomk" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
+          <a href="https://www.linkedin.com/in/kalanprudhomme/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
         </div>
         <div className="dev">
           <img src={'/david.jpg'}/>
           <h2>David</h2>
           <p>David is a kick-ass software dev and doesn't know a thing about music-- just good design.</p>
-          <GitHubIcon className="icon" />
-          <LinkedInIcon className="icon" />
+          <a href="https://github.com/David-Del1" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
+          <a href="https://www.linkedin.com/in/davidadelgadillo/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
         </div>
             
       </div>

@@ -103,7 +103,7 @@ const DisplayChordNodes = () => {
     if(!mute) {
       chordQuality = Chords[nodes].tone;
       chordQuality.map(item => {
-        Tone.loaded().then(() => sampler.triggerAttackRelease(`${item}`, '12n', now + 1));
+        Tone.loaded().then(() => sampler.triggerAttackRelease(`${item}`, '12n', now + 0.01));
       });}
   }, [chordArray]);
 
