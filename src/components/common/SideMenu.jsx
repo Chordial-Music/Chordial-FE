@@ -42,20 +42,19 @@ function SideMenu() {
   };
 
   return (
-    <div 
+    <div
       className={sideMenu ? styles.sideMenu : toggle.toggle}
-      // onClick={showSideMenu}
     >
       {session ? <span>Hello, {session.username} 🙂</span> : <>Hello, Guest!</>}
       <button onClick={handleHome}>Home</button>
-      {session ? <></> : <Link 
+      {session ? <></> : <Link
         to={'/login'}
         onClick={showSideMenu}>Log In</Link>}
-      {session ? <></> : <Link 
+      {session ? <></> : <Link
         to={'/signup'}
-        onClick={showSideMenu}  
+        onClick={showSideMenu}
       >Sign Up</Link>}
-      {session ? <Link 
+      {session ? <Link
         to={'/saved'}
         onClick={showSideMenu}
       >Saved Sequences</Link> : <></>}
@@ -64,7 +63,7 @@ function SideMenu() {
       >About</Link>
       {session ? <button onClick={handleClick}>Logout</button> : <></>}
 
-      {!mute ? 
+      {!mute ?
         <div
           onClick={handleCheck}
           style={{
@@ -75,10 +74,10 @@ function SideMenu() {
             cursor: 'pointer'
           }}
         >
-          Sound: <VolumeUpIcon 
+          Sound: <VolumeUpIcon
             style={{ paddingLeft: '10px', fontSize: '2rem' }} />
-        </div> 
-        : <div 
+        </div>
+        : <div
           onClick={handleCheck}
           style={{
             display: 'flex',
@@ -88,7 +87,7 @@ function SideMenu() {
             cursor: 'pointer'
           }}
         >
-          Sound: <VolumeOffIcon style={{ paddingLeft: '10px', fontSize: '2rem' }} /> 
+          Sound: <VolumeOffIcon style={{ paddingLeft: '10px', fontSize: '2rem' }} />
         </div>}
     </div>
   );

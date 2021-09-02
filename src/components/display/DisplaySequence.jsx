@@ -17,7 +17,6 @@ const DisplaySequence = () => {
   const { nodes, setNodes } = useNodes();
   const { mute } = useMute();
 
-
   const [alert, setAlert] = useState();
   const [clicked, setClicked] = useState(false);
 
@@ -30,7 +29,6 @@ const DisplaySequence = () => {
     setChordArray(['C']);
     setNodes('C');
   };
-
 
   const handleSave = () => {
     if (session && chordArray.length > 0) {
@@ -152,7 +150,6 @@ const DisplayChordsStyled = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
   }
 
   .btn-container {
