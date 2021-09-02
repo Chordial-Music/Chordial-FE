@@ -2,6 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { useSideMenu, useMute } from '../state/ChordialProvider';
 
 function Header() {
@@ -27,7 +29,7 @@ function Header() {
       >
           Chordial</h1>
       <label>
-        <input type="checkbox" onClick={handleCheck}/>
+        <input className="mute" type="checkbox" onClick={handleCheck}/>
         Mute Sound
       </label>
 

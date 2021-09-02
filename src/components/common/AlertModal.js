@@ -1,24 +1,29 @@
+/* eslint-disable max-len */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import classes from './AlertModal.module.css';
+import styled from 'styled-components';
 
 const Backdrop = props => {
-  return <div className={classes.backdrop} onClick={props.onConfirm} />
+  return <BackdropStyled onClick={props.onConfirm} />;
 };
 
 const ModalOverlay = props => {
   return (
-    <section className={classes.modal}>
-      <header className={classes.header}>
-        <h2>{props.title}</h2>
+    <ModalStyled >
+      <header className="header">
+        <h2 className="header">{props.title}</h2>
       </header>
-      <div className={classes.content}>
-        <p>{props.message}</p>
+      <div >
+        <p className="modal-text">{props.message}</p>
+        
       </div>
-      <footer className={classes.action}>
-        <button onClick={props.onConfirm}>Okay</button>
+      <footer >
+        <button 
+          onClick={props.onConfirm}
+          className="confirm-btn"
+        >Okay</button>
       </footer>
-    </section>
+    </ModalStyled>
   );
 };
 
@@ -41,3 +46,55 @@ const AlertModal = (props) => {
 };
 
 export default AlertModal;
+
+const BackdropStyled = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.75);
+`;
+
+const ModalStyled = styled.section`
+  position: fixed;
+  top: 30vh;
+  left: 30%;
+  width: 40%;
+  height: 400px;
+  z-index: 1010;
+  overflow: hidden;
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  .header {
+    font-family: 'Concert One';
+    font-size: 2rem;
+  }
+
+  .modal-text {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .confirm-btn {
+    background-color: transparent;
+    border: 1px solid black;
+    outline: none;
+    border-radius: 6px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all ease-in-out 0.15s;
+
+    &:hover {
+      background-color: lightskyblue;
+    }
+  }
+`;
