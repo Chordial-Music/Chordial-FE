@@ -11,6 +11,7 @@ import SideMenu from '../common/SideMenu';
 import Signup from '../user/Signup';
 import About from '../about/About.jsx';
 import styled from 'styled-components';
+import AlertModal from '../common/AlertModal';
 
 export default function App() {
   return (
@@ -22,11 +23,12 @@ export default function App() {
         <Route exact path="/signup" component={Signup} />
         <PrivateRoute exact path="/saved" component={SavedSequences} />
         <Route exact path="/about" component={About} />
-        <Route exact path='/edit' component={EditSequence} />
+        <Route exact path="/edit" component={EditSequence} />
         <AppStyled>
           <Route exact path="/" component={DisplaySequence} />
         </AppStyled>
       </Router>
+  
     </>
   );
 }
