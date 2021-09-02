@@ -70,9 +70,8 @@ const DisplayChordNodes = () => {
     'decay': 2.5,
     'preDelay': 0.01
   }).toDestination();
-  // const pingPong = new Tone.PingPongDelay('8n', 0.1).toDestination();
-  // const synth = new Tone.PolySynth().toDestination();
-  // synth.set({ detune: -1200 });
+  
+  
   const sampler = new Tone.Sampler({
     urls: {
       A4: 'A4.mp3',
@@ -95,16 +94,16 @@ const DisplayChordNodes = () => {
     },
     baseUrl: '/',
   }).toDestination();
-  
+
   sampler.connect(reverb);
-  // sampler.connect(pingPong);
+  
   const now = Tone.now();
 
   useEffect (() => {
     if(!mute) {
       chordQuality = Chords[nodes].tone;
       chordQuality.map(item => {
-        Tone.loaded().then(() => sampler.triggerAttackRelease(`${item}`, '12n', now + 0.01));
+        Tone.loaded().then(() => sampler.triggerAttackRelease(`${item}`, '12n', now + 1));
       });}
   }, [chordArray]);
 
