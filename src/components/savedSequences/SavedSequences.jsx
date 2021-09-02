@@ -78,7 +78,7 @@ const SavedListStyled = styled.ul`
 }
 padding: 2rem;
   background-color: #c764ee55;
-  width: 90%;
+  width: 97%;
   height: 75vh;
   margin: auto;
   border-radius: 40px;

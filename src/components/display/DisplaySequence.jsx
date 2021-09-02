@@ -16,7 +16,6 @@ const DisplaySequence = () => {
   const { session } = useSession();
   const { nodes, setNodes } = useNodes();
   const { mute } = useMute();
-  
 
   const [alert, setAlert] = useState();
   const [clicked, setClicked] = useState(false);
@@ -31,12 +30,11 @@ const DisplaySequence = () => {
     setNodes('C');
   };
 
-
   const handleSave = () => {
-    if(session && chordArray.length > 0) {
+    if (session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if(!session) {
+    } else if (!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -50,7 +48,7 @@ const DisplaySequence = () => {
   };
 
   const handleClick = () => {
-    if(!mute) {
+    if (!mute) {
       const audio = new Audio('/C.mp3');
       audio.load();
       audio.play();
@@ -59,6 +57,27 @@ const DisplaySequence = () => {
     setNodes('C');
     setDisplayNodes(true);
     setClicked(true);
+  };
+
+  const handlePlay = ({ target }) => {
+    if (!mute) {
+      const audio = new Audio(`/${target.textContent}.mp3`);
+      audio.load();
+      audio.play();
+    }
+  };
+
+  const handlePlaySequence = () => {
+    let tempArr = [...chordArray];
+    tempArr.forEach((element, i) => {
+      setTimeout(() => {
+        if (!mute) {
+          const audio = new Audio(`/${element}.mp3`);
+          audio.load();
+          audio.play();
+        }
+      }, i * 1000)
+    });
   };
 
   const chords = chordArray.map((element, index) => {
@@ -95,11 +114,11 @@ const DisplaySequence = () => {
 
       <DisplayChordsStyled
         className="displayChords">
-        <div className="container">
+        <div className="container" onClick={handlePlay}>
           <h3
             style={{ color: 'white', padding: '12px', fontFamily: 'Concert One, cursive' }}
+            onClick={handlePlaySequence}
           >Chosen Chords:</h3>
-
           {chords}
         </div>
         <div className="btn-container">
@@ -131,7 +150,6 @@ const DisplayChordsStyled = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
   }
 
   .btn-container {

@@ -1,9 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { useSideMenu, useMute } from '../state/ChordialProvider';
 
 function Header() {
@@ -14,24 +11,16 @@ function Header() {
     setSideMenu(!sideMenu);
   };
 
-  const handleCheck = () => {
-    setMute(prev => !prev);
-  };
-
   return (
     <HeaderStyled>
-      
+
       <h1
         style={{
           color: 'white', fontSize: '70px', padding: '1rem', fontFamily: 'Pacifico',
           textShadow: '3px 3px 5px black'
         }}
       >
-          Chordial</h1>
-      <label>
-        <input className="mute" type="checkbox" onClick={handleCheck}/>
-        Mute Sound
-      </label>
+        Chordial</h1>
 
       <div className="menu" onClick={showSideMenu}>
         <div className="menu-bar"></div>

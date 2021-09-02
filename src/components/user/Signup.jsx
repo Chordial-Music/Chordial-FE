@@ -14,6 +14,7 @@ export default function Signup() {
     e.preventDefault();
     signup({ username, password });
     history.push('/');
+    // window.location.reload();
   };
 
   const handleChange = ({ target }) => {

@@ -18,9 +18,9 @@ export default function EditSequence(props) {
   };
 
   const handleChange = i => ({ target }) => {
-    let newArr = [...editSequence];
-    newArr[i] = target.value;
-    setEditSequence(newArr);
+    let tempArr = [...editSequence];
+    tempArr[i] = target.value;
+    setEditSequence(tempArr);
   };
 
   const sequenceElements = editSequence.map((e, i) => {

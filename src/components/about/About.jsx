@@ -72,8 +72,8 @@ const AboutStyled = styled.div`
   display: none;
 }
   background-color: #c764ee55;
-  width: 95%;
-  height: 800px;
+  width: 97%;
+  height: 80vh;
   border-radius: 40px;
   box-shadow: 0px 0px 15px 0px black;
   overflow: auto;
@@ -84,6 +84,7 @@ const AboutStyled = styled.div`
   margin: auto;
 
   .description {
+    width: 100%;
     text-align: center;
     padding: 2rem 0;
     display: flex;
@@ -96,7 +97,7 @@ const AboutStyled = styled.div`
     h1 {
       font-family: 'Concert One';
       font-size: 2rem;
-      padding-bottom: 1rem;
+      padding: 2rem 0;
     }
 
     p {
@@ -104,7 +105,7 @@ const AboutStyled = styled.div`
       padding: 1rem;
       text-align: center;
       font-size: 1.5rem;
-      width: 80%;
+      width: 90%;
       line-height: 1.5;
       background-color: #ffffff92;
       border-radius: 1rem;
