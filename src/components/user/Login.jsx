@@ -1,9 +1,10 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AlertModal from '../common/AlertModal';
 import { useLogin, useSession } from '../state/SessionProvider';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { fetchVerify } from '../services/auth';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -13,28 +14,41 @@ export default function Login() {
 
   const history = useHistory();
   const login = useLogin();
-
   const alertHandler = () => {
     //setAlert to falsey value to dismiss alert
     setAlert(null);
   };
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+
+    if (session) history.push('/');
+    if (!session && counter > 1) {
+      setAlert({
+        title: 'Incorrect Credentials',
+        message: 'Please enter the correct username or password to login'
+      });
+    }
+  }, [session]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    //login({ username, password });
     login({ username, password });
-    // if(login.request === 'error') {
-    //   setAlert({
-    //     title: 'Incorrect Credentials',
-    //     message: 'Please enter the correct username or password to login'
-    //   });
-    // }
-      
-    history.push('/');
+
+    if (!session) {
+      setAlert({
+        title: 'Incorrect Credentials',
+        message: 'Please enter the correct username or password to login'
+      });
+    }
+
+
+    // history.push('/');
   };
 
   const handleChange = ({ target }) => {
-    if(target.name === 'username') setUsername(target.value);
-    if(target.name === 'password') setPassword(target.value);
+    if (target.name === 'username') setUsername(target.value);
+    if (target.name === 'password') setPassword(target.value);
   };
 
   return (
