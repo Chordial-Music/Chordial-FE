@@ -16,8 +16,8 @@ function About() {
         <h1>The Ballad of Chordial</h1>
         <p>After downing a caraffe of coffee, inspiration struck!  
           What if there was an app that helped write chord changes for songs? 
-          And from that intial proclamation, our intrepid team of developers brainstormed 
-          and coded tirelessly to create: Chordial.  
+          And from that intial idea, this amazing team of developers brainstormed 
+          and coded tirelessly to create Chordial.  
           No longer would tired musicians have to think up another set of chord changes.  
           Chordial provides users a bevy of harmonic chord destinations relating to their previous choices.  
           This ensures that every sequence created will in the end sound harmonically pleasing, regardless of a users knowledge of chordal music theory.
