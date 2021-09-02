@@ -70,14 +70,16 @@ const DisplaySequence = () => {
   };
 
   const handlePlaySequence = () => {
-    // let tempArr = [...chordArray];
-    // tempArr.map(ele => {
-    //   const audio = new Audio(`/${ele}.mp3`);
-    //   setTimeout(() => {
-    //     audio.load();
-    //     audio.play()
-    //   }, 1000);
-    // });
+    let tempArr = [...chordArray];
+    tempArr.forEach((element, i) => {
+      setTimeout(() => {
+        if (!mute) {
+          const audio = new Audio(`/${element}.mp3`);
+          audio.load();
+          audio.play();
+        }
+      }, i * 1000)
+    });
   };
 
   const chords = chordArray.map((element, index) => {
