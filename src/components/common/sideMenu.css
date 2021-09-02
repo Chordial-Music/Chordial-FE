@@ -37,7 +37,7 @@
     width: 0%;
     content: '';
     color: transparent;
-    background-color: rgb(137, 56, 230);
+    background-color: rgb(181, 56, 230);
     height: 1px;
     text-align: left;
     opacity: 0;
@@ -83,7 +83,7 @@
     width: 0%;
     content: '';
     color: transparent;
-    background-color: rgb(137, 56, 230);
+    background-color: rgb(181, 56, 230);
     height: 1px;
     text-align: left;
     opacity: 0;
@@ -116,7 +116,7 @@
     100% {
       width: 100%;
       height: 100%;
-      background: rgb(137, 56, 230);
+      background: rgb(181, 56, 230);
     }
   }
 /* 

@@ -109,17 +109,16 @@ export default DisplaySequence;
 
 const DisplayChordsStyled = styled.div`
   position: absolute;
+  margin-top: 2%;
   display: flex;
   justify-content: space-between;
   align-items: center; 
   top: 0;
-  padding: 0rem;
   background-color: #92e6ff68;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
   border-radius: 10px;
-  width: 800px;
+  width: 80vw;
   height: 120px;
-  
   
   .container{
     display: flex;
@@ -189,6 +188,7 @@ const DisplayChordsStyled = styled.div`
     padding: 0.6rem;
     height: 50px;
     width: 50px;
+    text-shadow: 0px 0px 5px black;
     &:hover {
       transform: scale(1.2);
       color: #00dda6;
@@ -214,7 +214,7 @@ const ButtonStyled = styled.div`
     animation-timing-function: ease-in-out;
     box-shadow: 0px 0px 50px 20px white;
     text-shadow: 0px 2px 4px black;
-    font-family: Pacifico;
+    font-family: 'Fjalla One', sans-serif;
 
     &:hover {
       transform: scale(1.3);

@@ -42,12 +42,19 @@ export default function SavedSequences() {
               {i}
             </p>)}
           </div>
-          <button onClick={() => handleDelete(ele.id)}>Delete</button>
-          <Link to={{
-            pathname: '/edit',
-            search: `?${ele.id}`,
-            state: { ele }
-          }}>Edit</Link>
+          <div className="btn-container">
+            <Link 
+              className="edit-btn"
+              to={{
+                pathname: '/edit',
+                search: `?${ele.id}`,
+                state: { ele }
+              }}
+            >
+              Edit
+            </Link>
+            <button onClick={() => handleDelete(ele.id)}>Delete</button>
+          </div>
         </SavedListItemStyled >
       </div>
     );
@@ -66,6 +73,9 @@ export default function SavedSequences() {
 }
 
 const SavedListStyled = styled.ul`
+&::-webkit-scrollbar {
+  display: none;
+}
 padding: 2rem;
   background-color: #c764ee55;
   width: 90%;
@@ -86,6 +96,12 @@ font-size: 2rem;
 background-color: #ffffff65;
 border-radius: 8px;
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
   button {
     color: red;
     background-color: transparent;
@@ -101,6 +117,26 @@ border-radius: 8px;
 
     &:hover {
       background-color: red;
+      color: white;
+      border-radius: 5px;
+    }
+  }
+
+  .edit-btn {
+    color: #0084ff;
+    background-color: transparent;
+    
+    font-size: 1.3rem;
+    border: none;
+    outline: none;
+    transition: all ease-in-out 0.15s;
+    cursor: pointer;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #0084ff;
       color: white;
       border-radius: 5px;
     }
