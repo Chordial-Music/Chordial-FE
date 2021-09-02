@@ -16,7 +16,7 @@ const DisplaySequence = () => {
   const { session } = useSession();
   const { nodes, setNodes } = useNodes();
   const { mute } = useMute();
-  
+
 
   const [alert, setAlert] = useState();
   const [clicked, setClicked] = useState(false);
@@ -33,10 +33,10 @@ const DisplaySequence = () => {
 
 
   const handleSave = () => {
-    if(session && chordArray.length > 0) {
+    if (session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if(!session) {
+    } else if (!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -50,7 +50,7 @@ const DisplaySequence = () => {
   };
 
   const handleClick = () => {
-    if(!mute) {
+    if (!mute) {
       const audio = new Audio('/C.mp3');
       audio.load();
       audio.play();
@@ -59,6 +59,14 @@ const DisplaySequence = () => {
     setNodes('C');
     setDisplayNodes(true);
     setClicked(true);
+  };
+
+  const handlePlay = ({ target }) => {
+    if (!mute) {
+      const audio = new Audio(`/${target.textContent}.mp3`);
+      audio.load();
+      audio.play();
+    }
   };
 
   const chords = chordArray.map((element, index) => {
@@ -95,7 +103,7 @@ const DisplaySequence = () => {
 
       <DisplayChordsStyled
         className="displayChords">
-        <div className="container">
+        <div className="container" onClick={handlePlay}>
           <h3
             style={{ color: 'white', padding: '12px', fontFamily: 'Concert One, cursive' }}
           >Chosen Chords:</h3>
