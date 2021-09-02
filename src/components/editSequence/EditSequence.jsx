@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { patch } from '../services/request';
+import { patchSequence } from '../../utils/hooks';
 
 export default function EditSequence(props) {
+  const history = useHistory();
   const sequence = props.location.state.ele;
   //place the sequence into easily usable state
   const [editSequence, setEditSequence] = useState(sequence.sequence);
   const [editNote, setEditNote] = useState('');
 
+  console.log(sequence.userId);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    patch(`/api/v1/sequences/${sequence.id}`, editSequence)
+    patchSequence(`${sequence.id}`, editSequence, sequence.userId)
       .then(history.push('/saved'));
   };
 
-  const handleChange = ({ target }) => {
-    setEditNote(target.value);
-    editSequence[target.id] = target.value;
+  const handleChange = i => ({ target }) => {
+    let newArr = [...editSequence];
+    newArr[i] = target.value;
+    setEditSequence(newArr);
   };
 
   const sequenceElements = editSequence.map((e, i) => {
@@ -29,7 +33,7 @@ export default function EditSequence(props) {
           name={i}
           placeholder={e}
           value={editNote[i]}
-          onChange={handleChange}
+          onChange={handleChange(i)}
         />
       </label>
     );

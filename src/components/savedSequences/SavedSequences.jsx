@@ -17,7 +17,7 @@ export default function SavedSequences() {
       .then(() => {
         setToggle(prev => !prev);
       });
-  }, [session]);
+  }, [session, sequences]);
 
   const handleDelete = async (id) => {
     del(`/api/v1/sequences/${id}`)
