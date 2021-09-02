@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import * as Tone from 'tone';
+// import * as Tone from 'tone';
 import Chords from '../../data/data.js';
 import { useNodes, useChordArray, useMute } from '../state/ChordialProvider.jsx';
 import { useEffect } from 'react';
@@ -14,15 +14,20 @@ const DisplayChordNodes = () => {
   const { mute } = useMute();
   const chordNode = Chords[nodes].chords;
 
+
+
   const handleClick = ({ target }) => {
-    if(chordArray.length < 16) {
+    if(chordArray.length < 16 && !mute) {
       setChordArray(prevState => [...prevState, target.textContent]);
+      const audio = new Audio(`/${target.textContent}.mp3`);
+      audio.load();
+      audio.play();
     }
-
-
     setNodes(target.textContent);
-    
   };
+
+
+
 
   const variant = {
     hidden: { opacity: 1, scale: 0 },
@@ -63,49 +68,47 @@ const DisplayChordNodes = () => {
   });
 
 
-  let chordQuality;
+  // let chordQuality;
   
-  const reverb = new Tone.Reverb({
-    'wet': 0.5,
-    'decay': 2.5,
-    'preDelay': 0.01
-  }).toDestination();
+  // const reverb = new Tone.Reverb({
+  //   'wet': 0.5,
+  //   'decay': 2.5,
+  //   'preDelay': 0.01
+  // }).toDestination();
   
   
-  const sampler = new Tone.Sampler({
-    urls: {
-      A4: 'A4.mp3',
-      Ab4: 'Ab4.mp3',
-      B4: 'B4.mp3',
-      Bb4: 'Bb4.mp3',
-      C5: 'C5.mp3',
-      D4: 'D4.mp3',
-      D5: 'D5.mp3',
-      Db4: 'Db4.mp3',
-      Db5: 'Db5.mp3',
-      E4: 'E4.mp3',
-      Eb4: 'Eb4.mp3',
-      Eb5: 'Eb5.mp3',
-      F4: 'F4.mp3',
-      F5: 'F5.mp3',
-      G4: 'G4.mp3',
-      Gb4: 'Gb4.mp3',
-      Gb5: 'Gb5.mp3'
-    },
-    baseUrl: '/',
-  }).toDestination();
+  // const sampler = new Tone.Sampler({
+  //   urls: {
+      // A4: 'A4.mp3',
+      // Ab4: 'Ab4.mp3',
+      // B4: 'B4.mp3',
+      // Bb4: 'Bb4.mp3',
+      // C5: 'C5.mp3',
+      // D4: 'D4.mp3',
+      // D5: 'D5.mp3',
+      // Db4: 'Db4.mp3',
+      // Db5: 'Db5.mp3',
+      // E4: 'E4.mp3',
+      // Eb4: 'Eb4.mp3',
+      // Eb5: 'Eb5.mp3',
+      // F4: 'F4.mp3',
+      // F5: 'F5.mp3',
+      // G4: 'G4.mp3',
+      // Gb4: 'Gb4.mp3',
+      // Gb5: 'Gb5.mp3'
+  //   },
+  //   baseUrl: '/',
+  // }).toDestination();
 
-  sampler.connect(reverb);
+  // sampler.connect(reverb);
   
-  const now = Tone.now();
+  // const now = Tone.now();
 
-  useEffect (() => {
-    if(!mute) {
-      chordQuality = Chords[nodes].tone;
-      chordQuality.map(item => {
-        Tone.loaded().then(() => sampler.triggerAttackRelease(`${item}`, '12n', now + 0.01));
-      });}
-  }, [chordArray]);
+  // useEffect (() => {
+  //   if(!mute) 
+  //     chordQuality = Chords[nodes];
+  //   Tone.loaded().then(() => sampler.triggerAttackRelease(`${chordQuality}`, '12n', now + 0.01));
+  // }, [chordArray]);
 
   
   return (

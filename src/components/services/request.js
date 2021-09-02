@@ -10,7 +10,7 @@ const request = async (path, method, body) => {
     credentials: 'include',
   });
 
-  if (!res.ok) throw await res.json();
+  if(!res.ok) throw await res.json();
 
   return res.json();
 };

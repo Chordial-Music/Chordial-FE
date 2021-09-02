@@ -1,52 +1,74 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
-import { useLogin } from '../state/SessionProvider';
+import AlertModal from '../common/AlertModal';
+import { useLogin, useSession } from '../state/SessionProvider';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [alert, setAlert] = useState();
+  const { session } = useSession();
 
   const history = useHistory();
   const login = useLogin();
 
+  const alertHandler = () => {
+    //setAlert to falsey value to dismiss alert
+    setAlert(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    login({ username, password });
+    login({ username, password })
+      .then(() => {if(!session) {
+        setAlert({
+          title: 'Incorrect Credentials',
+          message: 'Please enter the correct username or password to login'
+        });
+      }
+      });
     history.push('/');
+    
   };
 
   const handleChange = ({ target }) => {
-    if (target.name === 'username') setUsername(target.value);
-    if (target.name === 'password') setPassword(target.value);
+    if(target.name === 'username') setUsername(target.value);
+    if(target.name === 'password') setPassword(target.value);
   };
 
   return (
-    <LoginStyled>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="username"
-          name="username"
-          placeholder="username"
-          value={username}
-          onChange={handleChange}
-        />
+    <>
+      {alert && <AlertModal title={alert.title} message={alert.message} onConfirm={alertHandler} />}
+      <LoginStyled>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            placeholder="username"
+            type="username"
+            required
+            onChange={handleChange}
+            value={username}
+          />
 
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={handleChange}
-        />
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            placeholder="password"
+            type="password"
+            required
+            value={password}
+            onChange={handleChange}
+          />
 
-        <button>Login</button>
-      </form>
-    </LoginStyled>
+          <button>Login</button>
+        </form>
+      </LoginStyled>
+    </>
   );
 }
 
