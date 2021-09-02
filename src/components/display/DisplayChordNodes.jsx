@@ -71,24 +71,40 @@ const DisplayChordNodes = () => {
     'preDelay': 0.01
   }).toDestination();
   // const pingPong = new Tone.PingPongDelay('8n', 0.1).toDestination();
-  const synth = new Tone.PolySynth().toDestination();
-  synth.set({ detune: -1200 });
-  // const sampler = new Tone.Sampler({
-  //   urls: {
-  //     A1: 'A1.mp3',
-  //   },
-  //   baseUrl: 'https://tonejs.github.io/audio/casio/',
-  // }).toDestination();
+  // const synth = new Tone.PolySynth().toDestination();
+  // synth.set({ detune: -1200 });
+  const sampler = new Tone.Sampler({
+    urls: {
+      A4: 'A4.mp3',
+      Ab4: 'Ab4.mp3',
+      B4: 'B4.mp3',
+      Bb4: 'Bb4.mp3',
+      C5: 'C5.mp3',
+      D4: 'D4.mp3',
+      D5: 'D5.mp3',
+      Db4: 'Db4.mp3',
+      Db5: 'Db5.mp3',
+      E4: 'E4.mp3',
+      Eb4: 'Eb4.mp3',
+      Eb5: 'Eb5.mp3',
+      F4: 'F4.mp3',
+      F5: 'F5.mp3',
+      G4: 'G4.mp3',
+      Gb4: 'Gb4.mp3',
+      Gb5: 'Gb5.mp3'
+    },
+    baseUrl: '/',
+  }).toDestination();
   
-  synth.connect(reverb);
-  // synth.connect(pingPong);
+  sampler.connect(reverb);
+  // sampler.connect(pingPong);
   const now = Tone.now();
 
   useEffect (() => {
     if(!mute) {
       chordQuality = Chords[nodes].tone;
       chordQuality.map(item => {
-        synth.triggerAttackRelease(`${item}`, '12n', now + 0.01);
+        Tone.loaded().then(() => sampler.triggerAttackRelease(`${item}`, '12n', now + 0.01));
       });}
   }, [chordArray]);
 
