@@ -12,7 +12,11 @@ function SideMenu() {
   const { setChordArray } = useChordArray();
   const { setNodes } = useNodes();
   const { session, setSession } = useSession();
-  const { sideMenu } = useSideMenu();
+  const { sideMenu, setSideMenu } = useSideMenu();
+
+  const showSideMenu = () => {
+    setSideMenu(!sideMenu);
+  };
 
   const handleHome = () => {
     history.push('/');
@@ -31,13 +35,26 @@ function SideMenu() {
   };
 
   return (
-    <div className={sideMenu ? styles.sideMenu : toggle.toggle}>
+    <div 
+      className={sideMenu ? styles.sideMenu : toggle.toggle}
+      // onClick={showSideMenu}
+    >
       {session ? <span>Hello, {session.username} 🙂</span> : <>Hello, Guest!</>}
       <button onClick={handleHome}>Home</button>
-      {session ? <></> : <Link to={'/login'}>Log In</Link>}
-      {session ? <></> : <Link to={'/signup'}>Sign Up</Link>}
-      {session ? <Link to={'/saved'}>Saved Sequences</Link> : <></>}
-      <Link to={'/about'}>About</Link>
+      {session ? <></> : <Link 
+        to={'/login'}
+        onClick={showSideMenu}>Log In</Link>}
+      {session ? <></> : <Link 
+        to={'/signup'}
+        onClick={showSideMenu}  
+      >Sign Up</Link>}
+      {session ? <Link 
+        to={'/saved'}
+        onClick={showSideMenu}
+      >Saved Sequences</Link> : <></>}
+      <Link to={'/about'}
+        onClick={showSideMenu}
+      >About</Link>
       {session ? <button onClick={handleClick}>Logout</button> : <></>}
     </div>
   );

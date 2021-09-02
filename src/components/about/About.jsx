@@ -10,10 +10,9 @@ function About() {
     <AboutStyled>
   
 
-      
       <div className="description">
-
         <h1>The Ballad of Chordial</h1>
+
         <p>After downing a caraffe of coffee, inspiration struck!  
           What if there was an app that helped write chord changes for songs? 
           And from that intial idea, this amazing team of developers brainstormed 
@@ -25,7 +24,7 @@ function About() {
       </div>
 
       <h1 
-        style={{ fontFamily: 'Concert One' }}
+        style={{ fontFamily: 'Concert One', paddingBottom: '1rem' }}
       >
         The Devs
       </h1>
@@ -68,47 +67,55 @@ function About() {
 export default About;
 
 const AboutStyled = styled.div`
+
 &::-webkit-scrollbar {
   display: none;
 }
   background-color: #c764ee55;
-  padding: 2rem;
   width: 95%;
-  height: 75vh;
+  height: 800px;
   border-radius: 40px;
   box-shadow: 0px 0px 15px 0px black;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   margin: auto;
 
   .description {
-    margin-top: 22rem;
     text-align: center;
-    padding-bottom: 2rem;
-    height: 800px;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 
 
     h1 {
       font-family: 'Concert One';
       font-size: 2rem;
+      padding-bottom: 1rem;
     }
 
     p {
       font-family: 'Righteous';
-      font-size: 1.6rem;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      width: 80%;
       line-height: 1.5;
-      padding: 2rem;
+      background-color: #ffffff92;
+      border-radius: 1rem;
     }
   }
 
   .devs-container {
     display: flex;
+    justify-content: space-evenly;
     width: 100%;
-    justify-content: space-between;
-    padding: 2rem;
+    padding-bottom: 2rem;
 
     .dev {
       width: 350px;
@@ -121,6 +128,10 @@ const AboutStyled = styled.div`
         .icon {
           margin: 0 0.6rem;
           font-size: 2rem;
+          transition: all ease-in-out 0.15s;
+          &:hover {
+            color: #f6d569;
+          }
         }
         img {
           
