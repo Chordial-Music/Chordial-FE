@@ -49,7 +49,7 @@ function About() {
         <div className="dev">
           <img src={'/david.jpg'}/>
           <h2>David</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, soluta?</p>
+          <p>David is a kick-ass software dev and doesn't know a thing about music-- just good design.</p>
           <GitHubIcon className="icon" />
           <LinkedInIcon className="icon" />
         </div>
@@ -68,6 +68,9 @@ function About() {
 export default About;
 
 const AboutStyled = styled.div`
+&::-webkit-scrollbar {
+  display: none;
+}
   background-color: #c764ee55;
   padding: 2rem;
   width: 95%;
