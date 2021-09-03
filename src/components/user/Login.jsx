@@ -21,27 +21,32 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     //login({ username, password });
-    login({ username, password })
-      .then(() => history.push('/'));
+    login({ username, password }).then(() => history.push('/'));
 
     setTimeout(() => {
-      if (!session) {
+      if(!session) {
         setAlert({
           title: 'Incorrect Credentials',
-          message: 'Please enter the correct username or password to login'
+          message: 'Please enter the correct username or password to login',
         });
       }
-    }, 500);
+    }, 750);
   };
 
   const handleChange = ({ target }) => {
-    if (target.name === 'username') setUsername(target.value);
-    if (target.name === 'password') setPassword(target.value);
+    if(target.name === 'username') setUsername(target.value);
+    if(target.name === 'password') setPassword(target.value);
   };
 
   return (
     <>
-      {alert && <AlertModal title={alert.title} message={alert.message} onConfirm={alertHandler} />}
+      {alert && (
+        <AlertModal
+          title={alert.title}
+          message={alert.message}
+          onConfirm={alertHandler}
+        />
+      )}
       <LoginStyled>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">Username</label>
@@ -74,7 +79,6 @@ export default function Login() {
 }
 
 const LoginStyled = styled.div`
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,7 +96,6 @@ const LoginStyled = styled.div`
 
     label {
       font-size: 1.5rem;
-      
     }
 
     input {
@@ -101,7 +104,7 @@ const LoginStyled = styled.div`
       outline: none;
       font-size: 1.5rem;
       border: none;
-      border-bottom: 1px solid black
+      border-bottom: 1px solid black;
     }
 
     button {
