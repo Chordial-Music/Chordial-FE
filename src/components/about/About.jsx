@@ -37,7 +37,7 @@ function About() {
         <div className="dev">
           <img src={'/kalan.jpg'}/>
           <h2>Kalan</h2>
-          <p>Kalan is a kick ass full stack software developer and music warlock.</p>
+          <p>Kalan is a kick-ass full stack software developer and music warlock.</p>
           <a href=" https://github.com/prudhomk" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
           <a href="https://www.linkedin.com/in/kalanprudhomme/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
         </div>
