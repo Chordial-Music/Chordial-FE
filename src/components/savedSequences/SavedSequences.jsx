@@ -10,12 +10,12 @@ import styled from 'styled-components';
 export default function SavedSequences() {
   const { session } = useSession();
   const [sequences, setSequences] = useState([]);
-  const [setToggle] = useState(true);
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     return retrieveSequence(session.username).then(sequence => setSequences(sequence))
       .then(() => {
-        setToggle(prev => !prev);
+        setToggle(!toggle);
       });
   }, [session, sequences]);
 

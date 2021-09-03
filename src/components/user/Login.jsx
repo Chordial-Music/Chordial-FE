@@ -27,10 +27,10 @@ export default function Login() {
       if(!session) {
         setAlert({
           title: 'Incorrect Credentials',
-          message: 'Please enter the correct username or password to login'
+          message: 'Please enter the correct username or password to login',
         });
       }
-    }, 500);
+    }, 750);
   };
 
   const handleChange = ({ target }) => {
@@ -40,7 +40,13 @@ export default function Login() {
 
   return (
     <>
-      {alert && <AlertModal title={alert.title} message={alert.message} onConfirm={alertHandler} />}
+      {alert && (
+        <AlertModal
+          title={alert.title}
+          message={alert.message}
+          onConfirm={alertHandler}
+        />
+      )}
       <LoginStyled>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">Username</label>
@@ -97,7 +103,7 @@ const LoginStyled = styled.div`
       outline: none;
       font-size: 1.5rem;
       border: none;
-      border-bottom: 1px solid black
+      border-bottom: 1px solid black;
     }
 
     button {
@@ -115,7 +121,7 @@ const LoginStyled = styled.div`
 
       &:hover {
         color: white;
-        background-color: #49e00d;
+        background-color: #0084ff;
       }
     }
   }
