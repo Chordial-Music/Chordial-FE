@@ -1,15 +1,15 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AlertModal from '../common/AlertModal';
 import { useLogin, useSession } from '../state/SessionProvider';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [alert, setAlert] = useState();
+  const [password, setPassword] = useState('');
   const { session } = useSession();
+  const [username, setUsername] = useState('');
 
   const history = useHistory();
   const login = useLogin();
@@ -20,12 +20,11 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //login({ username, password });
     login({ username, password })
       .then(() => history.push('/'));
 
     setTimeout(() => {
-      if (!session) {
+      if(!session) {
         setAlert({
           title: 'Incorrect Credentials',
           message: 'Please enter the correct username or password to login'
@@ -35,8 +34,8 @@ export default function Login() {
   };
 
   const handleChange = ({ target }) => {
-    if (target.name === 'username') setUsername(target.value);
-    if (target.name === 'password') setPassword(target.value);
+    if(target.name === 'username') setUsername(target.value);
+    if(target.name === 'password') setPassword(target.value);
   };
 
   return (
@@ -74,7 +73,6 @@ export default function Login() {
 }
 
 const LoginStyled = styled.div`
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +82,6 @@ const LoginStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    /* align-items: center; */
     background-color: #5bf1ff7d;
     border-radius: 10px;
     height: 600px;
@@ -92,7 +89,6 @@ const LoginStyled = styled.div`
 
     label {
       font-size: 1.5rem;
-      
     }
 
     input {
@@ -113,7 +109,6 @@ const LoginStyled = styled.div`
       cursor: pointer;
       font-size: 1.5rem;
       transition: all ease-in-out 0.15s;
-      /* width: 100px; */
       margin: 0 auto;
       text-align: center;
       border-radius: 10px;

@@ -34,21 +34,25 @@ export const SessionProvider = ({ children }) => {
 
 export const useLogin = () => {
   const { login } = useContext(SessionContext);
+
   return login;
 };
 
 export const useSignup = () => {
   const { signup } = useContext(SessionContext);
+
   return signup;
 };
 
 export const useSession = () => {
   const { session, setSession } = useContext(SessionContext);
+
   return { session, setSession };
 };
 
 export const PrivateRoute = (props) => {
   const { session } = useSession();
-  if (!session) return <Redirect to={'/'} />;
-  return <Route {...props} />
+  if(!session) return <Redirect to={'/'} />;
+  
+  return <Route {...props} />;
 };
