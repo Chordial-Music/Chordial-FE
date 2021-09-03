@@ -1,24 +1,23 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AlertModal from '../common/AlertModal';
 import { createSequence } from '../../utils/hooks';
 import DisplayChord from './DisplayChord';
 import DisplayChordNodes from './DisplayChordNodes';
+import { motion } from 'framer-motion';
 import { useChordArray, useDisplayNodes, useNodes, useMute } from '../state/ChordialProvider';
 import { useSession } from '../state/SessionProvider';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 
 const DisplaySequence = () => {
-  const { chordArray, setChordArray } = useChordArray();
-  const { displayNodes, setDisplayNodes } = useDisplayNodes();
-  const { session } = useSession();
-  const { nodes, setNodes } = useNodes();
-  const { mute } = useMute();
-
   const [alert, setAlert] = useState();
+  const { chordArray, setChordArray } = useChordArray();
   const [clicked, setClicked] = useState(false);
+  const { displayNodes, setDisplayNodes } = useDisplayNodes();
+  const { mute } = useMute();
+  const { setNodes } = useNodes();
+  const { session } = useSession();
 
   const alertHandler = () => {
     //setAlert to falsey value to dismiss alert
@@ -80,7 +79,7 @@ const DisplaySequence = () => {
     });
   };
 
-  const chords = chordArray.map((element, index) => {
+  const chords = chordArray.map((element) => {
     return (
       <div key={uuid()} className="Chord">
         <DisplayChord chordName={element} />
@@ -103,6 +102,7 @@ const DisplaySequence = () => {
             className={clicked ? 'invisible' : 'default'}
           >C</button>
         </motion.div>
+
         <div>
           {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
           {chordArray.length >= 16 &&
@@ -121,6 +121,7 @@ const DisplaySequence = () => {
           >Chosen Chords:</h3>
           {chords}
         </div>
+        
         <div className="btn-container">
           <button onClick={handleSave} className="save-btn">Save</button>
           <button onClick={handleReset} className="reset-btn">Reset</button>
@@ -155,7 +156,6 @@ const DisplayChordsStyled = styled.div`
   .btn-container {
     height: 120px;
     display: flex;
-
   }
 
   .save-btn {

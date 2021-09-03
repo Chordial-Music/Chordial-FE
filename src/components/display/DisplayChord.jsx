@@ -3,11 +3,9 @@ import React from 'react';
 
 const DisplayChord = ({ chordName }) => {
   return (
-    <>
-      <div>
-        {chordName}
-      </div>
-    </>
+    <div>
+      {chordName}
+    </div>
   );
 };
 

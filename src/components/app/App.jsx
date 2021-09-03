@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import About from '../about/About.jsx';
 import DisplaySequence from '../display/DisplaySequence';
 import EditSequence from '../editSequence/EditSequence';
 import Header from '../common/Header';
@@ -9,9 +10,7 @@ import { PrivateRoute } from '../state/SessionProvider';
 import SavedSequences from '../savedSequences/SavedSequences';
 import SideMenu from '../common/SideMenu';
 import Signup from '../user/Signup';
-import About from '../about/About.jsx';
 import styled from 'styled-components';
-import AlertModal from '../common/AlertModal';
 
 export default function App() {
   return (
@@ -28,7 +27,6 @@ export default function App() {
           <Route exact path="/" component={DisplaySequence} />
         </AppStyled>
       </Router>
-  
     </>
   );
 }
@@ -40,5 +38,3 @@ const AppStyled = styled.div`
   justify-content: center;
   position: relative;
 }`;
-
-

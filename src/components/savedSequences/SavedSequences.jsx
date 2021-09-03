@@ -10,7 +10,7 @@ import styled from 'styled-components';
 export default function SavedSequences() {
   const { session } = useSession();
   const [sequences, setSequences] = useState([]);
-  const [toggle, setToggle] = useState(true);
+  const [setToggle] = useState(true);
 
   useEffect(() => {
     return retrieveSequence(session.username).then(sequence => setSequences(sequence))
@@ -67,7 +67,6 @@ export default function SavedSequences() {
           {sequenceElements}
         </SavedListStyled>
       </div>
-
     </div>
   );
 }
@@ -85,7 +84,6 @@ padding: 2rem;
   box-shadow: 0px 0px 15px 0px black;
   overflow-y: auto;
   overflow-x: hidden;
-
 `;
 
 const SavedListItemStyled = styled.li`

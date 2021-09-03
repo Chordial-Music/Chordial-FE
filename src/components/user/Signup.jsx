@@ -14,7 +14,7 @@ export default function Signup() {
     e.preventDefault();
     signup({ username, password });
     history.push('/');
-    // window.location.reload();
+    window.location.reload();
   };
 
   const handleChange = ({ target }) => {
@@ -63,7 +63,6 @@ const SignupStyled = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    /* align-items: center; */
     background-color: #5bf1ff7d;
     border-radius: 10px;
     height: 600px;
@@ -71,7 +70,6 @@ const SignupStyled = styled.div`
 
     label {
       font-size: 1.5rem;
-      
     }
 
     input {
@@ -92,7 +90,6 @@ const SignupStyled = styled.div`
       cursor: pointer;
       font-size: 1.5rem;
       transition: all ease-in-out 0.15s;
-      /* width: 100px; */
       margin: 0 auto;
       text-align: center;
       border-radius: 10px;

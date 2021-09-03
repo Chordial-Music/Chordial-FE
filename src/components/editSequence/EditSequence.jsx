@@ -8,9 +8,7 @@ export default function EditSequence(props) {
   const sequence = props.location.state.ele;
   //place the sequence into easily usable state
   const [editSequence, setEditSequence] = useState(sequence.sequence);
-  const [editNote, setEditNote] = useState('');
-
-  console.log(sequence.userId);
+  const [editNote] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +32,6 @@ export default function EditSequence(props) {
         value={editNote[i]}
         onChange={handleChange(i)}
       />
-
     );
   });
 
@@ -46,7 +43,6 @@ export default function EditSequence(props) {
         <button>Submit</button>
       </form>
     </EditPageStyled>
-
   );
 }
 
@@ -55,13 +51,11 @@ const EditPageStyled = styled.div`
   justify-content: center;
   align-items: center;
   
-
   form {
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    /* align-items: center; */
     background-color: #5bf1ff7d;
     border-radius: 10px;
     height: 600px;
@@ -74,7 +68,6 @@ const EditPageStyled = styled.div`
 
     label {
       font-size: 1.5rem;
-      
     }
 
     input {
@@ -86,7 +79,6 @@ const EditPageStyled = styled.div`
       border-bottom: 1px solid black
     }
 
-
     button {
       margin-top: 2rem;
       padding: 1.5rem;
@@ -96,7 +88,6 @@ const EditPageStyled = styled.div`
       cursor: pointer;
       font-size: 1.5rem;
       transition: all ease-in-out 0.15s;
-      /* width: 100px; */
       margin: 0 auto;
       text-align: center;
       border-radius: 10px;
