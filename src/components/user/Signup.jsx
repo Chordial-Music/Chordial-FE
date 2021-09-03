@@ -6,15 +6,14 @@ import styled from 'styled-components';
 export default function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const history = useHistory();
   const signup = useSignup();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    signup({ username, password });
-    history.push('/');
-    window.location.reload();
+    signup({ username, password })
+      .then(history.push('/'))
+      .then(window.location.reload());
   };
 
   const handleChange = ({ target }) => {
@@ -96,7 +95,7 @@ const SignupStyled = styled.div`
 
       &:hover {
         color: white;
-        background-color: #49e00d;
+        background-color: #0084ff;
       }
     }
   }
