@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import React from 'react';
-// import * as Tone from 'tone';
 import Chords from '../../data/data.js';
 import { useNodes, useChordArray, useMute } from '../state/ChordialProvider.jsx';
 import uuid from 'react-uuid';
@@ -14,12 +13,12 @@ const DisplayChordNodes = () => {
   const chordNode = Chords[nodes].chords;
 
   const handleClick = ({ target }) => {
-    if (chordArray.length < 16 && !mute) {
+    if(chordArray.length < 16 && !mute) {
       setChordArray(prevState => [...prevState, target.textContent]);
       const audio = new Audio(`/${target.textContent}.mp3`);
       audio.load();
       audio.play();
-    } else if (chordArray.length < 16) {
+    } else if(chordArray.length < 16) {
       setChordArray(prevState => [...prevState, target.textContent]);
     }
     setNodes(target.textContent);
@@ -58,7 +57,6 @@ const DisplayChordNodes = () => {
           {element}
         </NodeItemStyled>
       </motion.div>
-
     );
   });
 
@@ -112,27 +110,17 @@ const NodeItemStyled = styled.li`
     bottom: 0;
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
     border-radius: 10px;
-    
   }
-
 `;
 
 const NodeListStyled = styled.div`
 
 .nodeList {
-
-  /* border: 1px solid red; */
   display: flex;
   flex-wrap: wrap;
   width: 70%;
-  /* height: 70vh; */
   display: flex;
   justify-content: center;
   margin: auto;
-  /* position: absolute;
-  left: -1000px;
-  bottom: 300px; */
 }
-  
 `;
-

@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import React from 'react';
-// import styles from './About.css';
 import styled from 'styled-components';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -9,7 +8,6 @@ function About() {
   return (
     <AboutStyled>
   
-
       <div className="description">
         <h1>The Ballad of Chordial</h1>
 
@@ -29,8 +27,6 @@ function About() {
         The Devs
       </h1>
       <div className="devs-container">
-
-        
         <div className="dev">
           <img src={'/casey.jpg'}/>
           <h2>Casey</h2>
@@ -52,14 +48,7 @@ function About() {
           <a href="https://github.com/David-Del1" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
           <a href="https://www.linkedin.com/in/davidadelgadillo/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
         </div>
-            
       </div>
-          
-          
-    
-
-  
-
     </AboutStyled>
   );
 }
@@ -91,8 +80,6 @@ const AboutStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
 
     h1 {
       font-family: 'Concert One';
@@ -145,10 +132,5 @@ const AboutStyled = styled.div`
           padding: 1rem;
         }
     }
-
-
   }
-
-
-
 `;

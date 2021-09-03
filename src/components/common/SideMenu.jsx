@@ -11,11 +11,11 @@ import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 
 function SideMenu() {
   const history = useHistory();
+  const { mute, setMute } = useMute();
+  const { session, setSession } = useSession();
   const { setChordArray } = useChordArray();
   const { setNodes } = useNodes();
-  const { session, setSession } = useSession();
   const { sideMenu, setSideMenu } = useSideMenu();
-  const { mute, setMute } = useMute();
 
   const handleCheck = () => {
     setMute(prev => !prev);

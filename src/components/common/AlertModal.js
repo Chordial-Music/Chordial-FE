@@ -7,17 +7,18 @@ const Backdrop = props => {
   return <BackdropStyled onClick={props.onConfirm} />;
 };
 
+//Takes in Props to provide custom alert messages
+
 const ModalOverlay = props => {
   return (
-    <ModalStyled >
+    <ModalStyled>
       <header className="header">
         <h2 className="header">{props.title}</h2>
       </header>
-      <div >
+      <div>
         <p className="modal-text">{props.message}</p>
-        
       </div>
-      <footer >
+      <footer>
         <button 
           onClick={props.onConfirm}
           className="confirm-btn"

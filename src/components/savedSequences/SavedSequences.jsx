@@ -10,7 +10,7 @@ import styled from 'styled-components';
 export default function SavedSequences() {
   const { session } = useSession();
   const [sequences, setSequences] = useState([]);
-  const [toggle, setToggle] = useState(true);
+  const [setToggle] = useState(true);
 
   useEffect(() => {
     return retrieveSequence(session.username).then(sequence => setSequences(sequence))
@@ -67,7 +67,6 @@ export default function SavedSequences() {
           {sequenceElements}
         </SavedListStyled>
       </div>
-
     </div>
   );
 }
@@ -83,8 +82,8 @@ padding: 2rem;
   margin: auto;
   border-radius: 40px;
   box-shadow: 0px 0px 15px 0px black;
-  overflow: auto;
-
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const SavedListItemStyled = styled.li`
@@ -95,6 +94,9 @@ padding: 1.2rem;
 font-size: 2rem;
 background-color: #ffffff65;
 border-radius: 8px;
+
+width: 100%;
+overflow-x: auto;
 
 .btn-container {
   display: flex;
@@ -144,9 +146,13 @@ border-radius: 8px;
 
   .sequence-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
   }
 
   .sequence-item {
-    margin: 0 2rem;
+    margin: 0 1rem;
   }
 `;
