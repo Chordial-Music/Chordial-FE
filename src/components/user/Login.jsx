@@ -21,8 +21,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     login({ username, password })
-      .then(() => history.push('/'));
-
+      .then(() => history.push('/'))
+      .then(() => window.location.reload());
     setTimeout(() => {
       if(!session) {
         setAlert({
