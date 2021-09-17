@@ -119,5 +119,11 @@
       background: rgb(181, 56, 230);
     }
   }
+  
+  @media only screen and (max-width: 600px) {
+    .sideMenu {
+      width: 100%;
+    }
+  }
 /* 
 Fill animation style referenced from: https://codepen.io/maheshambure21/pen/QwXaRw */

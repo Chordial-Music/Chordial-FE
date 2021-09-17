@@ -87,14 +87,14 @@ const DisplaySequence = () => {
     );
   });
 
-  if(window.innerWidth < 850) return (
-    <AlertWindowStyled className="alert-window">
-      <p className="alert-window-text">
-        This application does not currently support mobile devices. Please come back on a desktop or laptop computer!
-      </p>
+  // if(window.innerWidth < 850) return (
+  //   <AlertWindowStyled className="alert-window">
+  //     <p className="alert-window-text">
+  //       This application does not currently support mobile devices. Please come back on a desktop or laptop computer!
+  //     </p>
       
-    </AlertWindowStyled>
-  );
+  //   </AlertWindowStyled>
+  // );
 
   return (
     <>
@@ -125,7 +125,10 @@ const DisplaySequence = () => {
         className="displayChords">
         <div className="container" onClick={handlePlay}>
           <h3 onClick={handlePlaySequence}>Chosen Chords:</h3>
-          {chords}
+          <div className="chords-container">
+
+            {chords}
+          </div>
         </div>
         
         <div className="btn-container">
@@ -146,34 +149,47 @@ const DisplayChordsStyled = styled.div`
   justify-content: space-between;
   align-items: center; 
   top: 0;
-  background-color: #92e6ff68;
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
+  background-color: #92e6ffb9;
+  /* box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7); */
   border-radius: 10px;
   width: 80vw;
-  height: 120px;
+  height: 150px;
 
   h3 {
     color: white; 
     padding: 12px;
-    fontFamily: Concert One, cursive; 
+    font-family: Concert One, cursive; 
     cursor: pointer;
+    text-shadow: 0px 2px 0px black;
+    /* box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7); */
+    border-radius: 10px;
+    width: fit-content;
   }
   
-  .container {
+  .container{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 220px;
+
+    .chords-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
   }
 
   .btn-container {
-    height: 120px;
+    height: 100%;
+    min-height: 100px;
     display: flex;
   }
 
   .save-btn {
     font-size: 1.1rem;
     height: 100%;
+    min-height: 100px;
     width: 80px;
     /* border-radius: 10px; */
     background-color: transparent;
@@ -192,6 +208,7 @@ const DisplayChordsStyled = styled.div`
   .reset-btn {
     font-size: 1.1rem;
     height: 100%;
+    min-height: 100px;
     width: 80px;
     background-color: transparent;
     border: none;
@@ -232,7 +249,7 @@ const DisplayChordsStyled = styled.div`
     }
   }
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 800px) {
   position: absolute;
   margin-top: 2%;
   display: flex;
@@ -244,34 +261,39 @@ const DisplayChordsStyled = styled.div`
   border-radius: 10px;
   width: 80vw;
   height: auto;
-  max-height: 300px !important;
 
   h3{
     position: relative;
-    margin-bottom: 75px;
     color: white; 
-    fontFamily: Concert One, cursive; 
+    font-family: Concert One, cursive; 
     cursor: pointer;
   }
 
   .container{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 220px;
+
+    .chords-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
   }
 
   .btn-container {
-    
-    display: flex;
+    border-top: 1px solid black;
+    width: 100%;
   }
 
   .save-btn {
     font-size: 1.1rem;
     height: 100%;
+    width: 100%;
     background-color: transparent;
     border: none;
-    border-left: 1px solid black;
     color: white;
     cursor: pointer;
     transition: all ease-in-out 0.2s;
@@ -285,6 +307,7 @@ const DisplayChordsStyled = styled.div`
   .reset-btn {
     font-size: 1.1rem;
     height: 100%;
+    width: 100%;
     background-color: transparent;
     border: none;
     border-left: 1px solid black;

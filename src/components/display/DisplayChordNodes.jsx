@@ -112,7 +112,7 @@ const NodeItemStyled = styled.li`
     border-radius: 10px;
   }
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 800px) {
   background-color: lightblue;
   color: white;
   font-size: 1.8rem;
@@ -161,7 +161,7 @@ const NodeListStyled = styled.div`
   margin: auto;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 800px) {
   .nodeList {
     display: flex;
     flex-wrap: wrap;
