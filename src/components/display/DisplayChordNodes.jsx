@@ -111,6 +111,43 @@ const NodeItemStyled = styled.li`
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
     border-radius: 10px;
   }
+
+  @media only screen and (max-width: 400px) {
+  background-color: lightblue;
+  color: white;
+  font-size: 1.8rem;
+  padding: 1rem;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background: inherit;
+  z-index: 1000;
+  transition: all ease-in-out 0.1s;
+  font-family: 'Fjalla One', sans-serif;
+  box-shadow: 0px 0px 4px 0px black;
+
+  &:hover {
+    background-color: #3370ffb9;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    border-radius: 10px;
+  }
+  }
 `;
 
 const NodeListStyled = styled.div`
@@ -122,5 +159,16 @@ const NodeListStyled = styled.div`
   display: flex;
   justify-content: center;
   margin: auto;
+}
+
+@media only screen and (max-width: 400px) {
+  .nodeList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
 }
 `;
