@@ -124,10 +124,7 @@ const DisplaySequence = () => {
       <DisplayChordsStyled
         className="displayChords">
         <div className="container" onClick={handlePlay}>
-          <h3
-            style={{ color: 'white', padding: '12px', fontFamily: 'Concert One, cursive', cursor: 'pointer' }}
-            onClick={handlePlaySequence}
-          >Chosen Chords:</h3>
+          <h3 onClick={handlePlaySequence}>Chosen Chords:</h3>
           {chords}
         </div>
         
@@ -154,8 +151,15 @@ const DisplayChordsStyled = styled.div`
   border-radius: 10px;
   width: 80vw;
   height: 120px;
+
+  h3 {
+    color: white; 
+    padding: 12px;
+    fontFamily: Concert One, cursive; 
+    cursor: pointer;
+  }
   
-  .container{
+  .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -226,6 +230,96 @@ const DisplayChordsStyled = styled.div`
       transform: scale(1.2);
       color: #00dda6;
     }
+  }
+
+  @media only screen and (max-width: 400px) {
+  position: absolute;
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  top: 0;
+  background-color: #92e6ff68;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  width: 80vw;
+  height: auto;
+  max-height: 300px !important;
+
+  h3{
+    position: relative;
+    margin-bottom: 75px;
+    color: white; 
+    fontFamily: Concert One, cursive; 
+    cursor: pointer;
+  }
+
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-container {
+    
+    display: flex;
+  }
+
+  .save-btn {
+    font-size: 1.1rem;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid black;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      background-color: #ffffffa7;
+      color: black;
+    }
+  }
+
+  .reset-btn {
+    font-size: 1.1rem;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid black;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+      background-color: red;
+      color: white;
+      border-radius: 0 10px 10px 0;
+    }
+  }
+
+  .Chord {
+    font-family: 'Fjalla One', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    font-weight: 800;
+    cursor: pointer;
+    color: antiquewhite;
+    text-shadow: 0px 0px 3px black;
+    transition: all ease-in-out 0.2s;
+    background-color: #ffffff7d;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    text-shadow: 0px 0px 5px black;
+    &:hover {
+      transform: scale(1.2);
+      color: #00dda6;
+    }
+  }
   }
 `;
 
