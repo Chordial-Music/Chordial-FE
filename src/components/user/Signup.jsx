@@ -12,8 +12,8 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     signup({ username, password })
-      .then(history.push('/'))
-      .then(window.location.reload());
+      .then(() => history.push('/'))
+      .then(() => window.location.reload());
   };
 
   const handleChange = ({ target }) => {
