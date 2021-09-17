@@ -123,7 +123,15 @@
   @media only screen and (max-width: 600px) {
     .sideMenu {
       width: 100%;
+      text-align: center;
     }
   }
+  @media only screen and (max-width: 900px) {
+    .sideMenu {
+      width: 65%;
+      text-align: center;
+    }
+  }
+  
 /* 
 Fill animation style referenced from: https://codepen.io/maheshambure21/pen/QwXaRw */
