@@ -87,6 +87,15 @@ const DisplaySequence = () => {
     );
   });
 
+  if(window.innerWidth < 850) return (
+    <AlertWindowStyled className="alert-window">
+      <p className="alert-window-text">
+        This application does not currently support mobile devices. Please come back on a desktop or laptop computer!
+      </p>
+      
+    </AlertWindowStyled>
+  );
+
   return (
     <>
       {alert && <AlertModal title={alert.title} message={alert.message} onConfirm={alertHandler} />}
@@ -262,9 +271,34 @@ const ButtonStyled = styled.div`
     animation-timing-function: ease-in-out;
   }
 
+
   @keyframes floating { 
     0% { transform: translate(0,  0px); } 
     50%  { transform: translate(0, 30px); } 
     100%   { transform: translate(0, -0px); }     
 }
+`;
+
+const AlertWindowStyled = styled.div`
+  position: absolute;
+  height: 150vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  background: linear-gradient(45deg, #ee7752, #e73c7e,#ee7752, #23d5ab, #23a6d5, #23d5ab);
+  background-size: 150% 150%;
+  z-index: 1000;
+
+  .alert-window-text {
+    margin-top: 5rem;
+    padding: 1rem;
+    height: fit-content;
+    width: 90%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    background: #ffffff89;
+    border-radius: 10px;
+  }
 `;
