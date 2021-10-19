@@ -61,7 +61,7 @@ const DisplayChordNodes = () => {
   });
 
   return (
-    <NodeListStyled>
+    <NodeListStyled data-testid="nodeButton">
       <motion.ul
         className="nodeList"
         variants={variant}

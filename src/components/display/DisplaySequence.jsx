@@ -9,6 +9,7 @@ import { useChordArray, useDisplayNodes, useNodes, useMute } from '../state/Chor
 import { useSession } from '../state/SessionProvider';
 import uuid from 'react-uuid';
 import styled from 'styled-components';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 const DisplaySequence = () => {
   const [alert, setAlert] = useState();
@@ -107,13 +108,14 @@ const DisplaySequence = () => {
           dragTransition={{ bounceStiffness: 150, bounceDamping: 10 }}
         >
           <button
+            data-testid="cButton"
             onClick={handleClick}
             className={clicked ? 'invisible' : 'default'}
           >C</button>
         </motion.div>
 
         <div>
-          {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
+          {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes/>}
           {chordArray.length >= 16 &&
             <div className="max-limit">
               <h3>You've reached the max chord limit for a sequence.</h3>
@@ -124,8 +126,11 @@ const DisplaySequence = () => {
       <DisplayChordsStyled
         className="displayChords">
         <div className="container" onClick={handlePlay}>
-          <h3 onClick={handlePlaySequence}>Chosen Chords:</h3>
-          <div className="chords-container">
+          <div className="playChords">
+            <h3>Chosen Chords: </h3>
+            <i><PlayCircleOutlineIcon onClick={handlePlaySequence}/></i>
+          </div>
+          <div className="chords-container" data-testid="chordContainer">
 
             {chords}
           </div>
@@ -159,13 +164,23 @@ const DisplayChordsStyled = styled.div`
     color: white; 
     padding: 12px;
     font-family: Concert One, cursive; 
-    cursor: pointer;
     text-shadow: 0px 2px 0px black;
     /* box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7); */
     border-radius: 10px;
     width: fit-content;
   }
   
+  .playChords {
+    display: flex;
+    
+    i {
+      margin-top: 10px;
+      color: white;
+      cursor: pointer;
+    }
+  }
+ 
+
   .container{
     display: flex;
     flex-direction: column;
