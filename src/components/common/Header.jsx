@@ -1,13 +1,20 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSideMenu } from '../state/ChordialProvider';
 
 function Header() {
+  const history = useHistory();
   const { sideMenu, setSideMenu } = useSideMenu();
 
   const showSideMenu = () => {
     setSideMenu(!sideMenu);
+  };
+
+  const handleHome = () => {
+    history.push('/');
+    window.location.reload();
   };
 
   return (
@@ -15,8 +22,9 @@ function Header() {
       <h1
         style={{
           color: 'white', fontSize: '70px', padding: '1rem', fontFamily: 'Pacifico',
-          textShadow: '3px 3px 5px black'
+          textShadow: '3px 3px 5px black', cursor: 'pointer',
         }}
+        onClick={handleHome}
       >
         Chordial
       </h1>

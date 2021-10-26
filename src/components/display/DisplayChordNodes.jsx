@@ -24,6 +24,7 @@ const DisplayChordNodes = () => {
     setNodes(target.textContent);
   };
 
+
   const variant = {
     hidden: { opacity: 1, scale: 0 },
     visible: {
