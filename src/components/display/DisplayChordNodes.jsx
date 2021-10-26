@@ -38,11 +38,8 @@ const DisplayChordNodes = () => {
         audio.load();
         audio.play();
       }
-      
     }
   };
-
-
 
   const variant = {
     hidden: { opacity: 1, scale: 0 },

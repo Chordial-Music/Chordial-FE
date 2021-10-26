@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 import { MemoryRouter } from 'react-router-dom';
@@ -20,8 +20,6 @@ describe('App component', () => {
 
     const cButton = screen.getByTestId('cButton');
     expect(cButton).not.toBeDisabled();
-
-    
 
     userEvent.click(cButton);
     expect(cButton).toHaveStyle({ display: 'none' });
