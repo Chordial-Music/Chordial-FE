@@ -126,6 +126,7 @@ const DisplaySequence = () => {
       <DisplayChordsStyled
         className="displayChords">
         <div className="container" onClick={handlePlay}>
+          
           <div className="playChords">
             <h3>Chosen Chords: </h3>
             <i><PlayCircleOutlineIcon onClick={handlePlaySequence}/></i>

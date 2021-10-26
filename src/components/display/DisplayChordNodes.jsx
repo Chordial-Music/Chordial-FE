@@ -24,6 +24,25 @@ const DisplayChordNodes = () => {
     setNodes(target.textContent);
   };
 
+  const handlePlay = (event) => {
+
+    if(event.shiftKey) {
+      if(!mute) {
+        const audio = new Audio(`/${event.target.textContent}.mp3`);
+        audio.load();
+        audio.play();
+      }
+    } else if(event.type === 'click') {
+      if(!mute) {
+        const audio = new Audio(`/${event.target.textContent}.mp3`);
+        audio.load();
+        audio.play();
+      }
+      
+    }
+  };
+
+
 
   const variant = {
     hidden: { opacity: 1, scale: 0 },
@@ -54,7 +73,7 @@ const DisplayChordNodes = () => {
         }}
         variants={variant}
       >
-        <NodeItemStyled onClick={handleClick}>
+        <NodeItemStyled onClick={handleClick} onMouseEnter={handlePlay}>
           {element}
         </NodeItemStyled>
       </motion.div>

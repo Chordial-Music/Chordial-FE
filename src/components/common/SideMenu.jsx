@@ -54,6 +54,7 @@ function SideMenu() {
       message: `Selecting a chord will present you with harmonically vetted options.
                 You can create a 16 chord sequence.  
                 Play them back with the play button, or on your instrument.  
+                Hold down shift to listen to the chord on mouse over.
                 If you make a mistake, select the reset button.  
                 If you'd like to save your creation, login and save.
                 Once you're logged in, you can find your saved sequences in the side menu.`,
