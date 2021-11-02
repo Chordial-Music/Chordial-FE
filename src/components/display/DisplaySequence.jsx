@@ -198,14 +198,15 @@ const DisplayChordsStyled = styled.div`
 
   .btn-container {
     height: 100%;
-    min-height: 100px;
+    min-height: 50px;
     display: flex;
+    background-color: transparent;
   }
 
   .save-btn {
     font-size: 1.1rem;
     height: 100%;
-    min-height: 100px;
+    min-height: 50px;
     width: 80px;
     /* border-radius: 10px; */
     background-color: transparent;
@@ -224,7 +225,7 @@ const DisplayChordsStyled = styled.div`
   .reset-btn {
     font-size: 1.1rem;
     height: 100%;
-    min-height: 100px;
+    min-height: 50px;
     width: 80px;
     background-color: transparent;
     border: none;
@@ -359,6 +360,96 @@ const DisplayChordsStyled = styled.div`
       color: #00dda6;
     }
   }
+  @media only screen and (max-width: 375px) {
+    position: absolute;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    top: 0;
+    background-color: #92e6ff68;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    width: 80vw;
+    height: auto;
+  
+    h3{
+      position: relative;
+      color: white; 
+      font-family: Concert One, cursive; 
+      cursor: pointer;
+    }
+
+  
+    .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      height: 220px;
+  
+      .chords-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+    }
+  
+    .save-btn {
+      font-size: 1.1rem;
+      height: 100%;
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: all ease-in-out 0.2s;
+  
+      &:hover {
+        background-color: #ffffffa7;
+        color: black;
+      }
+    }
+  
+    .reset-btn {
+      font-size: 1.1rem;
+      height: 100%;
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      border-left: 1px solid black;
+      color: white;
+      cursor: pointer;
+      transition: all ease-in-out 0.2s;
+  
+      &:hover {
+        background-color: red;
+        color: white;
+        border-radius: 0 10px 10px 0;
+      }
+    }
+  
+    .Chord {
+      font-family: 'Fjalla One', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.7rem;
+      font-weight: 800;
+      cursor: pointer;
+      color: antiquewhite;
+      text-shadow: 0px 0px 3px black;
+      transition: all ease-in-out 0.2s;
+      background-color: #ffffff7d;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      text-shadow: 0px 0px 5px black;
+      &:hover {
+        transform: scale(1.2);
+        color: #00dda6;
+      }
+    }
   }
 `;
 
