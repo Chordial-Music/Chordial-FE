@@ -31,10 +31,10 @@ const DisplaySequence = () => {
   };
 
   const handleSave = () => {
-    if(session && chordArray.length > 0) {
+    if (session && chordArray.length > 0) {
       createSequence(session.id, chordArray);
       handleReset();
-    } else if(!session) {
+    } else if (!session) {
       setAlert({
         title: 'Must have user account',
         message: 'Please login or signup to save your sequence.'
@@ -48,7 +48,7 @@ const DisplaySequence = () => {
   };
 
   const handleClick = () => {
-    if(!mute) {
+    if (!mute) {
       const audio = new Audio('/C.mp3');
       audio.load();
       audio.play();
@@ -60,7 +60,7 @@ const DisplaySequence = () => {
   };
 
   const handlePlay = ({ target }) => {
-    if(!mute) {
+    if (!mute) {
       const audio = new Audio(`/${target.textContent}.mp3`);
       audio.load();
       audio.play();
@@ -71,7 +71,7 @@ const DisplaySequence = () => {
     const tempArr = [...chordArray];
     tempArr.forEach((element, i) => {
       setTimeout(() => {
-        if(!mute) {
+        if (!mute) {
           const audio = new Audio(`/${element}.mp3`);
           audio.load();
           audio.play();
@@ -93,7 +93,7 @@ const DisplaySequence = () => {
   //     <p className="alert-window-text">
   //       This application does not currently support mobile devices. Please come back on a desktop or laptop computer!
   //     </p>
-      
+
   //   </AlertWindowStyled>
   // );
 
@@ -115,7 +115,7 @@ const DisplaySequence = () => {
         </motion.div>
 
         <div>
-          {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes/>}
+          {chordArray.length < 16 && displayNodes === true && <DisplayChordNodes />}
           {chordArray.length >= 16 &&
             <div className="max-limit">
               <h3>You've reached the max chord limit for a sequence.</h3>
@@ -126,17 +126,17 @@ const DisplaySequence = () => {
       <DisplayChordsStyled
         className="displayChords">
         <div className="container" onClick={handlePlay}>
-          
+
           <div className="playChords">
             <h3>Chosen Chords: </h3>
-            <i><PlayCircleOutlineIcon onClick={handlePlaySequence}/></i>
+            <i><PlayCircleOutlineIcon onClick={handlePlaySequence} /></i>
           </div>
           <div className="chords-container" data-testid="chordContainer">
 
             {chords}
           </div>
         </div>
-        
+
         <div className="btn-container">
           <button onClick={handleSave} className="save-btn">Save</button>
           <button onClick={handleReset} className="reset-btn">Reset</button>
@@ -360,6 +360,7 @@ const DisplayChordsStyled = styled.div`
       color: #00dda6;
     }
   }
+
   @media only screen and (max-width: 375px) {
     position: absolute;
     margin-top: 2%;
@@ -380,7 +381,6 @@ const DisplayChordsStyled = styled.div`
       cursor: pointer;
     }
 
-  
     .container{
       display: flex;
       flex-direction: column;
@@ -500,6 +500,105 @@ const ButtonStyled = styled.div`
     0% { transform: translate(0,  0px); } 
     50%  { transform: translate(0, 30px); } 
     100%   { transform: translate(0, -0px); }     
+}
+
+@media only screen and (max-width: 600px) {
+  .default {
+    height: 200px;
+    width: 200px;
+    margin-top: 140px;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    background-color: #3ac4f18d;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.15s;
+    animation-name: floating; 
+    animation-duration: 3s; 
+    animation-iteration-count: infinite; 
+    animation-timing-function: ease-in-out;
+    box-shadow: 0px 0px 50px 20px white;
+    text-shadow: 0px 2px 4px black;
+    font-family: 'Fjalla One', sans-serif;
+
+    &:hover {
+      transform: scale(1.3);
+      background-color: #23d5ab;
+    }
+  }
+
+  .invisible {
+    display: none;
+  }
+
+  .max-limit {
+    color: white;
+    padding: 12px;
+    background-color: #92e6ff68;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    animation-name: floating; 
+    animation-duration: 3.5s; 
+    animation-iteration-count: infinite; 
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes floating { 
+    0% { transform: translate(0,  0px); } 
+    50%  { transform: translate(0, 30px); } 
+    100%   { transform: translate(0, -0px); }     
+  }
+
+@media only screen and (max-width: 375px) {
+  .default {
+    height: 175px;
+    width: 175px;
+    margin-top: 150px;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    background-color: #3ac4f18d;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.15s;
+    animation-name: floating; 
+    animation-duration: 3s; 
+    animation-iteration-count: infinite; 
+    animation-timing-function: ease-in-out;
+    box-shadow: 0px 0px 50px 20px white;
+    text-shadow: 0px 2px 4px black;
+    font-family: 'Fjalla One', sans-serif;
+
+    &:hover {
+      transform: scale(1.3);
+      background-color: #23d5ab;
+    }
+  }
+
+  .invisible {
+    display: none;
+  }
+
+  .max-limit {
+    color: white;
+    padding: 12px;
+    background-color: #92e6ff68;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    animation-name: floating; 
+    animation-duration: 3.5s; 
+    animation-iteration-count: infinite; 
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes floating { 
+    0% { transform: translate(0,  0px); } 
+    50%  { transform: translate(0, 30px); } 
+    100%   { transform: translate(0, -0px); }     
+  }
 }
 `;
 
