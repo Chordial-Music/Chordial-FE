@@ -6,7 +6,6 @@ import styled from 'styled-components';
 export default function Signup() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const history = useHistory();
   const signup = useSignup();
 
