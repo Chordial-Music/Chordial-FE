@@ -165,7 +165,7 @@ const NodeItemStyled = styled.li`
     border-radius: 10px;
   }
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 375px) {
     background-color: lightblue;
     color: white;
     font-size: 1.3rem;
@@ -233,6 +233,17 @@ const NodeListStyled = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 100px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .nodeList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
   }
 }
 `;

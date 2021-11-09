@@ -21,7 +21,7 @@ function Header() {
     <HeaderStyled>
       <h1
         style={{
-          color: 'white', fontSize: '70px', padding: '1rem', fontFamily: 'Pacifico',
+          color: 'white', fontSize: '70px', padding: '.8rem', fontFamily: 'Pacifico',
           textShadow: '3px 3px 5px black', cursor: 'pointer',
         }}
         onClick={handleHome}
@@ -43,17 +43,19 @@ const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 115px;
 
   .menu {
-    padding: 10px 50px;
+    padding: 10px 30px;
     cursor: pointer;
     z-index: 1000;
+
     .menu-bar {
-    width: 50px;
-    background-color: #000000ce;
-    height: 7px;
-    margin: 7px;
-    border-radius: 10px;
+      width: 50px;
+      background-color: #000000ce;
+      height: 7px;
+      margin: 7px;
+      border-radius: 10px;
     }
   }
 `;

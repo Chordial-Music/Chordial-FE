@@ -181,7 +181,6 @@ const DisplayChordsStyled = styled.div`
     }
   }
  
-
   .container{
     display: flex;
     flex-direction: column;
@@ -363,7 +362,7 @@ const DisplayChordsStyled = styled.div`
 
   @media only screen and (max-width: 375px) {
     position: absolute;
-    margin-top: 2%;
+    margin-top: .01%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -375,6 +374,7 @@ const DisplayChordsStyled = styled.div`
     height: auto;
   
     h3{
+      font-size: 1.2rem;
       position: relative;
       color: white; 
       font-family: Concert One, cursive; 
@@ -386,7 +386,7 @@ const DisplayChordsStyled = styled.div`
       flex-direction: column;
       justify-content: flex-start;
       width: 100%;
-      height: 220px;
+      height: 190px;
   
       .chords-container {
         display: flex;
@@ -394,7 +394,7 @@ const DisplayChordsStyled = styled.div`
         width: 100%;
       }
     }
-  
+
     .save-btn {
       font-size: 1.1rem;
       height: 100%;
@@ -495,7 +495,6 @@ const ButtonStyled = styled.div`
     animation-timing-function: ease-in-out;
   }
 
-
   @keyframes floating { 
     0% { transform: translate(0,  0px); } 
     50%  { transform: translate(0, 30px); } 
@@ -553,8 +552,8 @@ const ButtonStyled = styled.div`
 
 @media only screen and (max-width: 375px) {
   .default {
-    height: 175px;
-    width: 175px;
+    height: 145px;
+    width: 145px;
     margin-top: 150px;
     border: none;
     border-radius: 50%;
