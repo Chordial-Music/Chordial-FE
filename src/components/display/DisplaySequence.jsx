@@ -360,7 +360,7 @@ const DisplayChordsStyled = styled.div`
     }
   }
 
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 360px) {
     position: absolute;
     margin-top: .01%;
     display: flex;
@@ -434,7 +434,7 @@ const DisplayChordsStyled = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1.7rem;
+      font-size: 1.2rem;
       font-weight: 800;
       cursor: pointer;
       color: antiquewhite;

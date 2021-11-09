@@ -236,14 +236,14 @@ const NodeListStyled = styled.div`
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 360px) {
   .nodeList {
     display: flex;
     flex-wrap: wrap;
     width: 70%;
     display: flex;
     justify-content: center;
-    margin-top: 120px;
+    margin-top: 130px;
   }
 }
 `;

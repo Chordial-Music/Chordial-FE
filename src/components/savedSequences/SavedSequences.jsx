@@ -43,7 +43,7 @@ export default function SavedSequences() {
             </p>)}
           </div>
           <div className="btn-container">
-            <Link 
+            <Link
               className="edit-btn"
               to={{
                 pathname: '/edit',
@@ -72,87 +72,159 @@ export default function SavedSequences() {
 }
 
 const SavedListStyled = styled.ul`
-&::-webkit-scrollbar {
-  display: none;
-}
-padding: 2rem;
-  background-color: #c764ee55;
-  width: 97%;
-  height: 75vh;
-  margin: auto;
-  border-radius: 40px;
-  box-shadow: 0px 0px 15px 0px black;
-  overflow-y: auto;
-  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  padding: 2rem;
+    background-color: #c764ee55;
+    width: 97%;
+    height: 75vh;
+    margin: auto;
+    border-radius: 40px;
+    box-shadow: 0px 0px 15px 0px black;
+    overflow-y: auto;
+    overflow-x: hidden;
 `;
 
 const SavedListItemStyled = styled.li`
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.2rem;
-font-size: 2rem;
-background-color: #ffffff65;
-border-radius: 8px;
-
-width: 100%;
-overflow-x: auto;
-
-.btn-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-}
+  padding: 1.2rem;
+  font-size: 2rem;
+  background-color: #ffffff65;
+  border-radius: 8px;
 
-  button {
-    color: red;
-    background-color: transparent;
-    
-    font-size: 1.3rem;
-    border: none;
-    outline: none;
-    transition: all ease-in-out 0.15s;
-    cursor: pointer;
-    height: 100%;
-    padding: 1rem;
-    border-radius: 5px;
+  width: 100%;
+  overflow-x: auto;
 
-    &:hover {
-      background-color: red;
-      color: white;
-      border-radius: 5px;
-    }
-  }
-
-  .edit-btn {
-    color: #0084ff;
-    background-color: transparent;
-    
-    font-size: 1.3rem;
-    border: none;
-    outline: none;
-    transition: all ease-in-out 0.15s;
-    cursor: pointer;
-    height: 100%;
-    padding: 1rem;
-    border-radius: 5px;
-
-    &:hover {
-      background-color: #0084ff;
-      color: white;
-      border-radius: 5px;
-    }
-  }
-
-  .sequence-container {
+  .btn-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    width: 100%;
   }
 
-  .sequence-item {
-    margin: 0 1rem;
-  }
+    button {
+      color: red;
+      background-color: transparent;
+      
+      font-size: 1.3rem;
+      border: none;
+      outline: none;
+      transition: all ease-in-out 0.15s;
+      cursor: pointer;
+      height: 100%;
+      padding: 1rem;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+      }
+    }
+
+    .edit-btn {
+      color: #0084ff;
+      background-color: transparent;
+      
+      font-size: 1.3rem;
+      border: none;
+      outline: none;
+      transition: all ease-in-out 0.15s;
+      cursor: pointer;
+      height: 100%;
+      padding: 1rem;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #0084ff;
+        color: white;
+        border-radius: 5px;
+      }
+    }
+
+    .sequence-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+    }
+
+    .sequence-item {
+      margin: 0 1rem;
+    }
+
+    @media only screen and (max-width: 700px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem;
+      font-size: 2rem;
+      background-color: #ffffff65;
+      border-radius: 8px;
+
+      width: 100%;
+      overflow-x: auto;
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+        button {
+          color: red;
+          background-color: transparent;
+          
+          font-size: 1.3rem;
+          border: none;
+          outline: none;
+          transition: all ease-in-out 0.15s;
+          cursor: pointer;
+          height: 100%;
+          padding: 1rem;
+          border-radius: 5px;
+
+          &:hover {
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+          }
+        }
+
+        .edit-btn {
+          color: #0084ff;
+          background-color: transparent;
+          
+          font-size: 1.3rem;
+          border: none;
+          outline: none;
+          transition: all ease-in-out 0.15s;
+          cursor: pointer;
+          height: 100%;
+          padding: 1rem;
+          border-radius: 5px;
+
+          &:hover {
+            background-color: #0084ff;
+            color: white;
+            border-radius: 5px;
+          }
+        }
+
+        .sequence-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: center;
+          width: 100%;
+        }
+
+        .sequence-item {
+          margin: 0 1rem;
+        }
+    }
 `;
