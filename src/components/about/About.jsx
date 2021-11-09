@@ -7,46 +7,47 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 function About() {
   return (
     <AboutStyled>
-  
-      <div className="description">
-        <h1>The Ballad of Chordial</h1>
+      <div className="wrapper">
+        <div className="description">
+          <h1>The Ballad of Chordial</h1>
 
-        <p>After downing a caraffe of coffee, inspiration struck!  
-          What if there was an app that helped write chord changes for songs? 
-          And from that intial idea, this amazing team of developers brainstormed 
-          and coded tirelessly to create Chordial.  
-          No longer would tired musicians have to think up another set of chord changes.  
-          Chordial provides users a bevy of harmonic chord destinations relating to their previous choices.  
-          This ensures that every sequence created will in the end sound harmonically pleasing, regardless of a users knowledge of chordal music theory.
-        </p>
-      </div>
+          <p>After downing a caraffe of coffee, inspiration struck!
+            What if there was an app that helped write chord changes for songs?
+            And from that intial idea, this amazing team of developers brainstormed
+            and coded tirelessly to create Chordial.
+            No longer would tired musicians have to think up another set of chord changes.
+            Chordial provides users a bevy of harmonic chord destinations relating to their previous choices.
+            This ensures that every sequence created will in the end sound harmonically pleasing, regardless of a users knowledge of chordal music theory.
+          </p>
+        </div>
 
-      <h1 
-        style={{ fontFamily: 'Concert One', paddingBottom: '1rem' }}
-      >
-        The Devs
-      </h1>
-      <div className="devs-container">
-        <div className="dev">
-          <img src={'/casey.jpg'}/>
-          <h2>Casey</h2>
-          <p>Casey is a kick-ass full stack software engineer and music wizard.</p>
-          <a href="https://github.com/CaseyCameron" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
-          <a href="https://www.linkedin.com/in/casey-cameron/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
-        </div>
-        <div className="dev">
-          <img src={'/kalan.jpg'}/>
-          <h2>Kalan</h2>
-          <p>Kalan is a kick-ass full stack software developer and music warlock.</p>
-          <a href=" https://github.com/prudhomk" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
-          <a href="https://www.linkedin.com/in/kalanprudhomme/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
-        </div>
-        <div className="dev">
-          <img src={'/david.jpg'}/>
-          <h2>David</h2>
-          <p>David is a kick-ass software dev and doesn't know a thing about music-- just good design.</p>
-          <a href="https://github.com/David-Del1" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
-          <a href="https://www.linkedin.com/in/davidadelgadillo/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
+        <h1
+          style={{ fontFamily: 'Concert One', paddingBottom: '1rem' }}
+        >
+          The Devs
+        </h1>
+        <div className="devs-container">
+          <div className="dev">
+            <img src={'/casey.jpg'} />
+            <h2>Casey</h2>
+            <p>Casey is a kick-ass full stack software engineer and music wizard.</p>
+            <a href="https://github.com/CaseyCameron" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
+            <a href="https://www.linkedin.com/in/casey-cameron/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
+          </div>
+          <div className="dev">
+            <img src={'/kalan.jpg'} />
+            <h2>Kalan</h2>
+            <p>Kalan is a kick-ass full stack software developer and music warlock.</p>
+            <a href=" https://github.com/prudhomk" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
+            <a href="https://www.linkedin.com/in/kalanprudhomme/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
+          </div>
+          <div className="dev">
+            <img src={'/david.jpg'} />
+            <h2>David</h2>
+            <p>David is a kick-ass software dev and doesn't know a thing about music-- just good design.</p>
+            <a href="https://github.com/David-Del1" target="_blank" rel="noreferrer"><GitHubIcon className="icon" /></a>
+            <a href="https://www.linkedin.com/in/davidadelgadillo/" target="_blank" rel="noreferrer"><LinkedInIcon className="icon" /></a>
+          </div>
         </div>
       </div>
     </AboutStyled>
@@ -60,9 +61,10 @@ const AboutStyled = styled.div`
 &::-webkit-scrollbar {
   display: none;
 }
-  background-color: #c764ee55;
+  .wrapper{
+    background-color: #c764ee55;
   width: 97%;
-  height: 80vh;
+  height: 100%;
   border-radius: 40px;
   box-shadow: 0px 0px 15px 0px black;
   overflow: auto;
@@ -71,6 +73,7 @@ const AboutStyled = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin: auto;
+}
 
   .description {
     width: 100%;
@@ -134,13 +137,11 @@ const AboutStyled = styled.div`
     }
   }
 
-  @media only screen and (max-width: 1000px) {
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  @media only screen and (max-width: 1100px) {
+    .wrapper {
       background-color: #c764ee55;
       width: 97%;
-      height: 100%;
+      height: 50%;
       border-radius: 40px;
       box-shadow: 0px 0px 15px 0px black;
       display: flex;
@@ -148,6 +149,7 @@ const AboutStyled = styled.div`
       justify-content: space-evenly;
       align-items: center;
       margin: 10px;
+    }
   
       .description {
         width: 100%;
@@ -168,7 +170,7 @@ const AboutStyled = styled.div`
           font-family: 'Righteous';
           padding: 1rem;
           text-align: center;
-          font-size: 1.5rem;
+          font-size: 1rem;
           width: 90%;
           line-height: 1.5;
           background-color: #ffffff92;
@@ -180,15 +182,13 @@ const AboutStyled = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
         padding-bottom: 2rem;
 
         .dev {
           width: 350px;
           text-align: center;
           padding: 1rem;
-          margin: 10px;
+          margin: 5px;
             background-color: #85affd9e;
             border-radius: 15px;
             box-shadow: 0px 0px 10px 0px black;
@@ -202,7 +202,7 @@ const AboutStyled = styled.div`
               }
             }
             img {
-              
+              display: none;
               height: 250px;
               width: 250px;
               object-fit: contain;
