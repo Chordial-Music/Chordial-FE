@@ -25,4 +25,4 @@ Finally, while Chordial's default chords are limited to triads, users may enter 
 
 <img src="https://user-images.githubusercontent.com/29679939/149869441-4cdab7fb-0dad-4b6b-b55d-c51cd46b1fed.png" width="250px" />
 
-Find backend repo lives [here](https://github.com/Chordial-Music/Chordial-BE).
+Our backend repo lives [here](https://github.com/Chordial-Music/Chordial-BE).
