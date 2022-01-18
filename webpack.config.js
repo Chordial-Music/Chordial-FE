@@ -33,6 +33,7 @@ module.exports = {
       patterns: [{ from: 'public' }],
     }),
   ],
+  
   resolve: {
     extensions: ['.js', '.jsx'],
   },

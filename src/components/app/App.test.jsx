@@ -1,11 +1,35 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
+import { MemoryRouter } from 'react-router-dom';
+import { ChordialProvider } from '../state/ChordialProvider';
+import { SessionProvider } from '../state/SessionProvider';
 
 describe('App component', () => {
-  afterEach(() => cleanup());
-  it('renders App', () => {
-    const { asFragment } = render(<App />);
-    expect(asFragment()).toMatchSnapshot();
+  it('displays a node', async () => {
+    render(
+      <MemoryRouter>
+        <SessionProvider>
+          <ChordialProvider>
+            <App/>
+          </ChordialProvider>
+        </SessionProvider>
+      </MemoryRouter>
+    );
+
+    const cButton = screen.getByTestId('cButton');
+    expect(cButton).not.toBeDisabled();
+
+    userEvent.click(cButton);
+    expect(cButton).toHaveStyle({ display: 'none' });
+
+    const chordContainer = screen.getByTestId('chordContainer');
+    expect(chordContainer).toHaveTextContent('C');
+
+    const nodeButton = screen.getByTestId('nodeButton');
+    expect(nodeButton).not.toBeDisabled();
+
   });
+
 });
