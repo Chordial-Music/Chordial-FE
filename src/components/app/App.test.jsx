@@ -1,31 +1,51 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import App from './App';
-import { MemoryRouter } from 'react-router-dom';
 import { ChordialProvider } from '../state/ChordialProvider';
 import { SessionProvider } from '../state/SessionProvider';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+// import { rest } from 'msw';
+// import { setupServer } from 'msw/node';
+
+// const user = {
+//   id: '22',
+//   username: 'Horace',
+//   passwordHash: '',
+// };
+
+const audioStub = {
+  load: jest
+    .spyOn(window.HTMLMediaElement.prototype, 'load')
+    .mockImplementation(() => {}),
+  play: jest
+    .spyOn(window.HTMLMediaElement.prototype, 'play')
+    .mockImplementation(() => {}),
+};
 
 function renderChordial() {
-  // const user = {
-  //   id: '22',
-  //   username: 'Horace',
-  //   passwordHash: ''
-  // };
-
   return render(
-    <MemoryRouter>
-      <SessionProvider>
-        <ChordialProvider>
-          <App/>
-        </ChordialProvider>
-      </SessionProvider>
-    </MemoryRouter>
+    <SessionProvider>
+      <ChordialProvider>
+        <App />
+      </ChordialProvider>
+    </SessionProvider>
   );
 }
 
+// const server = setupServer(
+//   rest.get('https://chordial.herokuapp.com',
+//     (req, res, ctx) => {
+//       console.log('Hello');
+//       return res(ctx.user);
+//     }
+//   )
+// );
+
 describe('App component', () => {
-  it('displays a node', async () => {
+  // beforeAll(() => server.listen());
+  // afterAll(() => server.close());
+
+  it.only('displays a node', async () => {
     renderChordial();
 
     const heading = screen.getByRole('heading', { name: /chordial/i });
@@ -36,6 +56,12 @@ describe('App component', () => {
 
     userEvent.click(cButton);
     expect(cButton).toHaveStyle({ display: 'none' });
+
+    expect(audioStub.load).toHaveBeenCalled();
+    audioStub.load.mockRestore();
+
+    expect(audioStub.play).toHaveBeenCalled();
+    audioStub.play.mockRestore();
 
     const chordContainer = screen.getByTestId('chordContainer');
     expect(chordContainer).toHaveTextContent('C');
@@ -63,6 +89,6 @@ describe('App component', () => {
     expect(login).toBeInTheDocument();
     userEvent.click(login);
     const username = screen.getByRole('button', { name: /login/i });
-    expect(username).toBeInTheDocument(); 
+    expect(username).toBeInTheDocument();
   });
 });

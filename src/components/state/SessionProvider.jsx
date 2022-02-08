@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+
+/* eslint-disable react/prop-types */ 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Redirect, Route, useHistory } from 'react-router-dom';
 import { fetchVerify, postLogin, postSignup } from '../services/auth';
