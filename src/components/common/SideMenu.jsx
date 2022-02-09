@@ -70,7 +70,8 @@ function SideMenu() {
           onConfirm={alertHandler}
         />
       )}
-      <div
+      <div 
+        role="menu"
         className={sideMenu ? styles.sideMenu : toggle.toggle}
       >
         {session ? <span>Hello, {session.username} 🙂</span> : <>Hello, Guest!</>}
