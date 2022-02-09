@@ -4,14 +4,6 @@ import { ChordialProvider } from '../state/ChordialProvider';
 import { SessionProvider } from '../state/SessionProvider';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-// import { rest } from 'msw';
-// import { setupServer } from 'msw/node';
-
-// const user = {
-//   id: '22',
-//   username: 'Horace',
-//   passwordHash: '',
-// };
 
 const audioStub = {
   load: jest
@@ -32,19 +24,7 @@ function renderChordial() {
   );
 }
 
-// const server = setupServer(
-//   rest.get('https://chordial.herokuapp.com',
-//     (req, res, ctx) => {
-//       console.log('Hello');
-//       return res(ctx.user);
-//     }
-//   )
-// );
-
 describe('App component', () => {
-  // beforeAll(() => server.listen());
-  // afterAll(() => server.close());
-
   it.only('displays a node', async () => {
     renderChordial();
 
