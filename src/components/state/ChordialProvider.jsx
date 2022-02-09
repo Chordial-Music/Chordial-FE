@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+/* eslint-disable react/prop-types */ 
 import React, { createContext, useContext, useState } from 'react';
 
 const ChordialContext = createContext();
