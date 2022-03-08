@@ -1,25 +1,26 @@
 /* eslint-disable max-len */
 
 const Chords = {
-  'C': { name: 'C', chords: ['Db', 'D', 'Dm', 'Eb', 'E', 'Em', 'F', 'Fm', 'Gb', 'G', 'Gm', 'Ab', 'A', 'Am', 'Abm', 'Bb', 'Bm', 'B'] },
+  'C': { name: 'C', chords: ['Db', 'D', 'Dm', 'Eb', 'E', 'Em', 'F', 'Fm', 'Gb', 'Gbm', 'G', 'Gm', 'Ab', 'Abm', 'A', 'Am', 'Bb', 'Bbm', 'Bm', 'B'] },
   'Db': { name: 'Db', chords: ['C', 'Bb', 'Ab'] },
-  'Dm': { name: 'Dm', chords: ['C', 'G', 'Gm', 'Em', 'Am', 'Ab', 'Fm', 'F', 'Eb', 'Db'] },
-  'D': { name: 'D', chords: ['C', 'Db', 'G', 'Gm', 'F', 'Fm', 'Am', 'Ab', 'Bb'] },
+  'Dm': { name: 'Dm', chords: ['C', 'Db', 'Em', 'Eb', 'Fm', 'F', 'G', 'Gm', 'Ab', 'Am'] },
+  'D': { name: 'D', chords: ['C', 'Db', 'F', 'Fm', 'G', 'Gm', 'Am', 'Ab', 'Bb'] },
   'Eb': { name: 'Eb', chords: ['C', 'Db', 'D', 'Dm', 'F', 'Fm', 'Gm', 'Ab', 'Bb'] },
-  'Em': { name: 'Eb', chords: ['C', 'F', 'Fm', 'Am', 'E', 'Eb', 'G', 'Gm', 'Dm', 'D', 'Db', 'Bb', 'Bm'] },
-  'E': { name: 'E', chords: ['C', 'Bb', 'Am', 'Em', 'F', 'Fm', 'G'] },
-  'F': { name: 'F', chords: ['C', 'G', 'Gm', 'Am', 'Bb', 'Fm', 'Ab', 'Db', 'Dm', 'D', 'Em', 'E', 'Eb'] },
-  'Fm': { name: 'Fm', chords: ['C', 'Db', 'Eb', 'E', 'G', 'Gm', 'Ab', 'Am', 'Bb'] },
-  'Gb': { name: 'Gb', chords: ['C', 'F', 'Gm', 'Bb', 'B'] },
-  'G': { name: 'G', chords: ['C', 'Fm', 'F', 'Gm', 'Am', 'Ab', 'Em', 'Eb', 'Db', 'Dm', 'Bb'] },
-  'Gm': { name: 'Gm', chords: ['C', 'Dm', 'E', 'Eb', 'F', 'Am', 'Gb'] },
-  'Ab': { name: 'Ab', chords: ['C', 'Bb', 'G', 'Gm', 'Db', 'Am', 'F', 'Fm', 'Eb', 'Dm', 'D', 'E'] },
+  'Em': { name: 'Eb', chords: ['C', 'Dm', 'D', 'Db', 'E', 'Eb', 'F', 'Fm', 'G', 'Gm', 'Am', 'Bb', 'Bm'] },
+  'E': { name: 'E', chords: ['C', 'Em', 'F', 'Fm', 'G', 'Am', 'Bb'] },
+  'F': { name: 'F', chords: ['C', 'Db', 'Dm', 'D', 'Em', 'E', 'Eb', 'Fm', 'G', 'Gm', 'Ab', 'Am', 'Bb'] },
+  'Fm': { name: 'Fm', chords: ['C', 'Db', 'Eb', 'E', 'G', 'Gm', 'Ab', 'Abm', 'Am', 'Bb'] },
+  'Gb': { name: 'Gb', chords: ['C', 'F', 'G', 'Gm', 'Bb', 'B'] },
+  'G': { name: 'G', chords: ['C', 'Db', 'Dm', 'Em', 'Eb', 'Fm', 'F', 'Gm', 'Ab', 'Am', 'Bb'] },
+  'Gm': { name: 'Gm', chords: ['C', 'Dm', 'E', 'Eb', 'F', 'Gb', 'Am'] },
+  'Ab': { name: 'Ab', chords: ['C', 'Db', 'Dm', 'D', 'Eb', 'E', 'F', 'Fm', 'G', 'Gm', 'Am', 'Bb'] },
   'Abm': { name: 'Abm', chords: ['C', 'Db', 'Eb', 'F', 'Fm', 'G', 'Bb'] },
   'A': { name: 'A', chords: ['C', 'D', 'Ab', 'F', 'Fm', 'Bb'] },
   'Am': { name: 'Am', chords: ['C', 'Db', 'Dm', 'Eb', 'Em', 'E', 'F', 'Fm', 'G', 'Gm', 'Ab', 'Bb'] },
-  'Bb': { name: 'Bb', chords: ['C', 'Db', 'Eb', 'B', 'Ab', 'F', 'Fm', 'G', 'Gm', 'D', 'A', 'Am', 'E'] },
-  'B': { name: 'B', chords: ['C', 'Bb', 'Em', 'Bm', 'E', 'Am', 'G', 'D', 'Dm'] },
-  'Bm': { name: 'Bm', chords: ['Am', 'C', 'F', 'G'] }
+  'Bb': { name: 'Bb', chords: ['C', 'Db', 'D', 'E', 'Eb', 'F', 'Fm', 'G', 'Gm', 'Ab', 'A', 'Am', 'Bbm', 'B'] },
+  'Bbm': { name: 'Bbm', chords: ['C', 'Db', 'Eb', 'F', 'Fm', 'Gb', 'G', 'Gm', 'Ab', 'B'] },
+  'B': { name: 'B', chords: ['C', 'D', 'Dm',  'Em', 'E', 'G', 'Am', 'Bb', 'Bbm', 'Bm'] },
+  'Bm': { name: 'Bm', chords: ['C', 'F', 'G', 'Am'] }
 };
 
 export default Chords;
